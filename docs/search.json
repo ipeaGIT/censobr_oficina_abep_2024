@@ -147,34 +147,34 @@
   {
     "objectID": "2.1_instalacao.html",
     "href": "2.1_instalacao.html",
-    "title": "Instalação",
+    "title": "2.1 Instalação",
     "section": "",
     "text": "Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina antes do dia do workshop\n\nR e RStudio\nAlguns pacotes de R\n\nInstruções abaixo:\n\n\n\n\nInstalando R e RStudio\nNesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, siga estras instruções.\n\n\nInstalando pacotes de R\nA oficina utiliza alguns pacotes do R que precisam ser instalados em sua máquina. A maneira mais simples de fazer isso é executando o código abaixo. Isso pode levar alguns minutos, caso seja a primeira vez que você instala esses pacotes.\n\npkgs &lt;- c(\n  'censobr',\n  'geobr',\n  'arrow',\n  'dplyr',\n  'ggplot2'\n  )\n\ninstall.packages(pkgs)\n\nA maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu repositório localmente. Isso porque este repositório utiliza o pacote {renv}do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.\nUma vez que você clonou o repositório e abriu o arquivo censobr_oficina_abep_2024.Rproj, basta você rodar renv::restore() para instalar todos os pacotes utilizados nesta oficina.\n\n# Descomente a linha abaixo caso precise instalar o pacote {renv}\n# install.packages('renv')\nrenv::restore()",
     "crumbs": [
       "2. Informações gerais",
-      "Instalação"
+      "2.1 Instalação"
     ]
   },
   {
     "objectID": "2.2_info_censo.html",
     "href": "2.2_info_censo.html",
-    "title": "Conceitos iniciais",
+    "title": "2.2 Conceitos iniciais",
     "section": "",
     "text": "O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.\nNesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censo demográficos no Brasil.",
     "crumbs": [
       "2. Informações gerais",
-      "Conceitos iniciais"
+      "2.2 Conceitos iniciais"
     ]
   },
   {
     "objectID": "2.2_info_censo.html#setores-censitários",
     "href": "2.2_info_censo.html#setores-censitários",
-    "title": "Conceitos iniciais",
+    "title": "2.2 Conceitos iniciais",
     "section": "Setores censitários",
     "text": "Setores censitários\n\nOs cetores censitários são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.\n\n\nÁreas de ponderação\n\nAs áreas de ponderação são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.",
     "crumbs": [
       "2. Informações gerais",
-      "Conceitos iniciais"
+      "2.2 Conceitos iniciais"
     ]
   },
   {

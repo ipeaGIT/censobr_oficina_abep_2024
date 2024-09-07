@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{censobr}: Explorando o Censo Demográfico em R – Conceitos iniciais</title>
+<title>{censobr}: Explorando o Censo Demográfico em R – 2.2 Conceitos iniciais</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,6 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./3_microdados.html" rel="next">
 <link href="./2.1_instalacao.html" rel="prev">
 <link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -103,7 +104,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">Conceitos iniciais</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">2.2 Conceitos iniciais</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -151,26 +152,35 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.1_instalacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instalação</span></a>
+ <span class="menu-text">2.1 Instalação</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.2_info_censo.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Conceitos iniciais</span></a>
+ <span class="menu-text">2.2 Conceitos iniciais</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
- <span class="menu-text">3_microdados.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./3_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Microdados</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
- <span class="menu-text">4_documentacao.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./4_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Documentação</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
- <span class="menu-text">5_agregados_setores.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./5_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Agregados dos Setores Censitários</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -196,9 +206,9 @@ div.csl-indent {
 <div class="quarto-about-solana column-body">
   <div class="about-entity">
     <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">Conceitos iniciais</a></li></ol></nav>
+      <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">2.2 Conceitos iniciais</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Conceitos iniciais</h1>
+<h1 class="title">2.2 Conceitos iniciais</h1>
 </div>
 <div class="quarto-title-meta">
   </div>
@@ -834,11 +844,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./2.1_instalacao.html" class="pagination-link" aria-label="Instalação">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Instalação</span>
+      <a href="./2.1_instalacao.html" class="pagination-link" aria-label="2.1 Instalação">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.1 Instalação</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./3_microdados.html" class="pagination-link" aria-label="3. Microdados">
+        <span class="nav-page-text">3. Microdados</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

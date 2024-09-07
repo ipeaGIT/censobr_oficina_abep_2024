@@ -1,5 +1,5 @@
 ---
-title: "Conceitos iniciais"
+title: "2.2 Conceitos iniciais"
 ---
 
 O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.
