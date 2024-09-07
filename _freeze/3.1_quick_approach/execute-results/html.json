@@ -1,0 +1,17 @@
+{
+  "hash": "4a41e0095063eed209441a4e8f58a7bd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Quick approach\"\nfrom: markdown+emoji\ncode-annotations: hover\n---\n\n\n\n\n<img align=\"right\" src=\"/images/r5r_logo.png?raw=true\" alt=\"logo\" width=\"140\"> \n**In this first hands-on section of the workshop, we'll learn a very quick and simple way to calculate spatial accessibility using the `{r5r}` package**. In the next section, we'll see a more flexible and robust way to do the same thing. Here we'll be calculating the number of schools accessible by public transport within a travel time of 20 minutes.\n\n\n### 1. Allocating memory to Java & loading packages\n\nFirst, let's increase the memory available to run Java, which is used by the underlying R5 routing engine. To increase the available memory to 2 GB, for example, we use the following command. Note that this needs to be run ***before*** loading the packages that will be used in our analysis.\n \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n library(dplyr)\n library(ggplot2)\n```\n:::\n",
+    "supporting": [
+      "3.1_quick_approach_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

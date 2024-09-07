@@ -1,0 +1,17 @@
+{
+  "hash": "642872aa90793e3bf479f898acdd7494",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Flexible approach\"\ncode-annotations: hover\nfrom: markdown+emoji\n---\n\n\n\n\ntest\n\n<!-- package logos side by side  -->\n<div style=\"text-align: center\">\n<table><tr><td><img src='/images/r5r_logo.png' width=\"180\"></td><td><img src='/images/accessibility_logo.png' width=\"180\"></td></tr></table>\n</div>\n\n\nThis flexible approach to calculate accessibility only involves 3 steps:\n\n1. Building a routable transport network\n2. Computing a travel time matrix\n3. Calculating accessibility\n\nNow let's start loading the packages we need:\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n library(dplyr)\n library(ggplot2)\n```\n:::\n\n\n\n\n \n::: {.callout-tip appearance=\"simple\"}\ntest\n test\n:::",
+    "supporting": [
+      "3.2_flexible_approach_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

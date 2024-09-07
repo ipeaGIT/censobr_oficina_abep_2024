@@ -1,0 +1,15 @@
+{
+  "hash": "11f10cfa21e534db608e4762efbdedbb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"access_workshop_WSTLUR_2024\"\nexecute:\n  echo: false\n---\n\n\n\ntest `parte2`\n\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n\n```\nPlease make sure you have already allocated some memory to Java by running:\n  options(java.parameters = '-Xmx2G').\nYou should replace '2G' by the amount of memory you'll require. Currently, Java memory is set to -Xmx6G\n```\n\n\n:::\n:::\n\n\n\n# Accessibility inequality & poverty  -------------------------------------------\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n                id  jobs\n            <char> <int>\n1: 89a881a5a2bffff 14561\n2: 89a881a5a2fffff 29452\n3: 89a881a5a67ffff 16647\n4: 89a881a5a6bffff 10700\n5: 89a881a5a6fffff  6669\n6: 89a881a5b03ffff 37029\n```\n\n\n:::\n:::\n\n\n\n\n\n\n\n# Accessibility inequality  -------------------------------------------\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n   palma_ratio\n         <num>\n1:    3.800465\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stdout}\n\n```\n   gini_index\n        <num>\n1:  0.4715251\n```\n\n\n:::\n:::\n\n\n\n# Accessibility poverty  -------------------------------------------\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n        FGT0      FGT1      FGT2\n       <num>     <num>     <num>\n1: 0.5855476 0.3394363 0.2319952\n```\n\n\n:::\n:::\n\n\n\n\n\n# interpretation\n\n#' FGT0: 54% of the pop in poverty\n#' FGT1: the accessibility of the poor is on average 33% lower than the poverty line\n#' FGT2: \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

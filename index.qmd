@@ -1,0 +1,75 @@
+---
+title: "1. Introdução à oficina"
+
+author:
+  - name: Rafael H. M. Pereira
+    orcid: "0000-0003-2125-7465"
+#    affiliations:
+#      - name: "Ipea - Instituto de Pesquisa Econômica Aplicada"
+#    url: "https://www.urbandemographics.org/about/"
+  - name: Rogerio Barbosa
+    orcid: "0000-0002-6796-4547"
+#    affiliations:
+#      - name: "Instituto de Estudos Sociais e Políticos (IESP/UERJ)"
+#    url: "https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa/"
+---
+
+Este website apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.
+
+
+
+<!-- <img src="/images/abep_2024_logo.png" width="600" align="center"> --> 
+![](images/abep_2024_logo.png){width=550 fig-align="center"}
+
+# Resumo da oficina:
+
+O Censo Demográfico é uma das mais importantes fontes de dados sobre as características e condições de vida da população brasileira. Nessa oficina, você vai aprender como baixar e manipular os dados das diversas edições do censo demográfico do Brasil de 1970 a 2022 usando o pacote [{censobr}](https://ipeagit.github.io/censobr/) na linguagem de programação R. 
+
+A oficina também vai demonstrar como o {censobr} permite trabalhar com grandes bases de dados (*larger-than-memory data*) e ser integrado com o pacote [{geobr}](https://ipeagit.github.io/geobr/) para visualização espacial de dados em diferentes escalas geográficas.
+
+<!-- package logos side by side  -->
+<div style="text-align: center">
+
+<table><tr><td><img src='/images/censobr_logo.png' width="180"></td><td><img src='/images/geobr_logo_y.png' width="180"></td></tr></table>
+
+</div>
+
+
+Aqui você encontra alguns slides explicando o que a gente cobre o que a gente *não cobre* com nesta oficina:
+
+<p><embed src="slides/1_intro.pdf" style="width:100.0%;height:100vh;" /></p>
+
+::: {.callout-important appearance="default"}
+## Importante
+
+Esta oficina assume que o participante tenha pelo menos um conhecimento básico da linguagem de programação R. Se você quiser se familiarizar com o R, recomendamos os livros abaixo:
+
+- [Ciência de Dados em R](https://livro.curso-r.com/)
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [Geocomputation with R](https://geocompr.robinlovelace.net/)
+:::
+
+
+# Sugestões de leitura:
+
+Leitura adicional relevante, mas não essencial para a oficina.
+
+- O [website e documentação](https://ipeagit.github.io/censobr/) do pacote `{censobr}`.
+- O [website e documentação](https://ipeagit.github.io/geobr/) do pacote `{geobr}`.
+
+
+
+# Sobre os instrutores:
+
+**Rafael H. M. Pereira** <br> *Coordenador de Ciência de Dados* <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> [Website](https://www.urbandemographics.org/about/) | [Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl)
+| [Twitter](https://x.com/UrbanDemog) | [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) | 
+
+**Rogério Barbosa** <br> *Professor de Sociologia* <br> Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ) <br> [Website](https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa/) | [Google Scholar](https://scholar.google.com.br/citations?user=_GGcZ8PnOA0C&hl=en)
+| [Twitter](https://x.com/antrologos) | [Linkedin](https://www.linkedin.com/in/rog%C3%A9rio-barbosa-ab8531117/) | 
+
+
+### Bio dos instrutors:
+
+**Rafael H. M. Pereira** é pesquisador sênior nas áreas de planejamento urbano, ciência de dados espaciais e mobilidade urbana no Instituto de Pesquisa Econômica Aplicada (Ipea). Sua pesquisa investiga como as políticas urbanas e tecnologias moldam a organização espacial das cidades, a mobilidade humana, bem como seus impactos nas desigualdades sociais e de saúde. Algumas de suas contribuições nos campos de urban analytics e planejamento envolvem o desenvolvimento de novos métodos e ferramentas computacionais de código aberto para o estudo de sistemas urbanos e redes de transporte. Essas contribuições partem de interesses substantivos sobre questões de equidade no planejamento urbano, desigualdades de acesso a oportunidades, e dos impactos ambientais do ambiente construído e de padrões de mobilidade. Com graduação em sociologia pela UnB e mestrado em demografia pela Unicamp, Rafael Pereira obteve seu PhD em geografia pela Universidade de Oxford.
+
+**Rogério Barbosa** é Professor de Sociologia do Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ), atuando nas áreas de Métodos Quantitativos e Estratificação Social. Formou-se bacharel em Ciências Sociais pela UFMG, mestre e doutor em Sociologia pela Universidade de São Paulo (2017). Realizou estágio pos-doutoral em Ciência Política pela USP e foi visiting scholar no Departamento de Sociologia da Columbia University. É pesquisador associado do Centro de Estudos da Metrópole (CEM-USP), affiliated scholar no Brazil Lad da Princeton University e membro da Rede de Pesquisa Solidária Políticas Públicas e Sociedade. Trabalhou como consultor metodológico de diversos grupos de pesquisa e também ministrou diversos cursos de programação e métodos estatísticos para instituições e universidades no Brasil. Atualmente pesquisa as tendências de longo prazo da desigualdade de renda no Brasil, usando levantamentos históricos e dados administrativos, bem como microdados contemporâneos. Desenvolve também pacotes R (código aberto) para pesquisa social e ferramentas para facilitar o acesso aos dados brasileiros para um público mais amplo.

@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: docs
+
+about:
+  template: solana
+  # links:
+  #   - icon: twitter
+  #     text: twitter
+  #     href: https://x.com/UrbanDemog
+  #   - icon: github
+  #     text: Github
+  #     href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
+
+execute:
+  freeze: auto
+
+lang: en
+website:
+  title: "{censobr}: Explorando o Censo Demográfico em R"
+  favicon: /images/favicon.png
+  site-url: https://ipeagit.github.io/censobr_oficina_abep_2024/
+  repo-url: https://github.com/ipeaGIT/censobr_oficina_abep_2024
+  sidebar:
+    style: "docked"
+    search: true
+    tools: 
+      - icon: github
+        text: Github
+        href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
+      - icon: twitter
+        text: twitter
+        href: https://x.com/UrbanDemog
+    contents:
+      - index.qmd
+      - section: "2. Informações gerais"
+        contents:
+          - href: 2.1_instalacao.qmd
+          - href: 2.2_info_censo.qmd
+      - 3_microdados.qmd
+      - 4_documentacao.qmd
+      - 5_agregados_setores.qmd
+
+page-navigation: true
+page-footer: 
+  border: false
+  left: "Copyright 2024, Rafael H. M. Pereira" 
+  right: 
+    - icon: github
+      href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
+
+
+format:
+  html:
+    theme:
+      light: zephyr
+      dark: slate
+    css: styles.css
+    toc: true
+
+bibliography: references.bib
+
+editor: source
+
+editor_options:
+  markdown:
+    wrap: 72
+    canonical: true
+

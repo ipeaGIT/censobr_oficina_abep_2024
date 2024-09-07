@@ -1,0 +1,210 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "1. Introdução à oficina",
+    "section": "",
+    "text": "Este website apresenta o material de apoio para a oficina “{censobr}: Explorando o Censo Demográfico em R”. A oficina será realizada como parte da programação do 23o Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.\n\n\n\n\n\n\n\nResumo da oficina:\nO Censo Demográfico é uma das mais importantes fontes de dados sobre as características e condições de vida da população brasileira. Nessa oficina, você vai aprender como baixar e manipular os dados das diversas edições do censo demográfico do Brasil de 1970 a 2022 usando o pacote {censobr} na linguagem de programação R.\nA oficina também vai demonstrar como o {censobr} permite trabalhar com grandes bases de dados (larger-than-memory data) e ser integrado com o pacote {geobr} para visualização espacial de dados em diferentes escalas geográficas.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAqui você encontra alguns slides explicando o que a gente cobre o que a gente não cobre com nesta oficina:\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\nEsta oficina assume que o participante tenha pelo menos um conhecimento básico da linguagem de programação R. Se você quiser se familiarizar com o R, recomendamos os livros abaixo:\n\nCiência de Dados em R\nR for Data Science\nGeocomputation with R\n\n\n\n\n\nSugestões de leitura:\nLeitura adicional relevante, mas não essencial para a oficina.\n\nO website e documentação do pacote {censobr}.\nO website e documentação do pacote {geobr}.\n\n\n\nSobre os instrutores:\nRafael H. M. Pereira  Coordenador de Ciência de Dados  Instituto de Pesquisa Econômica Aplicada (Ipea)  Website | Google Scholar | Twitter | Linkedin |\nRogério Barbosa  Professor de Sociologia  Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ)  Website | Google Scholar | Twitter | Linkedin |\n\nBio dos instrutors:\nRafael H. M. Pereira é pesquisador sênior nas áreas de planejamento urbano, ciência de dados espaciais e mobilidade urbana no Instituto de Pesquisa Econômica Aplicada (Ipea). Sua pesquisa investiga como as políticas urbanas e tecnologias moldam a organização espacial das cidades, a mobilidade humana, bem como seus impactos nas desigualdades sociais e de saúde. Algumas de suas contribuições nos campos de urban analytics e planejamento envolvem o desenvolvimento de novos métodos e ferramentas computacionais de código aberto para o estudo de sistemas urbanos e redes de transporte. Essas contribuições partem de interesses substantivos sobre questões de equidade no planejamento urbano, desigualdades de acesso a oportunidades, e dos impactos ambientais do ambiente construído e de padrões de mobilidade. Com graduação em sociologia pela UnB e mestrado em demografia pela Unicamp, Rafael Pereira obteve seu PhD em geografia pela Universidade de Oxford.\nRogério Barbosa é Professor de Sociologia do Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ), atuando nas áreas de Métodos Quantitativos e Estratificação Social. Formou-se bacharel em Ciências Sociais pela UFMG, mestre e doutor em Sociologia pela Universidade de São Paulo (2017). Realizou estágio pos-doutoral em Ciência Política pela USP e foi visiting scholar no Departamento de Sociologia da Columbia University. É pesquisador associado do Centro de Estudos da Metrópole (CEM-USP), affiliated scholar no Brazil Lad da Princeton University e membro da Rede de Pesquisa Solidária Políticas Públicas e Sociedade. Trabalhou como consultor metodológico de diversos grupos de pesquisa e também ministrou diversos cursos de programação e métodos estatísticos para instituições e universidades no Brasil. Atualmente pesquisa as tendências de longo prazo da desigualdade de renda no Brasil, usando levantamentos históricos e dados administrativos, bem como microdados contemporâneos. Desenvolve também pacotes R (código aberto) para pesquisa social e ferramentas para facilitar o acesso aos dados brasileiros para um público mais amplo.",
+    "crumbs": [
+      "1. Introdução à oficina"
+    ]
+  },
+  {
+    "objectID": "3.2_flexible_approach.html",
+    "href": "3.2_flexible_approach.html",
+    "title": "Flexible approach",
+    "section": "",
+    "text": "test\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis flexible approach to calculate accessibility only involves 3 steps:\n\nBuilding a routable transport network\nComputing a travel time matrix\nCalculating accessibility\n\nNow let’s start loading the packages we need:\n\n library(dplyr)\n library(ggplot2)\n\n\n\n\n\n\n\ntest test",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Flexible approach"
+    ]
+  },
+  {
+    "objectID": "3.2_flexible_approach.html#cumulative-accessibility-measure",
+    "href": "3.2_flexible_approach.html#cumulative-accessibility-measure",
+    "title": "Flexible approach",
+    "section": "3.1 Cumulative accessibility measure",
+    "text": "3.1 Cumulative accessibility measure\n\nThreshold-based cumulative accessibility\nTo calculate a traditional cumulative accessibility measure, we can use the accessibility::cumulative_cutoff() function. Along with the travel matrix and land use data sets, we only need to pass the name of the column with the travel time values, the name of the column with the count of opportunities, and a travel time cutoff.\nHere, we calculate the number of schools accessible in 20 minutes.\n\n# threshold-based cumulative accessibility\naccess_cum_t &lt;- accessibility::cumulative_cutoff(\n  travel_matrix = ttm, \n  land_use_data = points,\n  travel_cost = 'travel_time_p50',\n  opportunity = 'schools',\n  cutoff = 20\n  )\n  \nhead(access_cum_t)\n\n                id schools\n            &lt;char&gt;   &lt;int&gt;\n1: 89a9012124fffff       1\n2: 89a9012126bffff       3\n3: 89a9012127bffff       3\n4: 89a90128003ffff       8\n5: 89a90128007ffff       6\n6: 89a9012800bffff       9\n\n\n\n\nInterval-based cumulative accessibility\nPrevious studies have shown that the ad-hoc choice of a single travel time threshold can substantially influence the results of traditional cumulative accessibility measures, introducing bias into transport project evaluations and equity analyses (Pereira 2019). To overcome this issue, we have proposed a time interval cumulative accessibility measure (Tomasiello et al. 2023). This new metric estimates the average (or the median) number of opportunities that can be reached considering multiple minute-by-minute cutoffs within a given travel time interval.\nThe main advantage of this metric is that it mitigates the impacts of arbitrary choices of trip duration on accessibility analysis while preserving the computation and communicability advantages of threshold-based cumulative measures.\nHere, we calculate the average number of schools that can be reached between 20 and 30 minutes.\n\n# interval-based cumulative accessibility\naccess_cum_i &lt;- accessibility::cumulative_interval(\n  travel_matrix = ttm, \n  land_use_data = points,\n  travel_cost = 'travel_time_p50',\n  opportunity = 'schools',\n  interval = c(15,25),\n  summary_function = mean\n  )\n  \nhead(access_cum_i)\n\n                id schools\n            &lt;char&gt;   &lt;int&gt;\n1: 89a9012124fffff       1\n2: 89a9012126bffff       4\n3: 89a9012127bffff       4\n4: 89a90128003ffff       7\n5: 89a90128007ffff       7\n6: 89a9012800bffff       9",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Flexible approach"
+    ]
+  },
+  {
+    "objectID": "3.2_flexible_approach.html#gravity-based-accessibility-measures",
+    "href": "3.2_flexible_approach.html#gravity-based-accessibility-measures",
+    "title": "Flexible approach",
+    "section": "3.2 Gravity-based accessibility measures",
+    "text": "3.2 Gravity-based accessibility measures\nThe package also includes accessibility::gravity() to calculate gravity-based accessibility metrics in a very flexible way.\nIt includes a decay_function parameter that can receive any function to convert travel cost into an impedance factor used to weight opportunities. For convenience, the package currently includes the following functions:\n\ndecay_binary()\ndecay_exponential()\ndecay_linear()\ndecay_logistic()\ndecay_power()\ndecay_stepped()\n\nLet’s see a couple examples with logistic and negative exponential decay functions:\n\n# logistic decay\naccess_lgst &lt;- gravity(\n  travel_matrix = ttm,\n  land_use_data = points,\n  decay_function = decay_logistic(cutoff = 15, sd = 5),\n  opportunity = \"schools\",\n  travel_cost = \"travel_time_p50\"\n)\n\n# negative exponential decay\naccess_nexp &lt;- gravity(\n  travel_matrix = ttm,\n  land_use_data = points,\n  decay_function = decay_exponential(decay_value = 0.1),\n  opportunity = \"schools\",\n  travel_cost = \"travel_time_p50\"\n)\n\nHere’s a quick visualization of the shape of the decay curves we’ve used.\n\n\nCode\nnegative_exp &lt;- decay_exponential(decay_value = 0.1)\nlogistic &lt;- decay_logistic(cutoff = 15, sd = 5)\n\ntravel_costs &lt;- seq(0, 30, 0.1)\n\nweights &lt;- data.frame(\n  minutes = travel_costs,\n  negative_exp = negative_exp(travel_costs)[[\"0.1\"]],\n  logistic = logistic(travel_costs)[[\"c15;sd5\"]]\n)\n\n# reshape data to long format\nweights &lt;- tidyr::pivot_longer(\n  weights,\n  cols = c('negative_exp',  'logistic'),\n  names_to = \"decay_function\",\n  values_to = \"weights\"\n)\n\nggplot(weights) +\n  geom_line(aes(minutes, weights, color = decay_function),\n            show.legend = FALSE) +\n  facet_wrap(. ~ decay_function, ncol = 2) +\n  theme_minimal()",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Flexible approach"
+    ]
+  },
+  {
+    "objectID": "2.2_data_requirements.html",
+    "href": "2.2_data_requirements.html",
+    "title": "Data requirements",
+    "section": "",
+    "text": "In order to conduct transport routing and accessibility analysis using the {r5r} package, you will need a few input data sets:\n\nA road network from OpenStreetMap (OSM) in .pbf format (mandatory).\nA public transport feed inGTFS.zip format (optional).\nA raster file with Digital Elevation Model data in .tif format (optional).\nSome data on the spatial distribution of population and/or activities such as employment, schools, health care facilities.\n\nThe data sets we’ll use in this workshop are provided with the code exercises. If you would like to find similar data for you other regions in the world, here are a few data sources. See also slides below.\n\nStreet network (mandatory):\n\n{osmextract}, R package;\nGeofabrik, website;\nHOT Export Tool, website;\nBBBike Extract Service, website.\nProtomaps website\n\nPublic transport network (optional):\n\n{tidytransit}, R package;\nTransitland, website;\nMobility Database website\n\nTopography (optional):\n\n{elevatr}, R package;\nNasa’s SRTMGL1, website.",
+    "crumbs": [
+      "2. Getting started",
+      "Data requirements"
+    ]
+  },
+  {
+    "objectID": "2.1_installation.html",
+    "href": "2.1_installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "To follow the workshop, you should have the following programs installed on your machine before the day of the workshop.\n\nR and RStudio\nA few R packages\nJava JDK 21\n\nSee instructions below:\n\n\n\n\nInstalling R and RStudio\nWe assume you already have R and RStudio installed on your machine. In case you don’t, follow these simple instructions here.\n\n\nInstalling R packages\nThe workshop uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\npkgs &lt;- c(\n  'r5r',\n  'accessibility',\n  'rJavaEnv',\n  'ggplot2',\n  'mapview',\n  'dplyr',\n  'h3jsr',\n  'sf'\n  )\n\ninstall.packages(pkgs)\n\nThe safest way to replicate the code of this workshop, though, is cloning its repository locally. This is because this repository uses the {renv} R package to manage the package dependencies of the code we use. This is important to make sure we are using the same versions of the relevant packages.\nOnce you have cloned the repo and you’ve opened the access_workshop_eit_2024.Rproj file, you can simply run renv::restore() to install all the package dependencies used in this workshop.\n\n# uncomment the line below in case you need to install the {renv} package\n# install.packages('renv')\nrenv::restore()\n\n\n\nInstalling Java\nTo use the {r5r} package (version v2.0 or higher), you will need to have Java Development Kit (JDK) 21 installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new {rJavaEnv} package in R, developed by Egor Kotov (thanks Egor!).\n\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n\nAlternatively, you can manually download and install any of these JDK implementations:\n\nAdoptium/Eclipse Temurin\nAmazon Corretto\nOracle OpenJDK\n\nHere are a few accompanying slides explaining the computational requirements to conduct transport routing and accessibility analysis with R.",
+    "crumbs": [
+      "2. Getting started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "3.1_quick_approach.html",
+    "href": "3.1_quick_approach.html",
+    "title": "Quick approach",
+    "section": "",
+    "text": "In this first hands-on section of the workshop, we’ll learn a very quick and simple way to calculate spatial accessibility using the {r5r} package. In the next section, we’ll see a more flexible and robust way to do the same thing. Here we’ll be calculating the number of schools accessible by public transport within a travel time of 20 minutes.\n\n1. Allocating memory to Java & loading packages\nFirst, let’s increase the memory available to run Java, which is used by the underlying R5 routing engine. To increase the available memory to 2 GB, for example, we use the following command. Note that this needs to be run before loading the packages that will be used in our analysis.\n\n library(dplyr)\n library(ggplot2)",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Quick approach"
+    ]
+  },
+  {
+    "objectID": "3.3_equity_measures.html",
+    "href": "3.3_equity_measures.html",
+    "title": "Equity measures",
+    "section": "",
+    "text": "A central question in transportation research and practice involves assessing how the accessibility benefits of transportation systems and projects are distributed across different socioeconomic and demographic groups. Transportation equity concerns are fundamentally related to two types of issues: (1) accessibility inequality and (2) accessibility poverty. In this section you will learn how to use the {accessibility} package to calculate different indicators of accessibility inequality and poverty. \nIn a recent paper, we discussed the advantages and disadvantages of various inequality and poverty metrics most commonly used in the transport literature (Karner, Pereira, and Farber 2024) - ungated PDF here. The slides below give a very short summary of some ideas discussed in the paper. Just enough to follow this workshop section. Nonetheless, I would strongly recommend reading the whole paper.\n\n\n\n\nIn this section, we’ll be using a couple sample data sets for the city of Belo Horizonte (Brazil), which come with the {accessibility} package. In the code chunk below, we read the travel time matrix and land use data, and calculate the average number of jobs accessible in 30 by public transport.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# path to data\n22 \n\n[1] 22\n\n\n\n\n\nReferences\n\nKarner, Alex, Rafael H. M. Pereira, and Steven Farber. 2024. “Advances and Pitfalls in Measuring Transportation Equity.” Transportation, January. https://doi.org/10.1007/s11116-023-10460-7.",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Equity measures"
+    ]
+  },
+  {
+    "objectID": "3.3_equity_measures.html#palma-ratio",
+    "href": "3.3_equity_measures.html#palma-ratio",
+    "title": "Equity measures",
+    "section": "Palma ratio",
+    "text": "Palma ratio\nThe Palma ratio is calculated as the average access of the richest 10% divided by the average access of the poorest 40%. Palma Ratio values higher than 1 indicate that the wealthiest population has higher accessibility levels than the poorest, whereas values lower than 1 indicate the opposite situation.\nIn the example here, we see that the wealthiest population can access on average 3.8 times more jobs than the poor population.\n\npalma &lt;- palma_ratio(\n  accessibility_data = access_df,\n  sociodemographic_data = lud,\n  opportunity = \"jobs\",\n  population = \"population\",\n  income = \"income_per_capita\"\n  )\n\npalma\n\n   palma_ratio\n         &lt;num&gt;\n1:    3.800465",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Equity measures"
+    ]
+  },
+  {
+    "objectID": "3.3_equity_measures.html#concentration-index",
+    "href": "3.3_equity_measures.html#concentration-index",
+    "title": "Equity measures",
+    "section": "Concentration index",
+    "text": "Concentration index\nThe concentration index (CI) estimates the extent to which accessibility inequalities are systematically associated with individuals’ socioeconomic levels. CI values can theoretically vary between -1 and 1 (when all accessibility is concentrated in the most or in the least disadvantaged person, respectively). Negative values indicate that inequalities favor the poor, while positive values indicate a pro-rich bias.\n\nci &lt;- accessibility::concentration_index(\n  accessibility_data = access_df,\n  sociodemographic_data = lud,\n  opportunity = \"jobs\",\n  population = \"population\",\n  income = \"income_per_capita\",\n  type = \"corrected\"\n  )\n\nci\n\n   concentration_index\n                 &lt;num&gt;\n1:           0.3346494",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Equity measures"
+    ]
+  },
+  {
+    "objectID": "3.3_equity_measures.html#gini-index",
+    "href": "3.3_equity_measures.html#gini-index",
+    "title": "Equity measures",
+    "section": "Gini index",
+    "text": "Gini index\nYou probably shouldn’t use the Gini index to measure accessibility inequality (see Karner, Pereira, and Farber 2024).",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Equity measures"
+    ]
+  },
+  {
+    "objectID": "3.3_equity_measures.html#foster-greer-thorbecke-fgt-poverty-measures",
+    "href": "3.3_equity_measures.html#foster-greer-thorbecke-fgt-poverty-measures",
+    "title": "Equity measures",
+    "section": "Foster-Greer-Thorbecke (FGT) poverty measures",
+    "text": "Foster-Greer-Thorbecke (FGT) poverty measures\nThe fgt_poverty() function calculates the FGT metrics, a family of poverty measures originally proposed by Foster, Greer, and Thorbecke (1984), and which that can be used to capture the extent and severity of poverty within an accessibility distribution. The FGT family is composed of three measures:\n\nFGT0: it captures the extent of poverty as a simple headcount - i.e. the proportion of people below the poverty line;\nFGT1: also know as the “poverty gap index”, it captures the severity of poverty as the average percentage distance between the poverty line and the accessibility of individuals below the poverty line;\nFGT2: it simultaneously captures the extent and the severity of poverty by calculating the number of people below the poverty line weighted by the size of the accessibility shortfall relative to the poverty line.\n\nThis function includes an additional poverty_line parameter, used to define the poverty line below which individuals are considered to be in accessibility poverty. For the sake of this exercise, we’ll consider the lowest 25th percentile of access as our poverty line, which in this example is approximately 23 thousand jobs.\n\n\n\n\n\n\nQuick reminder that the definition of an accessibility poverty line is ultimately a moral and political decision and not simply an empirical or technical question (Pereira, Schwanen, and Banister 2017; Lucas et al. 2019).\n\n\n\n\n# get the 25th percentile of access\nquant25 &lt;- quantile(access_df$jobs, .25)\n\npoverty &lt;- fgt_poverty(\n  accessibility_data =  access_df,\n  sociodemographic_data = lud,\n  opportunity = \"jobs\",\n  population = \"population\",\n  poverty_line = quant25\n  )\n\npoverty\n\n        FGT0       FGT1       FGT2\n       &lt;num&gt;      &lt;num&gt;      &lt;num&gt;\n1: 0.1478675 0.04948043 0.02862334\n\n\nQuick interpretation:\n\nFGT0: 14.8% of the population are in accessibility poverty\nFGT1: the accessibility of those living in accessibility poverty is on average 5% lower than the poverty line\nFGT2: it has no clear interpretation, but one could say that the overall poverty level/intensity is 2.8%.",
+    "crumbs": [
+      "3. Calculating accessibility",
+      "Equity measures"
+    ]
+  },
+  {
+    "objectID": "2.1_installation.knit.html",
+    "href": "2.1_installation.knit.html",
+    "title": "Installation",
+    "section": "",
+    "text": "To follow the workshop, you should have the following programs installed on your machine before the day of the workshop.\n\nR and RStudio\nA few R packages\nJava JDK 21\n\nSee instructions below:\n\n\n\n\nInstalling R and RStudio\nWe assume you already have R and RStudio installed on your machine. In case you don’t, follow these simple instructions here.\n\n\nInstalling R packages\nThe workshop uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\npkgs &lt;- c(\n  'r5r',\n  'accessibility',\n  'rJavaEnv',\n  'ggplot2',\n  'mapview',\n  'dplyr',\n  'h3jsr',\n  'sf'\n  )\n\ninstall.packages(pkgs)\n\nThe safest way to replicate the code of this workshop, though, is cloning its repository locally. This is because this repository uses the {renv} R package to manage the package dependencies of the code we use. This is important to make sure we are using the same versions of the relevant packages.\nOnce you have cloned the repo and you’ve opened the access_workshop_eit_2024.Rproj file, you can simply run renv::restore() to install all the package dependencies used in this workshop.\n\n# uncomment the line below in case you need to install the {renv} package\n# install.packages('renv')\nrenv::restore()\n\n\n\nInstalling Java\nTo use the {r5r} package (version v2.0 or higher), you will need to have Java Development Kit (JDK) 21 installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new {rJavaEnv} package in R, developed by Egor Kotov (thanks Egor!).\n\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n\nAlternatively, you can manually download and install any of these JDK implementations:\n\nAdoptium/Eclipse Temurin\nAmazon Corretto\nOracle OpenJDK\n\nHere are a few accompanying slides explaining the computational requirements to conduct transport routing and accessibility analysis with R."
+  },
+  {
+    "objectID": "2.1_instalacao.knit.html",
+    "href": "2.1_instalacao.knit.html",
+    "title": "Installation",
+    "section": "",
+    "text": "To follow the workshop, you should have the following programs installed on your machine before the day of the workshop.\n\nR and RStudio\nA few R packages\nJava JDK 21\n\nSee instructions below:\n\n\n\n\nInstalling R and RStudio\nWe assume you already have R and RStudio installed on your machine. In case you don’t, follow these simple instructions here.\n\n\nInstalling R packages\nThe workshop uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\npkgs &lt;- c(\n  'r5r',\n  'accessibility',\n  'rJavaEnv',\n  'ggplot2',\n  'mapview',\n  'dplyr',\n  'h3jsr',\n  'sf'\n  )\n\ninstall.packages(pkgs)\n\nThe safest way to replicate the code of this workshop, though, is cloning its repository locally. This is because this repository uses the {renv} R package to manage the package dependencies of the code we use. This is important to make sure we are using the same versions of the relevant packages.\nOnce you have cloned the repo and you’ve opened the access_workshop_eit_2024.Rproj file, you can simply run renv::restore() to install all the package dependencies used in this workshop.\n\n# uncomment the line below in case you need to install the {renv} package\n# install.packages('renv')\nrenv::restore()\n\n\n\nInstalling Java\nTo use the {r5r} package (version v2.0 or higher), you will need to have Java Development Kit (JDK) 21 installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new {rJavaEnv} package in R, developed by Egor Kotov (thanks Egor!).\n\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n\nAlternatively, you can manually download and install any of these JDK implementations:\n\nAdoptium/Eclipse Temurin\nAmazon Corretto\nOracle OpenJDK\n\nHere are a few accompanying slides explaining the computational requirements to conduct transport routing and accessibility analysis with R."
+  },
+  {
+    "objectID": "2.1_instalacao.html",
+    "href": "2.1_instalacao.html",
+    "title": "Instalação",
+    "section": "",
+    "text": "Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina antes do dia do workshop\n\nR e RStudio\nAlguns pacotes de R\n\nInstruções abaixo:\n\n\n\n\nInstalando R e RStudio\nNesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, siga estras instruções.\n\n\nInstalando pacotes de R\nA oficina utiliza alguns pacotes do R que precisam ser instalados em sua máquina. A maneira mais simples de fazer isso é executando o código abaixo. Isso pode levar alguns minutos, caso seja a primeira vez que você instala esses pacotes.\n\npkgs &lt;- c(\n  'censobr',\n  'geobr',\n  'arrow',\n  'dplyr',\n  'ggplot2'\n  )\n\ninstall.packages(pkgs)\n\nA maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu repositório localmente. Isso porque este repositório utiliza o pacote {renv}do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.\nUma vez que você clonou o repositório e abriu o arquivo censobr_oficina_abep_2024.Rproj, basta você rodar renv::restore() para instalar todos os pacotes utilizados nesta oficina.\n\n# Descomente a linha abaixo caso precise instalar o pacote {renv}\n# install.packages('renv')\nrenv::restore()",
+    "crumbs": [
+      "2. Informações gerais",
+      "Instalação"
+    ]
+  },
+  {
+    "objectID": "2.2_info_censo.html",
+    "href": "2.2_info_censo.html",
+    "title": "Conceitos iniciais",
+    "section": "",
+    "text": "O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.\nNesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censo demográficos no Brasil.",
+    "crumbs": [
+      "2. Informações gerais",
+      "Conceitos iniciais"
+    ]
+  },
+  {
+    "objectID": "2.2_info_censo.html#setores-censitários",
+    "href": "2.2_info_censo.html#setores-censitários",
+    "title": "Conceitos iniciais",
+    "section": "Setores censitários",
+    "text": "Setores censitários\n\nOs cetores censitários são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.\n\n\nÁreas de ponderação\n\nAs áreas de ponderação são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.",
+    "crumbs": [
+      "2. Informações gerais",
+      "Conceitos iniciais"
+    ]
+  },
+  {
+    "objectID": "5_agregados_setores.html",
+    "href": "5_agregados_setores.html",
+    "title": "Equity measures",
+    "section": "",
+    "text": "under construction",
+    "crumbs": [
+      "5. Agregados dos Setores Censitários"
+    ]
+  },
+  {
+    "objectID": "3_microdados.html",
+    "href": "3_microdados.html",
+    "title": "Quick approach",
+    "section": "",
+    "text": "under construction",
+    "crumbs": [
+      "3. Microdados"
+    ]
+  },
+  {
+    "objectID": "4_documentacao.html",
+    "href": "4_documentacao.html",
+    "title": "Flexible approach",
+    "section": "",
+    "text": "under construction",
+    "crumbs": [
+      "4. Documentação"
+    ]
+  }
+]

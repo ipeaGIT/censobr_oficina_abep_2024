@@ -1,0 +1,17 @@
+{
+  "hash": "17945714da27b433dda53925f65b4030",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Equity measures\"\nfrom: markdown+emoji\n---\n\n\n\n\nA central question in transportation research and practice involves assessing how the accessibility benefits of transportation systems and projects are distributed across different socioeconomic and demographic groups. Transportation equity concerns are fundamentally related to two types of issues: (1) accessibility inequality and (2) accessibility poverty. **In this section you will learn how to use the `{accessibility}` package to calculate different indicators of accessibility inequality and poverty.**\n<img align=\"right\" src=\"/images/accessibility_logo.png?raw=true\" alt=\"logo\" width=\"140\">\n\nIn a recent paper, we discussed the advantages and disadvantages of various inequality and poverty metrics most commonly used in the transport literature [@karner2024advances] - ungated PDF [here](https://www.urbandemographics.org/publication/2024_transp_measuring_transportation_equity/). The slides below give a *very* short summary of some ideas discussed in the paper. Just enough to follow this workshop section. Nonetheless, I would strongly recommend reading the whole paper.\n\n \n<!-- Slides -->\n<p><embed src=\"slides/3.3_equity_metrics.pdf\" style=\"width:100.0%;height:100vh;\" /></p>\n\n\nIn this section, we'll be using a couple sample data sets for the city of Belo Horizonte (Brazil), which come with the `{accessibility}` package. In the code chunk below, we read the travel time matrix and land use data, and calculate the average number of jobs accessible in 30 by public transport.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# path to data\n22 \n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 22\n```\n\n\n:::\n:::\n",
+    "supporting": [
+      "3.3_equity_measures_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

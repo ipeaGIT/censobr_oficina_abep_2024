@@ -1,0 +1,17 @@
+{
+  "hash": "b5b25d70ac717136a77fc329fe91bad6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Installation\"\nfrom: markdown+emoji\n---\n\n\n\n\n::: {.callout-important appearance=\"simple\"}\nTo follow the workshop, you should have the following programs installed on your machine ***before*** the day of the workshop.\n\n- R and RStudio\n- A few R packages\n- Java JDK 21\n\nSee instructions below:\n:::\n\n# Installing R and RStudio\n\nWe assume you already have R and RStudio installed on your machine. In case you don't, [follow these simple instructions here](https://posit.co/download/rstudio-desktop/#download).\n\n\n\n# Installing R packages\n\nThe workshop uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npkgs <- c(\n  'r5r',\n  'accessibility',\n  'rJavaEnv',\n  'ggplot2',\n  'mapview',\n  'dplyr',\n  'h3jsr',\n  'sf'\n  )\n\ninstall.packages(pkgs)\n```\n:::\n\n\n\n\nThe safest way to replicate the code of this workshop, though, is cloning its [repository](https://github.com/ipeaGIT/access_workshop_eit_2024) locally. This is because this repository uses the `{renv}` R package to manage the package dependencies of the code we use. This is important to make sure we are using the same versions of the relevant packages.\n\nOnce you have cloned the repo and you've opened the `access_workshop_eit_2024.Rproj` file, you can simply run `renv::restore()` to install all the package dependencies used in this workshop.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# uncomment the line below in case you need to install the {renv} package\n# install.packages('renv')\nrenv::restore()\n```\n:::\n\n\n\n\n\n\n# Installing Java\n\nTo use the `{r5r}` package (version v2.0 or higher), you will need to have *Java Development Kit (JDK) 21* installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new [{rJavaEnv}](https://www.ekotov.pro/rJavaEnv/) package in R, developed by Egor Kotov (thanks Egor!).\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n```\n:::\n\n\n\n\nAlternatively, you can manually download and install any of these JDK implementations:\n\n- [Adoptium/Eclipse Temurin](https://adoptium.net/)\n- [Amazon Corretto](https://aws.amazon.com/corretto/)\n- [Oracle OpenJDK](https://jdk.java.net/21/)\n\n\nHere are a few accompanying slides explaining the computational requirements to conduct transport routing and accessibility analysis with `R`.\n\n<p><embed src=\"slides/2.1_computational_requirements.pdf\" style=\"width:100.0%;height:100vh;\" /></p>\n\n",
+    "supporting": [
+      "2.1_installation_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
