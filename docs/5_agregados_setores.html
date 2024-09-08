@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{censobr}: Explorando o Censo Demográfico em R – Equity measures</title>
+<title>{censobr}: Explorando o Censo Demográfico em R – 5. Agregados dos Setores Censitários</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,13 +165,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.1_instalacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instalação</span></a>
+ <span class="menu-text">2.1 Instalação</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.2_info_censo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conceitos iniciais</span></a>
+ <span class="menu-text">2.2 Conceitos iniciais</span></a>
   </div>
 </li>
       </ul>
@@ -165,22 +199,254 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link active" data-scroll-target="#data-structure">Data structure</a>
+  <ul class="collapse">
+  <li><a href="#dictionary-of-variables" id="toc-dictionary-of-variables" class="nav-link" data-scroll-target="#dictionary-of-variables">Dictionary of variables</a></li>
+  </ul></li>
+  <li><a href="#reproducible-examples" id="toc-reproducible-examples" class="nav-link" data-scroll-target="#reproducible-examples">Reproducible examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1-spatial-distribution-of-income" id="toc-example-1-spatial-distribution-of-income" class="nav-link" data-scroll-target="#example-1-spatial-distribution-of-income">Example 1: Spatial distribution of income</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <div class="quarto-about-solana column-body">
   <div class="about-entity">
     <div class="entity-contents">
       <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Equity measures</h1>
+<h1 class="title">5. Agregados dos Setores Censitários</h1>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
-<p>under construction</p>
+
+<p>t</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Perhaps the most commonly used datasets from Brazilian censuses are the microdata of individuals and households. Nonetheless, IBGE also makes available some extremely data on population and environmental characteristics aggregated at the census tract level. In this vignette, we show how to use the <strong>censobr</strong> package to easily access census tract-level data using the <code>read_tracts()</code> function.</p>
+<p>At the moment, this function only includes data from the 2010 census.</p>
+<section id="data-structure" class="level1">
+<h1>Data structure</h1>
+<p>Aggregated data at the census tract level are split into different datasets, and some of them are scattered across several files. For the sake of convenience, we have gathered all of the files into 8 different datasets:</p>
+<ul>
+<li><code>"Basico"</code></li>
+<li><code>"Entorno"</code></li>
+<li><code>"Domicilio"</code></li>
+<li><code>"Pessoa"</code></li>
+<li><code>"Responsavel"</code></li>
+<li><code>"PessoaRenda"</code></li>
+<li><code>"DomicilioRenda"</code></li>
+<li><code>"ResponsavelRenda"</code></li>
+</ul>
+<p>All of the data aggregated at census tracts are organized following the same logic.</p>
+<p>In the cases when there are multiple files in the same dataset, we add a reference to the number of the file as a prefix to the variable name. To illustrate this, let’s have a look at the <code>"Domicilio"</code> dataset. This dataset is based on two separate tables: <em>Domicilio01</em> and <em>Domicilio02</em>. So the names of the columns in this dataset are organized as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dom <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dataset =</span> <span class="st">'Domicilio'</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading data and storing it locally for future use.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The tzdb package is not installed. Timezones will not be available to Arrow compute functions.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dom)[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">301</span><span class="sc">:</span><span class="dv">320</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "code_tract"        "code_weighting"    "code_muni"        
+ [4] "code_state"        "abbrev_state"      "name_state"       
+ [7] "code_region"       "name_region"       "domicilio01_V1005"
+[10] "domicilio01_V001"  "domicilio01_V002"  "domicilio01_V003" 
+[13] "domicilio01_V004"  "domicilio01_V005"  "domicilio01_V006" 
+[16] "domicilio01_V007"  "domicilio01_V008"  "domicilio01_V009" 
+[19] "domicilio01_V010"  "domicilio01_V011"  "domicilio02_V050" 
+[22] "domicilio02_V051"  "domicilio02_V052"  "domicilio02_V053" 
+[25] "domicilio02_V054"  "domicilio02_V055"  "domicilio02_V056" 
+[28] "domicilio02_V057"  "domicilio02_V058"  "domicilio02_V059" 
+[31] "domicilio02_V060"  "domicilio02_V061"  "domicilio02_V062" 
+[34] "domicilio02_V063"  "domicilio02_V064"  "domicilio02_V065" 
+[37] "domicilio02_V066"  "domicilio02_V067"  "domicilio02_V068" 
+[40] "domicilio02_V069" </code></pre>
+</div>
+</div>
+<section id="dictionary-of-variables" class="level2">
+<h2 data-anchor-id="dictionary-of-variables">Dictionary of variables</h2>
+<p>To check the meaning of each variable, users can run the <code>data_dictionary()</code>, which will open on the browser an <code>.html</code> or <code>.pdf</code> file with the dictionary of variables in each dataset</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_dictionary</span>(<span class="at">year =</span> <span class="dv">2010</span>, <span class="at">dataset =</span> <span class="st">'tracts'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="reproducible-examples" class="level1">
+<h1>Reproducible examples</h1>
+<p>Now let’s use a couple reproducible examples to illustrate how to work with census tract-level data. First, we need to load the libraries we’ll be using in this vignette.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In these examples below, example we’ll use the city of Belo Horizonte for demonstration purposes. So we can start by downloading the the geometries of the census tracts in the area. First, we need to download the geometries of all census tracts in the state of Minas Gerais (MG), and then keep only the ones in the municipality of Belo Horizonte. We’ll also download the municipality borders of BH.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>muni_bh <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_municipality</span>(<span class="at">code_muni =</span> <span class="st">'MG'</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">showProgress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(name_muni <span class="sc">==</span> <span class="st">"Belo Horizonte"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tracts_sf <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_census_tract</span>(<span class="at">code_tract =</span> <span class="st">"MG"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">simplified =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tracts_sf <span class="ot">&lt;-</span> <span class="fu">filter</span>(tracts_sf, name_muni <span class="sc">==</span> <span class="st">"Belo Horizonte"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span>tracts_sf, <span class="at">fill =</span> <span class="st">'gray90'</span>, <span class="at">color=</span><span class="st">'gray60'</span>) <span class="sc">+</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_agregados_setores_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="example-1-spatial-distribution-of-income" class="level2">
+<h2 data-anchor-id="example-1-spatial-distribution-of-income">Example 1: Spatial distribution of income</h2>
+<p>In this first example we’ll be creating a map of the spatial distribution of average income per capita. We can find the information on the the total number of residents in each census tract in the <code>"Basico"</code> dataset, variable <code>"V002"</code>. Meanwhile, the information on income can be found in the <code>"DomicilioRenda"</code> dataset, variable <code>"V003"</code>.</p>
+<p>Using the code below, we download the data and calculate the income per capita of all census tracts in Brazil.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download data</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tract_basico <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataset =</span> <span class="st">"Basico"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading data and storing it locally for future use.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tract_income <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataset =</span> <span class="st">"DomicilioRenda"</span>, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading data and storing it locally for future use.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tract_basico <span class="ot">&lt;-</span> tract_basico <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">'code_tract'</span>,<span class="st">'V002'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>tract_income <span class="ot">&lt;-</span> tract_income <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">'code_tract'</span>,<span class="st">'V003'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># merge</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>tracts_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tract_basico, tract_income) <span class="sc">|&gt;</span> <span class="fu">collect</span>()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate income per capita</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>tracts_df <span class="ot">&lt;-</span> tracts_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">income_pc =</span> V003 <span class="sc">/</span> V002)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tracts_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        code_tract  V002   V003 income_pc
+            &lt;char&gt; &lt;num&gt;  &lt;num&gt;     &lt;num&gt;
+1: 120001305000001   957 601805  628.8454
+2: 120001305000002  1203 385033  320.0607
+3: 120001305000003  1700 531794  312.8200
+4: 120001305000004   182  58853  323.3681
+5: 120001305000005   305 112979  370.4230
+6: 120001305000006   483 263538  545.6273</code></pre>
+</div>
+</div>
+<p>Finally, we can merge the spatial data with our per capita income estimates and map the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bh_tracts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tracts_sf, tracts_df, <span class="at">by =</span> <span class="st">'code_tract'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> bh_tracts, <span class="fu">aes</span>(<span class="at">fill =</span> income_pc), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> muni_bh, <span class="at">color=</span><span class="st">'gray10'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">'Avgerage income per capita.</span><span class="sc">\n</span><span class="st">Belo Horizonte, 2010'</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Income per</span><span class="sc">\n</span><span class="st">capita (R$)"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(),</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">option =</span> <span class="st">'cividis'</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>, <span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">2e4</span>),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">trans =</span> <span class="st">"pseudo_log"</span>, <span class="at">na.value =</span> <span class="st">"gray90"</span>) <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_agregados_setores_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2" class="level2">
+<h2 data-anchor-id="example-2">Example 2:</h2>
+<p>In this second example, we are going to map the proportion of households with the presence of trees in their surroundings. To do this, we need to download the <code>"Entorno"</code> dataset and sum the variables <code>entorno01_V044 + entorno01_V046 + entorno01_V048</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tract_entorno <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dataset =</span> <span class="st">"Entorno"</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Reading data cached locally.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter observations and calculate indicator</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df_trees <span class="ot">&lt;-</span> tract_entorno <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">filter</span>(code_tract <span class="sc">%in%</span> tracts_sf<span class="sc">$</span>code_tract) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">mutate</span>(<span class="at">total_households =</span> entorno01_V001,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">trees =</span> entorno01_V044 <span class="sc">+</span> entorno01_V046 <span class="sc">+</span> entorno01_V048,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">trees_prop =</span> trees <span class="sc">/</span> total_households) <span class="sc">|&gt;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">select</span>(code_tract, total_households, trees, trees_prop) <span class="sc">|&gt;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">collect</span>()</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        code_tract total_households trees trees_prop
+            &lt;char&gt;            &lt;num&gt; &lt;num&gt;      &lt;num&gt;
+1: 310620005620001              212   212  1.0000000
+2: 310620005620002              189   189  1.0000000
+3: 310620005620003              295   291  0.9864407
+4: 310620005620004              226   200  0.8849558
+5: 310620005620005              295   295  1.0000000
+6: 310620005620006              301   299  0.9933555</code></pre>
+</div>
+</div>
+<p>Now we can merge the spatial data with our indicator and see how the presence of trees in the surroundings of households varies spatially.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bh_tracts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tracts_sf, df_trees, <span class="at">by =</span> <span class="st">'code_tract'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> bh_tracts, <span class="fu">aes</span>(<span class="at">fill =</span> trees_prop), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> muni_bh, <span class="at">color=</span><span class="st">'gray10'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">'Share of households with trees in their surroundings.</span><span class="sc">\n</span><span class="st">Belo Horizonte, 2010'</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greens"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Share of</span><span class="sc">\n</span><span class="st">households'</span>, </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">na.value =</span> <span class="st">"gray90"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_agregados_setores_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 </main></div>
     </div>
   </div>

@@ -1,1 +1,5 @@
 /* css styles */
+
+th {
+    text-transform: none; /* Ensure no automatic capitalization */
+}

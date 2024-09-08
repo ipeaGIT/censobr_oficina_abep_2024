@@ -14,7 +14,7 @@ author:
 #    url: "https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa/"
 ---
 
-Este website apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.
+Este site apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.
 
 
 
@@ -54,8 +54,8 @@ Esta oficina assume que o participante tenha pelo menos um conhecimento básico 
 
 Leitura adicional relevante, mas não essencial para a oficina.
 
-- O [website e documentação](https://ipeagit.github.io/censobr/) do pacote `{censobr}`.
-- O [website e documentação](https://ipeagit.github.io/geobr/) do pacote `{geobr}`.
+- O [site e documentação](https://ipeagit.github.io/censobr/) do pacote `{censobr}`.
+- O [site e documentação](https://ipeagit.github.io/geobr/) do pacote `{geobr}`.
 
 
 

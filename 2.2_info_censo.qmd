@@ -45,3 +45,104 @@ Com os Microdados da Amostra é possível fazer análises por indivíduos, famí
 ### Áreas de ponderação
 
 - As **áreas de ponderação** são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.
+
+```{R}
+#| message: false
+#| eval: false
+#| code-fold: true
+#| label: fig-spatial_layers
+#| fig-cap: Camadas espaciais de 
+
+library(geobr)
+library(ggplot2)
+library(dplyr)
+library(sf)
+
+# codigo do municipio de Belford Roxo
+mymuni <- 3300456
+
+# baixa geometria do municipio
+muni <- geobr::read_municipality(mymuni)
+
+# baixa geometria das areas de ponderacao
+ap <- geobr::read_weighting_area(code_weighting = mymuni, 
+                                 year = 2010, 
+                                 simplified = F)
+
+# baixa geometria dos setores censitarios
+ct <- geobr::read_census_tract(code_tract = mymuni, 
+                               year = 2010, 
+                               simplified = FALSE)
+
+# funcao para 'inclinar' mapa
+rotate_data_geom <- function(data, x_add = 0, y_add = 0) {
+  shear_matrix <- function(){ matrix(c(2, 1.2, 0, 1), 2, 2) }
+  
+  rotate_matrix <- function(x) { 
+    matrix(c(cos(x), sin(x), -sin(x), cos(x)), 2, 2) 
+  }
+  dplyr::mutate(data,
+    geom = geom * shear_matrix() * rotate_matrix(pi/20) + c(x_add, y_add)
+    )
+}
+
+
+# annotate parameters
+x = -116.03
+clr = 'gray40'
+sz = 4
+
+# MAP
+temp1  <- ggplot() +
+  # municipio
+  geom_sf(data = rotate_data_geom(data = muni, y_add = .01),
+          color='gray30', fill='#FCDE70', show.legend = FALSE) +
+  annotate("text", label='Município', x=x, y=-4.59,
+           hjust = 0, color=clr, size=sz) +
+  
+  # areas de ponderacao
+  geom_sf(data = rotate_data_geom(data = ap, y_add = .07), 
+          fill='#ff7b7b', color='#ff0000', show.legend = FALSE) +
+  annotate("text", label='Áreas de\nPonderação', x=x, y= -4.53,
+           hjust = 0, color=clr, size=sz) +
+
+  # setores censitarios
+  geom_sf(data = rotate_data_geom(data = ct, y_add = 0.13),
+          color='gray30', fill='gray98', show.legend = FALSE) +
+  annotate("text", label='Setores\nCensitários', x=x, y= -4.47, 
+           hjust = 0, color=clr, size=sz) +
+  coord_sf(xlim = c(-116.305, -115.98)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = 'white', color='white'))
+
+temp1
+# ggsave(temp1, filename = 'fig_spatial_layers.png', 
+#        width = 12, height = 8, units = 'cm', dpi = 300)
+```
+
+![](images/fig_spatial_layers.png){width=550 fig-align="right"}
+
+
+
+```{R}
+#| echo: false
+#| eval: false
+
+# todas camandas no mesmo nivel
+
+ggplot() +
+  # municipio
+  geom_sf(data = rotate_data_geom(data = muni, y_add = .01),
+          color='gray30', fill='#FCDE70', show.legend = FALSE) +
+
+  # setores censitarios
+  geom_sf(data = rotate_data_geom(data = ct, y_add = .01),
+          color='gray30', fill=NA, show.legend = FALSE) +
+  # areas de ponderacao
+  geom_sf(data = rotate_data_geom(data = ap, y_add = .01), linewidth =1, 
+          fill=NA, color='#ff0000', show.legend = FALSE) +
+  coord_sf(xlim = c(-116.305, -115.98)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = 'white', color='white'))
+
+```

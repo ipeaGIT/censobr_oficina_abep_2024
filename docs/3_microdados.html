@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{censobr}: Explorando o Censo Demográfico em R – Quick approach</title>
+<title>{censobr}: Explorando o Censo Demográfico em R – 3. Microdados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,13 +132,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.1_instalacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instalação</span></a>
+ <span class="menu-text">2.1 Instalação</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2.2_info_censo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conceitos iniciais</span></a>
+ <span class="menu-text">2.2 Conceitos iniciais</span></a>
   </div>
 </li>
       </ul>
@@ -152,13 +152,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./4_documentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Flexible approach</span></a>
+ <span class="menu-text">4. Documentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5_agregados_setores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Agregados dos Setores Censitários</span></a>
+ <span class="menu-text">5. Agregados dos Setores Censitários</span></a>
   </div>
 </li>
     </ul>
@@ -173,13 +173,130 @@ ul.task-list li input[type="checkbox"] {
     <div class="entity-contents">
       <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quick approach</h1>
+<h1 class="title">3. Microdados</h1>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
 <p>under construction</p>
+<p>Tabela 1. Funções de dados disponíveis no {censobr}</p>
+  <!-- <meta charset="UTF-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black; /* Thicker border for better visibility */
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+<table class="caption-top table" data-quarto-postprocess="true" data-border="1" data-cellpadding="5" data-cellspacing="0">
+<thead>
+<tr class="header">
+<th rowspan="2" data-quarto-table-cell-role="th">Função</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Origem</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Unidade</th>
+<th rowspan="2" data-quarto-table-cell-role="th">Definição</th>
+<th colspan="6" data-quarto-table-cell-role="th">Disponibilidade</th>
+<th></th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1960</th>
+<th data-quarto-table-cell-role="th">1970</th>
+<th data-quarto-table-cell-role="th">1980</th>
+<th data-quarto-table-cell-role="th">1991</th>
+<th data-quarto-table-cell-role="th">2000</th>
+<th data-quarto-table-cell-role="th">2010</th>
+<th data-quarto-table-cell-role="th">2022</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>read_population()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de pessoas.</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>read_households()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de domicílios.</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>read_families()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de famílias do censo de 2000.</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>read_emigration()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de emigração do censo de 2010. Cada unidade é uma pessoa que se mudou para outro país nos 12 meses anteriores ao censo, com informações fornecidas pelos outros moradores do domicílio.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>read_mortality()</td>
+<td>Amostra</td>
+<td>Microdado</td>
+<td>Lê os microdados de mortalidade do censo de 2010. Cada unidade é uma pessoa falecida nos 12 meses anteriores ao censo, com informações fornecidas pelos outros moradores do domicílio.</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>read_tracts()</td>
+<td>Universo</td>
+<td>Setor Censitário</td>
+<td>Lê os dados do Universo agregados por setores censitários.</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 </main></div>
@@ -785,13 +902,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./2.2_info_censo.html" class="pagination-link" aria-label="Conceitos iniciais">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conceitos iniciais</span>
+      <a href="./2.2_info_censo.html" class="pagination-link" aria-label="2.2 Conceitos iniciais">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.2 Conceitos iniciais</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./4_documentacao.html" class="pagination-link" aria-label="Flexible approach">
-        <span class="nav-page-text">Flexible approach</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./4_documentacao.html" class="pagination-link" aria-label="4. Documentação">
+        <span class="nav-page-text">4. Documentação</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

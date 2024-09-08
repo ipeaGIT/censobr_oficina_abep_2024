@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -92,7 +126,31 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<meta name="citation_title" content="2.2 Conceitos iniciais">
+<meta name="citation_fulltext_html_url" content="https://ipeagit.github.io/censobr_oficina_abep_2024//2.2_info_censo.html">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Estatísticas históricas do brasil: Séries econômicas, demográficas e sociais de 1550 a 1988;,citation_author=undefined IBGE;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_fulltext_html_url=http://biblioteca.ibge.gov.br/visualizacao/livros/liv17983_v3.pdf;,citation_volume=3;">
+<meta name="citation_reference" content="citation_title=Towards a general theory of access;,citation_author=David M. Levinson;,citation_author=Hao Wu;,citation_publication_date=2020-06;,citation_cover_date=2020-06;,citation_year=2020;,citation_issue=1;,citation_doi=10.5198/jtlu.2020.1660;,citation_issn=1938-7849;,citation_volume=13;,citation_journal_title=Journal of Transport and Land Use;">
+<meta name="citation_reference" content="citation_title=A method to evaluate equitable accessibility: Combining ethical theories and accessibility-based approaches;,citation_author=Karen Lucas;,citation_author=Bert Wee;,citation_author=Kees Maat;,citation_publication_date=2016-05;,citation_cover_date=2016-05;,citation_year=2016;,citation_issue=3;,citation_doi=10.1007/s11116-015-9585-2;,citation_issn=1572-9435;,citation_volume=43;,citation_journal_title=Transportation;">
+<meta name="citation_reference" content="citation_title=Transport poverty and its adverse social consequences;,citation_author=Karen Lucas;,citation_author=Giulio Mattioli;,citation_author=Ersilia Verlinghieri;,citation_author=Alvaro Guzman;,citation_publication_date=2016-12;,citation_cover_date=2016-12;,citation_year=2016;,citation_issue=6;,citation_doi=10.1680/jtran.15.00073;,citation_issn=0965-092X, 1751-7710;,citation_volume=169;,citation_journal_title=Proceedings of the Institution of Civil Engineers - Transport;">
+<meta name="citation_reference" content="citation_title=Accessibility: Measurement and application in transportation planning;,citation_author=Eric J. Miller;,citation_publication_date=2018-09;,citation_cover_date=2018-09;,citation_year=2018;,citation_issue=5;,citation_doi=10.1080/01441647.2018.1492778;,citation_issn=0144-1647;,citation_volume=38;,citation_journal_title=Transport Reviews;,citation_publisher=Routledge;">
+<meta name="citation_reference" content="citation_title=Measuring accessibility: Positive and normative implementations of various accessibility indicators;,citation_author=Antonio Páez;,citation_author=Darren M. Scott;,citation_author=Catherine Morency;,citation_publication_date=2012-11;,citation_cover_date=2012-11;,citation_year=2012;,citation_doi=10.1016/j.jtrangeo.2012.03.016;,citation_issn=09666923;,citation_volume=25;,citation_language=en-US;,citation_journal_title=Journal of Transport Geography;">
+<meta name="citation_reference" content="citation_title=Accessibility instruments for planning practice: A review of European experiences;,citation_author=Enrica Papa;,citation_author=Cecilia Silva;,citation_author=Marco Te Brömmelstroet;,citation_author=Angela Hull;,citation_publication_date=2015-06;,citation_cover_date=2015-06;,citation_year=2015;,citation_doi=10.5198/jtlu.2015.585;,citation_issn=1938-7849;,citation_journal_title=Journal of Transport and Land Use;">
+<meta name="citation_reference" content="citation_title=Distributive justice and equity in transportation;,citation_author=Rafael H. M. Pereira;,citation_author=Tim Schwanen;,citation_author=David Banister;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_issue=2;,citation_doi=10.1080/01441647.2016.1257660;,citation_issn=0144-1647, 1464-5327;,citation_volume=37;,citation_journal_title=Transport Reviews;">
+<meta name="citation_reference" content="citation_title=R5r: Rapid Realistic Routing on Multimodal Transport Networks with R&amp;amp;amp;lt;sup&amp;gt;5&amp;lt;/sup&amp;gt; in R;,citation_author=Rafael H. M. Pereira;,citation_author=Marcus Saraiva;,citation_author=Daniel Herszenhut;,citation_author=Carlos Kaue Vieira Braga;,citation_author=Matthew Wigginton Conway;,citation_publication_date=2021-03;,citation_cover_date=2021-03;,citation_year=2021;,citation_doi=10.32866/001c.21262;,citation_journal_title=Transport Findings;,citation_publisher=Network Design Lab;">
+<meta name="citation_reference" content="citation_title=Transportation Equity;,citation_author=Rafael H. M. Pereira;,citation_author=Alex Karner;,citation_editor=Roger Vickerman;,citation_publication_date=2021-01;,citation_cover_date=2021-01;,citation_year=2021;,citation_doi=10.1016/B978-0-08-102671-7.10053-3;,citation_isbn=978-0-08-102672-4;,citation_language=en-US;,citation_inbook_title=International Encyclopedia of Transportation;">
+<meta name="citation_reference" content="citation_title=Accessibility: Transport Accessibility Measures;,citation_author=Rafael H. M. Pereira;,citation_author=Daniel Herszenhut;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;">
+<meta name="citation_reference" content="citation_title=Aopdata: Data from the Access to Opportunities Project;,citation_author=Rafael H. M. Pereira;,citation_author=Daniel Herszenhut;,citation_author=Carlos K. V. Braga;,citation_author=Diego B. Tomasiello;,citation_author=Marcus Saraiva;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;">
+<meta name="citation_reference" content="citation_title=Accessibility instruments in planning practice: Bridging the implementation gap;,citation_author=Cecília Silva;,citation_author=Luca Bertolini;,citation_author=Marco Brömmelstroet;,citation_author=Dimitris Milakis;,citation_author=Enrica Papa;,citation_publication_date=2017-01;,citation_cover_date=2017-01;,citation_year=2017;,citation_doi=10.1016/j.tranpol.2016.09.006;,citation_issn=0967-070X;,citation_volume=53;,citation_journal_title=Transport Policy;">
+<meta name="citation_reference" content="citation_title=Transport Modes and Accessibility;,citation_author=Bert Wee;,citation_editor=Roger Vickerman;,citation_publication_date=2021-01;,citation_cover_date=2021-01;,citation_year=2021;,citation_doi=10.1016/B978-0-08-102671-7.10402-6;,citation_isbn=978-0-08-102672-4;,citation_inbook_title=International Encyclopedia of Transportation;">
+<meta name="citation_reference" content="citation_title=Accessibility and equity: A conceptual framework and research agenda;,citation_author=Bert Wee;,citation_publication_date=2022-10;,citation_cover_date=2022-10;,citation_year=2022;,citation_doi=10.1016/j.jtrangeo.2022.103421;,citation_issn=09666923;,citation_volume=104;,citation_journal_title=Journal of Transport Geography;">
+<meta name="citation_reference" content="citation_title=Advances and pitfalls in measuring transportation equity;,citation_author=Alex Karner;,citation_author=Rafael H. M. Pereira;,citation_author=Steven Farber;,citation_publication_date=2024-01;,citation_cover_date=2024-01;,citation_year=2024;,citation_doi=10.1007/s11116-023-10460-7;,citation_issn=1572-9435;,citation_language=en-US;,citation_journal_title=Transportation;">
+<meta name="citation_reference" content="citation_title=Future accessibility impacts of transport policy scenarios: Equity and sensitivity to travel time thresholds for bus rapid transit expansion in rio de janeiro;,citation_author=Rafael H. M. Pereira;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=http://www.sciencedirect.com/science/article/pii/S0966692318302047;,citation_doi=https://doi.org/10.1016/j.jtrangeo.2018.12.005;,citation_issn=0966-6923;,citation_volume=74;,citation_journal_title=Journal of Transport Geography;">
+<meta name="citation_reference" content="citation_title=A time interval metric for cumulative opportunity accessibility;,citation_author=Diego Bogado Tomasiello;,citation_author=Daniel Herszenhut;,citation_author=João Lucas Albuquerque Oliveira;,citation_author=Carlos Kaue Vieira Braga;,citation_author=Rafael H. M. Pereira;,citation_publication_date=2023-08;,citation_cover_date=2023-08;,citation_year=2023;,citation_doi=10.1016/j.apgeog.2023.103007;,citation_issn=0143-6228;,citation_volume=157;,citation_journal_title=Applied Geography;">
+<meta name="citation_reference" content="citation_title=A Class of Decomposable Poverty Measures;,citation_author=James Foster;,citation_author=Joel Greer;,citation_author=Erik Thorbecke;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_fulltext_html_url=https://www.jstor.org/stable/1913475;,citation_issue=3;,citation_doi=10.2307/1913475;,citation_issn=0012-9682;,citation_volume=52;,citation_journal_title=Econometrica;,citation_publisher=[Wiley, Econometric Society];">
+<meta name="citation_reference" content="citation_title=Measuring transport equity;,citation_author=Karen Lucas;,citation_author=Karel Martens;,citation_author=Floridea Di Ciommo;,citation_author=Ariane Dupont-Kieffer;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;">
+<meta name="citation_reference" content="citation_title=Introduction to urban accessibility: A practical guide with r;,citation_author=Rafael H. M. Pereira;,citation_author=Daniel Herszenhut;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://ipeagit.github.io/intro_access_book/index.en.html;,citation_doi=10.38116/9786556350653;,citation_isbn=978-65-5635-065-3;">
+<meta name="citation_reference" content="citation_title=Evidence-Based Transit and Land Use Sketch Planning Using Interactive Accessibility Methods on Combined Schedule and Headway-Based Networks;,citation_author=Matthew Wigginton Conway;,citation_author=Andrew Byrd;,citation_author=Marco Linden;,citation_publication_date=2017-01;,citation_cover_date=2017-01;,citation_year=2017;,citation_issue=1;,citation_doi=10.3141/2653-06;,citation_issn=0361-1981, 2169-4052;,citation_volume=2653;,citation_journal_title=Transportation Research Record: Journal of the Transportation Research Board;">
 </head>
 
 <body class="nav-sidebar docked">
@@ -187,34 +245,20 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#pesquisa-da-amostra-e-do-universo" id="toc-pesquisa-da-amostra-e-do-universo" class="nav-link active" data-scroll-target="#pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</a></li>
-  <li><a href="#microdados-da-amostra-e-dados-agregados-do-universo" id="toc-microdados-da-amostra-e-dados-agregados-do-universo" class="nav-link" data-scroll-target="#microdados-da-amostra-e-dados-agregados-do-universo">Microdados da Amostra e Dados Agregados do Universo</a></li>
-  <li><a href="#setores-censitários-e-áreas-de-ponderação" id="toc-setores-censitários-e-áreas-de-ponderação" class="nav-link" data-scroll-target="#setores-censitários-e-áreas-de-ponderação">Setores Censitários e Áreas de Ponderação</a>
-  <ul class="collapse">
-  <li><a href="#setores-censitários" id="toc-setores-censitários" class="nav-link" data-scroll-target="#setores-censitários">Setores censitários</a>
-  <ul class="collapse">
-  <li><a href="#áreas-de-ponderação" id="toc-áreas-de-ponderação" class="nav-link" data-scroll-target="#áreas-de-ponderação">Áreas de ponderação</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="EITcourse_GetYourDatasetReady2024.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <div class="quarto-about-solana column-body">
   <div class="about-entity">
     <div class="entity-contents">
       <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">2.2 Conceitos iniciais</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2.2 Conceitos iniciais</h1>
+<div class="quarto-title-block"><div><h1 class="title">2.2 Conceitos iniciais</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
-
 <p>O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.</p>
 <p>Nesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censo demográficos no Brasil.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -270,8 +314,84 @@ Importante
 <ul>
 <li>As <strong>áreas de ponderação</strong> são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.</li>
 </ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># codigo do municipio de Belford Roxo</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mymuni <span class="ot">&lt;-</span> <span class="dv">3300456</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria do municipio</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>muni <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_municipality</span>(mymuni)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria das areas de ponderacao</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> mymuni, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">simplified =</span> F)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria dos setores censitarios</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_census_tract</span>(<span class="at">code_tract =</span> mymuni, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                               <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                               <span class="at">simplified =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># funcao para 'inclinar' mapa</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>rotate_data_geom <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">x_add =</span> <span class="dv">0</span>, <span class="at">y_add =</span> <span class="dv">0</span>) {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  shear_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(){ <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>) }</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  rotate_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">cos</span>(x), <span class="fu">sin</span>(x), <span class="sc">-</span><span class="fu">sin</span>(x), <span class="fu">cos</span>(x)), <span class="dv">2</span>, <span class="dv">2</span>) </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(data,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> geom <span class="sc">*</span> <span class="fu">shear_matrix</span>() <span class="sc">*</span> <span class="fu">rotate_matrix</span>(pi<span class="sc">/</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">c</span>(x_add, y_add)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate parameters</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="sc">-</span><span class="fl">116.03</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>clr <span class="ot">=</span> <span class="st">'gray40'</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>sz <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># MAP</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>temp1  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># municipio</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> muni, <span class="at">y_add =</span> .<span class="dv">01</span>),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'#FCDE70'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Município'</span>, <span class="at">x=</span>x, <span class="at">y=</span><span class="sc">-</span><span class="fl">4.59</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># areas de ponderacao</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ap, <span class="at">y_add =</span> .<span class="dv">07</span>), </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'#ff7b7b'</span>, <span class="at">color=</span><span class="st">'#ff0000'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Áreas de</span><span class="sc">\n</span><span class="st">Ponderação'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.53</span>,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># setores censitarios</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ct, <span class="at">y_add =</span> <span class="fl">0.13</span>),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'gray98'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Setores</span><span class="sc">\n</span><span class="st">Censitários'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.47</span>, </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">116.305</span>, <span class="sc">-</span><span class="fl">115.98</span>)) <span class="sc">+</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">color=</span><span class="st">'white'</span>))</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>temp1</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave(temp1, filename = 'fig_spatial_layers.png', </span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="images/fig_spatial_layers.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="550"></p>
+</figure>
+</div>
 
 
+<!-- -->
 
 </section>
 </section>
@@ -511,6 +631,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -853,7 +1024,157 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">3. Microdados</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "2.2 Conceitos iniciais"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Nesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censo demográficos no Brasil.</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Nota</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Os primeiro censos nacionais foram realizados ainda em 1872 e 1890, seguidos dos censos de 1900 e 1920 <span class="co">[</span><span class="ot">ver @ibge1987estatisticas</span><span class="co">]</span>. Desde 1940, os censos vem sendo realizados a cada 10 anos, com exceção dos censos de 1991 e 2022.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>O conteúo desta oficina se refere basicamente aos censos 'modernos' de 1960 em diante.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pesquisa da amostra e do universo</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>Desde 1960, o Censo Demográfico passou a consistir de duas pesquisas realizadas simultaneamente.</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Universo**: uma pesquisa aplicada a todos os domicílios (ou universo). Esta pesquisa é feita com um questionário *básico* que costuma ser curto, contendo entre 9 e 30 questões, dependendo da edição do censo.</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Amostra**: uma pesquisa amostral aplicada a apenas uma parcela dos domicílios. A fração amostral era de 25% nos anos de 1960, 1970 e 1980 e passou para cerca de 10% em 1991 em diante. Esta pesquisa é feita com um questionário mais extenso.</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># Microdados da Amostra e Dados Agregados do Universo</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>Microdados são bancos de dados em que cada observação representa uma unidade de coleta de informação. Nos censos, os microdados se referem aos arquivos em que cada observação ou linha são domicílios ou pessoas. A noção de microdados se contrapõe à de dados agregados, nos quais os casos são “agregaçções” das informações obtidas a partir por exemplo da soma ou das médias das informações dos microdados. Tais agregações podem ser, por exemplo, no nível de bairros, distritos, municípios etc.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># Importante</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>Os dados disponibilizados pelo IBGE, e que estão disponíveis no pacote {censobr} são os microdados da pesquisa amostral e os dados do universo agregados por setor censitário.</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>Obs. O IBGE não disponibiliza os microdados do universo porque a sua divulgação poderia violar o sigilo dos respondentes.</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setores Censitários e Áreas de Ponderação</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Com os Microdados da Amostra é possível fazer análises por indivíduos, famílias e domicílios. Mas análises espaciais, que levam em conta vizinhanças e distâncias geográficas, por exemplo, também podem ser de interesse. Nesse caso, é importante ter ciência da granularidade dos dados – i.e. de qual a menor unidade espacial que permite inferência estatística. Para isso, cabe destacar as duas principais unidades espaciais na construção dos censos demográficos:</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setores censitários</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Os **cetores censitários** são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Áreas de ponderação</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>As **áreas de ponderação** são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{R}</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-spatial_layers</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Camadas espaciais de </span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"># codigo do municipio de Belford Roxo</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>mymuni <span class="ot">&lt;-</span> <span class="dv">3300456</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria do municipio</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>muni <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_municipality</span>(mymuni)</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria das areas de ponderacao</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> mymuni, </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">simplified =</span> F)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co"># baixa geometria dos setores censitarios</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_census_tract</span>(<span class="at">code_tract =</span> mymuni, </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>                               <span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>                               <span class="at">simplified =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co"># funcao para 'inclinar' mapa</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>rotate_data_geom <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">x_add =</span> <span class="dv">0</span>, <span class="at">y_add =</span> <span class="dv">0</span>) {</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  shear_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(){ <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">1.2</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>) }</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  rotate_matrix <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">cos</span>(x), <span class="fu">sin</span>(x), <span class="sc">-</span><span class="fu">sin</span>(x), <span class="fu">cos</span>(x)), <span class="dv">2</span>, <span class="dv">2</span>) </span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(data,</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> geom <span class="sc">*</span> <span class="fu">shear_matrix</span>() <span class="sc">*</span> <span class="fu">rotate_matrix</span>(pi<span class="sc">/</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">c</span>(x_add, y_add)</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="co"># annotate parameters</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="sc">-</span><span class="fl">116.03</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>clr <span class="ot">=</span> <span class="st">'gray40'</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>sz <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="co"># MAP</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>temp1  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>  <span class="co"># municipio</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> muni, <span class="at">y_add =</span> .<span class="dv">01</span>),</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'#FCDE70'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Município'</span>, <span class="at">x=</span>x, <span class="at">y=</span><span class="sc">-</span><span class="fl">4.59</span>,</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>  <span class="co"># areas de ponderacao</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ap, <span class="at">y_add =</span> .<span class="dv">07</span>), </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'#ff7b7b'</span>, <span class="at">color=</span><span class="st">'#ff0000'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Áreas de</span><span class="sc">\n</span><span class="st">Ponderação'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.53</span>,</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="co"># setores censitarios</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ct, <span class="at">y_add =</span> <span class="fl">0.13</span>),</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'gray98'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label=</span><span class="st">'Setores</span><span class="sc">\n</span><span class="st">Censitários'</span>, <span class="at">x=</span>x, <span class="at">y=</span> <span class="sc">-</span><span class="fl">4.47</span>, </span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color=</span>clr, <span class="at">size=</span>sz) <span class="sc">+</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">116.305</span>, <span class="sc">-</span><span class="fl">115.98</span>)) <span class="sc">+</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">color=</span><span class="st">'white'</span>))</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>temp1</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave(temp1, filename = 'fig_spatial_layers.png', </span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/fig_spatial_layers.png)</span>{width=550 fig-align="right"}</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{R}</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="co"># todas camandas no mesmo nivel</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="co"># municipio</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> muni, <span class="at">y_add =</span> .<span class="dv">01</span>),</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="st">'#FCDE70'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="co"># setores censitarios</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ct, <span class="at">y_add =</span> .<span class="dv">01</span>),</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>          <span class="at">color=</span><span class="st">'gray30'</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>  <span class="co"># areas de ponderacao</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">rotate_data_geom</span>(<span class="at">data =</span> ap, <span class="at">y_add =</span> .<span class="dv">01</span>), <span class="at">linewidth =</span><span class="dv">1</span>, </span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">color=</span><span class="st">'#ff0000'</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">116.305</span>, <span class="sc">-</span><span class="fl">115.98</span>)) <span class="sc">+</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">color=</span><span class="st">'white'</span>))</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
