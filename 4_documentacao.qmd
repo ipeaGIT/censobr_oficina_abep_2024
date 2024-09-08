@@ -54,13 +54,13 @@ Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conj
             <td rowspan="2">data_dictionary()</td>
             <td rowspan="2">Dicionário de variáveis</td>
             <td>Microdados</td>
-            <td>X</td>
+            <td></td>
             <td>X</td>
             <td>X</td>
             <td></td>
             <td>X</td>
-            <td></td>
             <td>X</td>
+            <td></td>
         </tr>
         <tr>
             <td>Agregados de setores censitários</td>
@@ -69,8 +69,8 @@ Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conj
             <td></td>
             <td></td>
             <td>X</td>
-            <td></td>
             <td>X</td>
+            <td></td>
         </tr>
         <tr>
             <td>questionnaire()</td>
@@ -93,7 +93,7 @@ Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conj
             <td>X</td>
             <td>X</td>
             <td>X</td>
-            <td></td>
+            <td>X</td>
             <td>X</td>
         </tr>
     </tbody>
