@@ -4,7 +4,7 @@ project:
 
 execute:
   freeze: auto
-  cache: true
+#  cache: true
 
 about:
   template: solana
@@ -33,6 +33,9 @@ website:
       - icon: twitter
         text: twitter
         href: https://x.com/UrbanDemog
+      - icon: linkedin
+        text: linkedin
+        href: https://www.linkedin.com/in/rafael-h-m-pereira/
     contents:
       - index.qmd
       - section: "2. Informações gerais"
@@ -40,8 +43,8 @@ website:
           - href: 2.1_instalacao.qmd
           - href: 2.2_info_censo.qmd
       - 3_microdados.qmd
-      - 4_documentacao.qmd
-      - 5_agregados_setores.qmd
+      - 4_agregados_setores.qmd
+      - 5_documentacao.qmd
 
 page-navigation: true
 page-footer: 

@@ -1,71 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ipeagit.github.io/access_workshop_bogota_2024/3.1_quick_approach.html</loc>
-    <lastmod>2024-06-15T14:53:33.007Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/access_workshop_bogota_2024/index.html</loc>
-    <lastmod>2024-09-06T18:05:12.042Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/access_workshop_bogota_2024/3.2_flexible_approach.html</loc>
-    <lastmod>2024-06-15T20:48:14.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/access_workshop_bogota_2024/2.1_installation.html</loc>
-    <lastmod>2024-09-06T17:21:13.076Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/access_workshop_bogota_2024/2.1_installation.knit.html</loc>
-    <lastmod>2024-09-06T18:03:07.084Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/access_workshop_eit_2024/index.html</loc>
-    <lastmod>2024-09-06T18:05:12.042Z</lastmod>
-  </url>
-  <url>
     <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/index.html</loc>
-    <lastmod>2024-09-08T00:53:40.052Z</lastmod>
+    <lastmod>2024-09-08T18:10:33.124Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/2.1_instalacao.knit.html</loc>
-    <lastmod>2024-09-06T23:12:40.314Z</lastmod>
+    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/4_agregados_setores.html</loc>
+    <lastmod>2024-09-09T00:25:50.537Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/5_documentacao.html</loc>
+    <lastmod>2024-09-08T17:50:19.262Z</lastmod>
   </url>
   <url>
     <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/2.1_instalacao.html</loc>
     <lastmod>2024-09-07T04:44:20.298Z</lastmod>
   </url>
   <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/3.3_equity_measures.html</loc>
-    <lastmod>2024-09-07T01:20:02.722Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/3.1_quick_approach.html</loc>
-    <lastmod>2024-09-07T01:12:08.945Z</lastmod>
+    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/3_microdados.html</loc>
+    <lastmod>2024-09-09T00:36:05.730Z</lastmod>
   </url>
   <url>
     <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/2.2_info_censo.html</loc>
-    <lastmod>2024-09-08T00:56:13.193Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/3.2_flexible_approach.html</loc>
-    <lastmod>2024-09-07T01:11:43.935Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/5_agregados_setores.html</loc>
-    <lastmod>2024-09-08T01:21:36.608Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/3_microdados.html</loc>
-    <lastmod>2024-09-07T15:47:07.211Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/4_documentacao.html</loc>
-    <lastmod>2024-09-08T03:00:42.402Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ipeagit.github.io/censobr_oficina_abep_2024/5_agregados_setores.knit.html</loc>
-    <lastmod>2024-09-07T15:44:10.858Z</lastmod>
+    <lastmod>2024-09-08T01:05:49.636Z</lastmod>
   </url>
 </urlset>

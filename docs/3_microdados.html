@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./4_documentacao.html" rel="next">
+<link href="./4_agregados_setores.html" rel="next">
 <link href="./2.2_info_censo.html" rel="prev">
 <link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -75,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -103,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://x.com/UrbanDemog" title="twitter" class="quarto-navigation-tool px-1" aria-label="twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/rafael-h-m-pereira/" title="linkedin" class="quarto-navigation-tool px-1" aria-label="linkedin"><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -151,14 +186,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./4_documentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Documentação</span></a>
+  <a href="./4_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Agregados dos Setores Censitários</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5_agregados_setores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Agregados dos Setores Censitários</span></a>
+  <a href="./5_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Documentação</span></a>
   </div>
 </li>
     </ul>
@@ -166,7 +201,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#dados-disponíveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</a></li>
+  <li><a href="#trabalhando-com-dados-maior-do-que-a-ram" id="toc-trabalhando-com-dados-maior-do-que-a-ram" class="nav-link" data-scroll-target="#trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</a></li>
+  <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">Dados de população</a></li>
+  <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">Dados de domicílios</a>
+  <ul class="collapse">
+  <li><a href="#using-household-data" id="toc-using-household-data" class="nav-link" data-scroll-target="#using-household-data">Using household data:</a></li>
+  </ul></li>
+  <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">Análise espacial com {geobr}</a></li>
+  <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">Data cache</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <div class="quarto-about-solana column-body">
   <div class="about-entity">
@@ -179,8 +229,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
-<p>under construction</p>
-<p>Tabela 1. Funções de dados disponíveis no {censobr}</p>
+
+<section id="dados-disponíveis-no-censobr" class="level1">
+<h1>Dados disponíveis no {censobr}</h1>
+<p>O pacote <strong>{censobr}</strong> disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970, e em breve também incluirá os dados de 1960 e 2022. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você conseguie acessar com o <strong>{censobr}</strong>.</p>
+<p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
   <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -208,12 +261,12 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">1960</th>
-<th data-quarto-table-cell-role="th">1970</th>
-<th data-quarto-table-cell-role="th">1980</th>
-<th data-quarto-table-cell-role="th">1991</th>
+<th data-quarto-table-cell-role="th">70</th>
+<th data-quarto-table-cell-role="th">80</th>
+<th data-quarto-table-cell-role="th">91</th>
 <th data-quarto-table-cell-role="th">2000</th>
-<th data-quarto-table-cell-role="th">2010</th>
-<th data-quarto-table-cell-role="th">2022</th>
+<th data-quarto-table-cell-role="th">10</th>
+<th data-quarto-table-cell-role="th">22</th>
 </tr>
 </thead>
 <tbody>
@@ -222,26 +275,26 @@ ul.task-list li input[type="checkbox"] {
 <td>Amostra</td>
 <td>Microdado</td>
 <td>Lê os microdados de pessoas.</td>
-<td></td>
+<td><em>em breve</em></td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
 <td></td>
 <td>X</td>
-<td></td>
+<td><em>em breve</em></td>
 </tr>
 <tr class="even">
 <td>read_households()</td>
 <td>Amostra</td>
 <td>Microdado</td>
 <td>Lê os microdados de domicílios.</td>
-<td></td>
+<td><em>em breve</em></td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
-<td></td>
 <td>X</td>
-<td></td>
+<td>X</td>
+<td><em>em breve</em></td>
 </tr>
 <tr class="odd">
 <td>read_families()</td>
@@ -260,26 +313,26 @@ ul.task-list li input[type="checkbox"] {
 <td>read_emigration()</td>
 <td>Amostra</td>
 <td>Microdado</td>
-<td>Lê os microdados de emigração do censo de 2010. Cada unidade é uma pessoa que se mudou para outro país nos 12 meses anteriores ao censo, com informações fornecidas pelos outros moradores do domicílio.</td>
+<td>Lê os microdados de emigração.</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td>X</td>
 <td></td>
-<td></td>
+<td><em>em breve</em></td>
 </tr>
 <tr class="odd">
 <td>read_mortality()</td>
 <td>Amostra</td>
 <td>Microdado</td>
-<td>Lê os microdados de mortalidade do censo de 2010. Cada unidade é uma pessoa falecida nos 12 meses anteriores ao censo, com informações fornecidas pelos outros moradores do domicílio.</td>
+<td>Lê os microdados de mortalidade.</td>
 <td></td>
 <td></td>
 <td></td>
 <td>X</td>
 <td></td>
-<td></td>
+<td><em>em breve</em></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -293,12 +346,446 @@ ul.task-list li input[type="checkbox"] {
 <td>X</td>
 <td></td>
 <td>X</td>
-<td></td>
+<td>X</td>
 </tr>
 </tbody>
 </table>
+<p>Todas as funções de leitura de microdados possuem a mesma esturutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_households</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  year,          <span class="co"># ano de referência</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  columns,       <span class="co"># seleciona colunas que devem ser lidas</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  add_labels,    <span class="co"># adiciona os 'labels' das variáveis categóricas</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  as_data_frame, <span class="co"># retorna resultado como um `Arrow DataSet` ou `data.frame`</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  showProgress,  <span class="co"># mostra contagem de download</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  cache          <span class="co"># salva arquivo em cache para rapida leitura posteriormente</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cache local dos dados
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download dos dados e os armazenará localmente numa pasta do pacote. Dessa forma, os dados precisam ser baixados apenas uma vez. Mais informações na seção <em>Cache de Dados</em> abaixo.</p>
+</div>
+</div>
+</section>
+<section id="trabalhando-com-dados-maior-do-que-a-ram" class="level1">
+<h1>Trabalhando com dados maior do que a RAM</h1>
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-right" width="350"> É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM dos usuários. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
+<p>Vamos então carregas as bibliotecas que vamos precisar e partir para exemplos na prática.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega bibliotecas</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'censobr' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'arrow' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dados-de-população" class="level1">
+<h1>Dados de população</h1>
+<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. Primeiro, precisamos usar a função <code>read_population()</code> para carregar os microdados de população.</p>
+<p>O comportamento padrão das as funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de região, peso amostral, sexo e idade).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read_population</span>(</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">'name_region'</span>, <span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_labels =</span> <span class="st">'pt'</span>,</span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">showProgress =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">Adicionando os ‘labels’ em Português das variáveis categóricas.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Reading data cached locally.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "arrow_dplyr_query"</code></pre>
+</div>
+</div>
+<p>Por padrão, a saída da função é um <code>"arrow_dplyr_query"</code> ou <code>"ArrowObject"</code>. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Ao definir o parâmetro <code>as_data_frame = TRUE</code>, a função carregará os dados como um <code>data.frame</code> na memória RAM. <strong><em>Atenção</em></strong>: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.</p>
+<p>Esses outputs podem ser analisados como de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função <code>dplyr::collect()</code></p>
+<p>Aqui, por exemplo, nós visualizamos as primeiras linhas da tabela de dados:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Potentially unsafe or invalid elements have been discarded from R metadata.
+ℹ Type: "externalptr"
+→ If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.
+Potentially unsafe or invalid elements have been discarded from R metadata.
+ℹ Type: "externalptr"
+→ If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  name_region    V0010     V0601 V6036
+1       Norte 8.705865 Masculino    22
+2       Norte 8.705865  Feminino    17
+3       Norte 9.818689 Masculino    38
+4       Norte 9.495608  Feminino    44
+5       Norte 9.495608 Masculino    11
+6       Norte 9.495608 Masculino    16</code></pre>
+</div>
+</div>
+<p>O próximo passo é criar um variável categória com grupos de idade a cada 5 anos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&lt;=</span> <span class="dv">04</span>              <span class="sc">~</span> <span class="st">"00-05"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">05</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"05-10"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"10-15"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"15-20"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"20-25"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"25-30"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"30-35"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">35</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">40</span> <span class="sc">~</span> <span class="st">"35-40"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"40-45"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"45-50"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">55</span> <span class="sc">~</span> <span class="st">"50-55"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">55</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"55-60"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"60-65"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> V6036 <span class="sc">&lt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"65-70"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>      V6036 <span class="sc">&gt;=</span> <span class="dv">70</span>              <span class="sc">~</span> <span class="st">"75+"</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Potentially unsafe or invalid elements have been discarded from R metadata.
+ℹ Type: "externalptr"
+→ If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.
+Potentially unsafe or invalid elements have been discarded from R metadata.
+ℹ Type: "externalptr"
+→ If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  name_region    V0010     V0601 V6036 age_group
+1       Norte 8.705865 Masculino    22     20-25
+2       Norte 8.705865  Feminino    17     15-20
+3       Norte 9.818689 Masculino    38     35-40
+4       Norte 9.495608  Feminino    44     40-45
+5       Norte 9.495608 Masculino    11     10-15
+6       Norte 9.495608 Masculino    16     15-20</code></pre>
+</div>
+</div>
+<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada um desses grupos.</p>
+<p>Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(V0601, age_group) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarise</span>(<span class="at">pop_count =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Potentially unsafe or invalid elements have been discarded from R metadata.
+ℹ Type: "externalptr"
+→ If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(piramide_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   V0601 [2]
+  V0601     age_group pop_count
+  &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+1 Masculino 20-25      8627665.
+2 Feminino  15-20      8429180.
+3 Masculino 35-40      6767177.
+4 Feminino  40-45      6688525.
+5 Masculino 10-15      8727095.
+6 Masculino 15-20      8557608.</code></pre>
+</div>
+</div>
+<p>Pronto, o último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove grupo com idade missing `NA`</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> <span class="fu">filter</span>(piramide_df, <span class="sc">!</span><span class="fu">is.na</span>(age_group))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># transforma a contagem de mulheres para valores negativos</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> piramide_df <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_count =</span> <span class="fu">if_else</span>(V0601 <span class="sc">==</span> <span class="st">"Masculino"</span>, pop_count, <span class="sc">-</span>pop_count))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># figura</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> piramide_df,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> pop_count <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> age_group,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> V0601)) <span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name=</span><span class="st">""</span>, <span class="at">type=</span><span class="fu">c</span>(<span class="st">"#ffcb69"</span>,<span class="st">"#437297"</span>)) <span class="sc">+</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(x){scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">abs</span>(x))},</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8000</span>, <span class="sc">-</span><span class="dv">4000</span>,<span class="dv">0</span>,<span class="dv">4000</span>, <span class="dv">8000</span>),</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"População (em milhares)"</span>) <span class="sc">+</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey90"</span>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="3_microdados_files/figure-html/pop-pyramid-ggplot-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Pirâmide demográfica, Brasil, 2010</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dados-de-domicílios" class="level1">
+<h1>Dados de domicílios</h1>
+<section id="using-household-data" class="level3">
+<h3 data-anchor-id="using-household-data">Using household data:</h3>
+<section id="sewage-coverage" class="level4">
+<h4 data-anchor-id="sewage-coverage">Sewage coverage:</h4>
+<p>In this example, we are going to map the proportion of households connected to a sewage network in Brazilian municipalities First, we can easily download the households data set with the <code>read_households()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">read_households</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading data and storing it locally for future use.</code></pre>
+</div>
+</div>
+<p>Now we’re going to (a) group observations by municipality, (b) get the number of households connected to a sewage network, (c) calculate the proportion of households connected, and (d) collect the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>esg <span class="ot">&lt;-</span> hs <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(code_muni) <span class="sc">|&gt;</span>                                             <span class="co"># (a)</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">rede =</span> <span class="fu">sum</span>(V0010[<span class="fu">which</span>(V0207<span class="sc">==</span><span class="st">'1'</span>)]),                    <span class="co"># (b)</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">total =</span> <span class="fu">sum</span>(V0010)) <span class="sc">|&gt;</span>                                   <span class="co"># (b)</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cobertura =</span> rede <span class="sc">/</span> total) <span class="sc">|&gt;</span>                                <span class="co"># (c)</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()                                                          <span class="co"># (d)</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(esg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  code_muni     rede  total cobertura
+      &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+1   1100015     0     7443.   0      
+2   1100023   182.   27654.   0.00660
+3   1100031     0     1979.   0      
+4   1100049 10019.   24413.   0.410  
+5   1100056     5.81  5399    0.00108
+6   1100064    28.9   6013.   0.00480</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="análise-espacial-com-geobr" class="level1">
+<h1>Análise espacial com {geobr}</h1>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="350"></p>
+</figure>
+</div>
+<p><strong><em>Note:</em></strong> all data sets in <strong>{censobr}</strong> are enriched with geography columns following the name standards of the <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> to help data manipulation and integration with spatial data from {geobr}. The added columns are: <code>c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)</code>.</p>
+<p>In order to create a map with these values, we are going to use the <a href="https://ipeagit.github.io/geobr/">{geobr} package</a> to download the geometries of Brazilian municipalities.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required namespace: sf</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>muni_sf <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_municipality</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(muni_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 4 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -63.61822 ymin: -13.6937 xmax: -60.33317 ymax: -9.66916
+Geodetic CRS:  SIRGAS 2000
+  code_muni             name_muni code_state abbrev_state
+1   1100015 Alta Floresta D'oeste         11           RO
+2   1100023             Ariquemes         11           RO
+3   1100031                Cabixi         11           RO
+4   1100049                Cacoal         11           RO
+5   1100056            Cerejeiras         11           RO
+6   1100064     Colorado Do Oeste         11           RO
+                            geom
+1 MULTIPOLYGON (((-62.2462 -1...
+2 MULTIPOLYGON (((-63.13712 -...
+3 MULTIPOLYGON (((-60.52408 -...
+4 MULTIPOLYGON (((-61.42679 -...
+5 MULTIPOLYGON (((-61.41347 -...
+6 MULTIPOLYGON (((-60.66352 -...</code></pre>
+</div>
+</div>
+<p>Now we only need to merge the spatial data with our estimates and map the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>esg_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(muni_sf, esg, <span class="at">by =</span> <span class="st">'code_muni'</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> esg_sf, <span class="fu">aes</span>(<span class="at">fill =</span> cobertura), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Share of households connected to a sewage network"</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greens"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Share of</span><span class="sc">\n</span><span class="st">households'</span>, </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_microdados_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="spatial-distribution-of-rents" class="level4">
+<h4 data-anchor-id="spatial-distribution-of-rents">Spatial distribution of rents:</h4>
+<p>In this final example, we’re going to visualize how the amount of money people spend on rent varies spatially across the metropolitan area of São Paulo.</p>
+<p>First, let’s download the municipalities of the metro area of São Paulo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>metro_muni <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_metro_area</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">showProgress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">subset</span>(name_metro <span class="sc">==</span> <span class="st">"RM São Paulo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
+</div>
+<p>We also need the polygons of the weighting areas (áreas de ponderação). With the code below, we download all weighting areas in the state of São Paulo, and then keep only the ones in the metropolitan region of São Paulo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> <span class="st">"SP"</span>, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">showProgress =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">year =</span> <span class="dv">2010</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using year/date 2010</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> <span class="fu">subset</span>(wt_areas, code_muni <span class="sc">%in%</span> metro_muni<span class="sc">$</span>code_muni)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wt_areas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 7 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -46.73454 ymin: -23.64487 xmax: -46.64756 ymax: -23.53528
+Geodetic CRS:  SIRGAS 2000
+   code_weighting code_muni name_muni code_state abbrev_state code_region
+5   3550308005100   3550308 São Paulo         35           SP           3
+6   3550308005102   3550308 São Paulo         35           SP           3
+8   3550308005101   3550308 São Paulo         35           SP           3
+10  3550308005104   3550308 São Paulo         35           SP           3
+12  3550308005103   3550308 São Paulo         35           SP           3
+14  3550308005106   3550308 São Paulo         35           SP           3
+   name_region                           geom
+5      Sudeste MULTIPOLYGON (((-46.67201 -...
+6      Sudeste MULTIPOLYGON (((-46.67663 -...
+8      Sudeste MULTIPOLYGON (((-46.67257 -...
+10     Sudeste MULTIPOLYGON (((-46.70138 -...
+12     Sudeste MULTIPOLYGON (((-46.69581 -...
+14     Sudeste MULTIPOLYGON (((-46.73454 -...</code></pre>
+</div>
+</div>
+<p>Now we need to calculate the average rent spent in each weighting area. Using the national household data set, we’re going to (a) filter only observations in our municipalities of interest, (b) group observations by weighting area, (c) calculate the average rent, and (d) collect the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rent <span class="ot">&lt;-</span> hs <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(code_muni <span class="sc">%in%</span> metro_muni<span class="sc">$</span>code_muni) <span class="sc">|&gt;</span>                     <span class="co"># (a)</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(code_weighting) <span class="sc">|&gt;</span>                                        <span class="co"># (b)</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">avgrent=</span><span class="fu">weighted.mean</span>(<span class="at">x=</span>V2011, <span class="at">w=</span>V0010, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">|&gt;</span>  <span class="co"># (c)</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">collect</span>()                                                          <span class="co"># (d)</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  code_weighting avgrent
+  &lt;chr&gt;            &lt;dbl&gt;
+1 3503901003001     355.
+2 3503901003002     627.
+3 3503901003003     358.
+4 3505708005001     577.
+5 3505708005002     397.
+6 3505708005003     327.</code></pre>
+</div>
+</div>
+<p>Finally, we can merge the spatial data with our rent estimates and map the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>rent_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wt_areas, rent, <span class="at">by =</span> <span class="st">'code_weighting'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rent_sf, <span class="fu">aes</span>(<span class="at">fill =</span> avgrent), <span class="at">color=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> metro_muni, <span class="at">color=</span><span class="st">'gray'</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greens"</span>, <span class="at">direction =</span> <span class="dv">1</span>, </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name=</span><span class="st">'Avgerage</span><span class="sc">\n</span><span class="st">Rent in R$'</span>) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3_microdados_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-cache" class="level1">
+<h1>Data cache</h1>
+<p>The first time the user runs a function, <strong>{censobr}</strong> will download the file and store it locally. This way, the data only needs to be downloaded once. When the <code>cache</code> parameter is set to <code>TRUE</code> (Default), the function will read the cached data, which is much faster.</p>
+<p>Users can manage the cached data sets using the <code>censobr_cache()</code> function. For example, users can:</p>
+<p>List cached files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">list_files =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Files currently chached:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
+</div>
+</div>
+<p>Delete a particular file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The file '2010_emigration' is not cached.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Files currently chached:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
+</div>
+</div>
+<p>Delete all files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>All files have been removed.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Files currently chached:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
+</div>
+</div>
+<p>By default, <strong>{censobr}</strong> files are saved in the ‘User’ directory. However, users can run the function <code>set_censobr_cache_dir()</code> to set custom cache directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_censobr_cache_dir</span>(<span class="at">path =</span> tempf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </main></div>
     </div>
   </div>
@@ -907,8 +1394,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./4_documentacao.html" class="pagination-link" aria-label="4. Documentação">
-        <span class="nav-page-text">4. Documentação</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./4_agregados_setores.html" class="pagination-link" aria-label="4. Agregados dos Setores Censitários">
+        <span class="nav-page-text">4. Agregados dos Setores Censitários</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
