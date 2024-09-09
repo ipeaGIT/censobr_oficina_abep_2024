@@ -590,12 +590,7 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </section>
 <section id="análise-espacial-com-geobr" class="level1">
 <h1>Análise espacial com {geobr}</h1>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="350"></p>
-</figure>
-</div>
-<p><strong><em>Note:</em></strong> all data sets in <strong>{censobr}</strong> are enriched with geography columns following the name standards of the <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> to help data manipulation and integration with spatial data from {geobr}. The added columns are: <code>c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)</code>.</p>
+<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-left" width="150"> <strong><em>Note:</em></strong> all data sets in <strong>{censobr}</strong> are enriched with geography columns following the name standards of the <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> to help data manipulation and integration with spatial data from {geobr}. The added columns are: <code>c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)</code>.</p>
 <p>In order to create a map with these values, we are going to use the <a href="https://ipeagit.github.io/geobr/">{geobr} package</a> to download the geometries of Brazilian municipalities.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
