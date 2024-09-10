@@ -4,7 +4,7 @@ from: markdown+emoji
 code-annotations: hover
 ---
 
-# Dados disponíveis no {censobr}
+# 3.1 Dados disponíveis no {censobr}
 
 O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o **{censobr}**.
 
@@ -160,9 +160,9 @@ A primeira vez que o usuário executa uma função, o **{censobr}** fará o down
 :::
 
 
-# Trabalhando com dados maior do que a RAM
+# 3.2 Trabalhando com dados maior do que a RAM
 
-![](images/arrow_plus_dplyr.png){width=200 fig-align="right"}
+![](images/arrow_plus_dplyr.png){width=250 fig-align="center"}
 
 É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o **{censobr}** foi construído sobre a plataforma [Arrow](https://arrow.apache.org/docs/r/) e arquivos em formato `.parquet`, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote [{dplyr}](https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr).
 
@@ -180,7 +180,7 @@ library(ggplot2)
 ```
 
 
-# Dados de população
+# 3.3 Dados de população
 
 Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função `read_population()` para carregar os microdados de população.
 
@@ -286,7 +286,7 @@ ggplot(data = piramide_df,
 ```
 
 
-# Dados de domicílios
+# 3.4 Dados de domicílios
 
 ### Saneamento:
 
@@ -328,7 +328,7 @@ ggplot(esg) +
 ```
 
 
-# Análise espacial com {geobr}
+# 3.5 Análise espacial com {geobr}
 
 O **{geobr}** é um pacote para baixar dados espaciais oficiais do Brasil. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a [lista completa no site do pacote](https://ipeagit.github.io/geobr/)).
 
@@ -431,7 +431,7 @@ ggplot() +
 
 
 
-# Data cache
+# 3.5 Data cache
 
 Na primeira vez que o usuário executa uma função, o **{censobr}** fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro `cache` está configurado como `TRUE` (Padrão), a função lerá os dados em cache, o que é muito mais rápido.
 

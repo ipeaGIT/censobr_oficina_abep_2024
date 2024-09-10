@@ -205,19 +205,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#dados-disponíveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-disponíveis-no-censobr">Dados disponíveis no {censobr}</a></li>
-  <li><a href="#trabalhando-com-dados-maior-do-que-a-ram" id="toc-trabalhando-com-dados-maior-do-que-a-ram" class="nav-link" data-scroll-target="#trabalhando-com-dados-maior-do-que-a-ram">Trabalhando com dados maior do que a RAM</a></li>
-  <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">Dados de população</a></li>
-  <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">Dados de domicílios</a>
+  <li><a href="#dados-disponíveis-no-censobr" id="toc-dados-disponíveis-no-censobr" class="nav-link active" data-scroll-target="#dados-disponíveis-no-censobr">3.1 Dados disponíveis no {censobr}</a></li>
+  <li><a href="#trabalhando-com-dados-maior-do-que-a-ram" id="toc-trabalhando-com-dados-maior-do-que-a-ram" class="nav-link" data-scroll-target="#trabalhando-com-dados-maior-do-que-a-ram">3.2 Trabalhando com dados maior do que a RAM</a></li>
+  <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">3.3 Dados de população</a></li>
+  <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">3.4 Dados de domicílios</a>
   <ul class="collapse">
   <li><a href="#saneamento" id="toc-saneamento" class="nav-link" data-scroll-target="#saneamento">Saneamento:</a></li>
   </ul></li>
-  <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">Análise espacial com {geobr}</a>
+  <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">3.5 Análise espacial com {geobr}</a>
   <ul class="collapse">
   <li><a href="#integração-entre-censobr-e-geobr" id="toc-integração-entre-censobr-e-geobr" class="nav-link" data-scroll-target="#integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</a></li>
   <li><a href="#distribuição-espacial-do-valor-do-aluguel" id="toc-distribuição-espacial-do-valor-do-aluguel" class="nav-link" data-scroll-target="#distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</a></li>
   </ul></li>
-  <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">Data cache</a></li>
+  <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">3.5 Data cache</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="about-contents"><main class="content" id="quarto-document-content">
 
 <section id="dados-disponíveis-no-censobr" class="level1">
-<h1>Dados disponíveis no {censobr}</h1>
+<h1>3.1 Dados disponíveis no {censobr}</h1>
 <p>O pacote <strong>{censobr}</strong> disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
 <p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
   <!-- <meta charset="UTF-8"> -->
@@ -380,10 +380,10 @@ Cache local dos dados
 </div>
 </section>
 <section id="trabalhando-com-dados-maior-do-que-a-ram" class="level1">
-<h1>Trabalhando com dados maior do que a RAM</h1>
-<div class="quarto-figure quarto-figure-right">
+<h1>3.2 Trabalhando com dados maior do que a RAM</h1>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="200"></p>
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
 </figure>
 </div>
 <p>É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
@@ -403,7 +403,7 @@ Cache local dos dados
 </div>
 </section>
 <section id="dados-de-população" class="level1">
-<h1>Dados de população</h1>
+<h1>3.3 Dados de população</h1>
 <p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função <code>read_population()</code> para carregar os microdados de população.</p>
 <p>O comportamento padrão das as funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).</p>
 <div class="cell">
@@ -559,7 +559,7 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </div>
 </section>
 <section id="dados-de-domicílios" class="level1">
-<h1>Dados de domicílios</h1>
+<h1>3.4 Dados de domicílios</h1>
 <section id="saneamento" class="level3">
 <h3 data-anchor-id="saneamento">Saneamento:</h3>
 <p>Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função <code>read_households()</code>.</p>
@@ -611,7 +611,7 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </section>
 </section>
 <section id="análise-espacial-com-geobr" class="level1">
-<h1>Análise espacial com {geobr}</h1>
+<h1>3.5 Análise espacial com {geobr}</h1>
 <p>O <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
 <section id="integração-entre-censobr-e-geobr" class="level2 callout-information" data-appearance="default">
 <h2 data-anchor-id="integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</h2>
@@ -761,7 +761,7 @@ Geodetic CRS:  SIRGAS 2000
 </section>
 </section>
 <section id="data-cache" class="level1">
-<h1>Data cache</h1>
+<h1>3.5 Data cache</h1>
 <p>Na primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro <code>cache</code> está configurado como <code>TRUE</code> (Padrão), a função lerá os dados em cache, o que é muito mais rápido.</p>
 <p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code>censobr_cache()</code>. Por exemplo, os usuários podem:</p>
 <p>Listar arquivos em cache:</p>
@@ -772,8 +772,7 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Domicilio_v0.3.0.parquet</code></pre>
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
 </div>
 </div>
 <p>Deletar um arquivo específico:</p>
@@ -787,8 +786,7 @@ C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Do
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Domicilio_v0.3.0.parquet</code></pre>
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
 </div>
 </div>
 <p>Deletar todos arquivos do cache:</p>

@@ -2,10 +2,6 @@ project:
   type: website
   output-dir: docs
 
-execute:
-  freeze: auto
-#  cache: true
-
 about:
   template: solana
   # links:
@@ -16,7 +12,9 @@ about:
   #     text: Github
   #     href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
 
-
+execute:
+  freeze: auto
+#  cache: true
 lang: en
 website:
   title: "{censobr}: Explorando o Censo Demográfico em R"
