@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dados-de-população" id="toc-dados-de-população" class="nav-link" data-scroll-target="#dados-de-população">Dados de população</a></li>
   <li><a href="#dados-de-domicílios" id="toc-dados-de-domicílios" class="nav-link" data-scroll-target="#dados-de-domicílios">Dados de domicílios</a>
   <ul class="collapse">
-  <li><a href="#using-household-data" id="toc-using-household-data" class="nav-link" data-scroll-target="#using-household-data">Using household data:</a></li>
+  <li><a href="#sewage-coverage" id="toc-sewage-coverage" class="nav-link" data-scroll-target="#sewage-coverage">Sewage coverage:</a></li>
   </ul></li>
   <li><a href="#análise-espacial-com-geobr" id="toc-análise-espacial-com-geobr" class="nav-link" data-scroll-target="#análise-espacial-com-geobr">Análise espacial com {geobr}</a></li>
   <li><a href="#data-cache" id="toc-data-cache" class="nav-link" data-scroll-target="#data-cache">Data cache</a></li>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="dados-disponíveis-no-censobr" class="level1">
 <h1>Dados disponíveis no {censobr}</h1>
-<p>O pacote <strong>{censobr}</strong> disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970, e em breve também incluirá os dados de 1960 e 2022. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você conseguie acessar com o <strong>{censobr}</strong>.</p>
+<p>O pacote <strong>{censobr}</strong> disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
 <p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
   <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -330,10 +330,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
 <td>X</td>
-<td></td>
 <td><em>em breve</em></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>read_tracts()</td>
@@ -341,16 +341,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Setor Censitário</td>
 <td>Lê os dados do Universo agregados por setores censitários.</td>
 <td></td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td>X</td>
-<td>X</td>
+<td>em breve</td>
 </tr>
 </tbody>
 </table>
-<p>Todas as funções de leitura de microdados possuem a mesma esturutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:</p>
+<p>Todas as funções de leitura de microdados possuem a mesma estrutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_households</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  year,          <span class="co"># ano de referência</span></span>
@@ -377,8 +377,13 @@ Cache local dos dados
 </section>
 <section id="trabalhando-com-dados-maior-do-que-a-ram" class="level1">
 <h1>Trabalhando com dados maior do que a RAM</h1>
-<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-right" width="350"> É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM dos usuários. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
-<p>Vamos então carregas as bibliotecas que vamos precisar e partir para exemplos na prática.</p>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-right figure-img" width="200"></p>
+</figure>
+</div>
+<p>É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
+<p>Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega bibliotecas</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -395,20 +400,24 @@ Cache local dos dados
 </section>
 <section id="dados-de-população" class="level1">
 <h1>Dados de população</h1>
-<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. Primeiro, precisamos usar a função <code>read_population()</code> para carregar os microdados de população.</p>
-<p>O comportamento padrão das as funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de região, peso amostral, sexo e idade).</p>
+<p>Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função <code>read_population()</code> para carregar os microdados de população.</p>
+<p>O comportamento padrão das as funções do <strong>{censobr}</strong> é retornar <em>todas</em> as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read_population</span>(</span>
 <span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2010</span>,</span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">'name_region'</span>, <span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_labels =</span> <span class="st">'pt'</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">'V0010'</span>, <span class="st">'V0601'</span>, <span class="st">'V6036'</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_labels =</span> <span class="st">'pt'</span>,</span>
 <span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">showProgress =</span> <span class="cn">TRUE</span></span>
 <span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">Adicionando os ‘labels’ em Português das variáveis categóricas.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">Aumentando eficiência ao ler apenas as colunas que vamos usar</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">Adicionando os ‘labels’ em Português das variáveis categóricas.</span>
 </dd>
 </dl>
 </div>
@@ -420,8 +429,8 @@ Cache local dos dados
 <pre><code>[1] "arrow_dplyr_query"</code></pre>
 </div>
 </div>
-<p>Por padrão, a saída da função é um <code>"arrow_dplyr_query"</code> ou <code>"ArrowObject"</code>. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Ao definir o parâmetro <code>as_data_frame = TRUE</code>, a função carregará os dados como um <code>data.frame</code> na memória RAM. <strong><em>Atenção</em></strong>: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.</p>
-<p>Esses outputs podem ser analisados como de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função <code>dplyr::collect()</code></p>
+<p>Por padrão, a saída da função é um <code>"arrow_dplyr_query"</code> ou <code>"ArrowObject"</code>. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro <code>as_data_frame = TRUE</code>, a função carregará os dados como um <code>data.frame</code> na memória RAM. <strong><em>Atenção</em></strong>: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.</p>
+<p>Esse output em arrow pode ser analisado como de maneira similar a como se analisaria um <code>data.frame</code> utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função <code>dplyr::collect()</code></p>
 <p>Aqui, por exemplo, nós visualizamos as primeiras linhas da tabela de dados:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop) <span class="sc">|&gt;</span> <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -434,13 +443,13 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 → If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  name_region    V0010     V0601 V6036
-1       Norte 8.705865 Masculino    22
-2       Norte 8.705865  Feminino    17
-3       Norte 9.818689 Masculino    38
-4       Norte 9.495608  Feminino    44
-5       Norte 9.495608 Masculino    11
-6       Norte 9.495608 Masculino    16</code></pre>
+<pre><code>     V0010     V0601 V6036
+1 8.705865 Masculino    22
+2 8.705865  Feminino    17
+3 9.818689 Masculino    38
+4 9.495608  Feminino    44
+5 9.495608 Masculino    11
+6 9.495608 Masculino    16</code></pre>
 </div>
 </div>
 <p>O próximo passo é criar um variável categória com grupos de idade a cada 5 anos.</p>
@@ -475,17 +484,16 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 → If you trust the source, you can set `options(arrow.unsafe_metadata = TRUE)` to preserve them.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  name_region    V0010     V0601 V6036 age_group
-1       Norte 8.705865 Masculino    22     20-25
-2       Norte 8.705865  Feminino    17     15-20
-3       Norte 9.818689 Masculino    38     35-40
-4       Norte 9.495608  Feminino    44     40-45
-5       Norte 9.495608 Masculino    11     10-15
-6       Norte 9.495608 Masculino    16     15-20</code></pre>
+<pre><code>     V0010     V0601 V6036 age_group
+1 8.705865 Masculino    22     20-25
+2 8.705865  Feminino    17     15-20
+3 9.818689 Masculino    38     35-40
+4 9.495608  Feminino    44     40-45
+5 9.495608 Masculino    11     10-15
+6 9.495608 Masculino    16     15-20</code></pre>
 </div>
 </div>
-<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada um desses grupos.</p>
-<p>Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code>.</p>
+<p>E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral <code>V0010</code> em cada grupo. Repare que ao chamarmos a função <code>collect()</code>, o código é executado e retorna um <code>data.frame</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>piramide_df <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(V0601, age_group) <span class="sc">|&gt;</span></span>
@@ -510,7 +518,7 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 6 Masculino 15-20      8557608.</code></pre>
 </div>
 </div>
-<p>Pronto, o último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
+<p>Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -550,19 +558,17 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </section>
 <section id="dados-de-domicílios" class="level1">
 <h1>Dados de domicílios</h1>
-<section id="using-household-data" class="level3">
-<h3 data-anchor-id="using-household-data">Using household data:</h3>
-<section id="sewage-coverage" class="level4">
-<h4 data-anchor-id="sewage-coverage">Sewage coverage:</h4>
-<p>In this example, we are going to map the proportion of households connected to a sewage network in Brazilian municipalities First, we can easily download the households data set with the <code>read_households()</code> function.</p>
+<section id="sewage-coverage" class="level3">
+<h3 data-anchor-id="sewage-coverage">Sewage coverage:</h3>
+<p>Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados com rede de esgoto nos municípios brasileiros. O primeiro passo é baixar os dados utilizando a função <code>read_households()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">read_households</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Downloading data and storing it locally for future use.</code></pre>
+<pre><code>Reading data cached locally.</code></pre>
 </div>
 </div>
-<p>Now we’re going to (a) group observations by municipality, (b) get the number of households connected to a sewage network, (c) calculate the proportion of households connected, and (d) collect the results.</p>
+<p>Agora vamos (a) agrupar as observações por município, (b) obter o número de domicílios conectados à rede de esgoto, (c) calcular a proporção de domicílios conectados e (d) coletar os resultados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>esg <span class="ot">&lt;-</span> hs <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">compute</span>() <span class="sc">|&gt;</span></span>
@@ -587,11 +593,10 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </div>
 </section>
 </section>
-</section>
 <section id="análise-espacial-com-geobr" class="level1">
 <h1>Análise espacial com {geobr}</h1>
-<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-left" width="150"> <strong><em>Note:</em></strong> all data sets in <strong>{censobr}</strong> are enriched with geography columns following the name standards of the <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> to help data manipulation and integration with spatial data from {geobr}. The added columns are: <code>c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)</code>.</p>
-<p>In order to create a map with these values, we are going to use the <a href="https://ipeagit.github.io/geobr/">{geobr} package</a> to download the geometries of Brazilian municipalities.</p>
+<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-left" width="150"> <strong><em>Nota:</em></strong> Todos os conjuntos de dados no <strong>{censobr}</strong> são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> para facilitar a manipulação e a integração de dados espaciais com os dados do <strong>{geobr}</strong>. As colunas adicionadas são: <code>c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)</code>.</p>
+<p>Para criar um mapa com esses valores, vamos usar o pacote <a href="https://ipeagit.github.io/geobr/">{geobr} package</a> para baixar as geometrias dos municípios brasileiros.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -625,7 +630,7 @@ Geodetic CRS:  SIRGAS 2000
 6 MULTIPOLYGON (((-60.66352 -...</code></pre>
 </div>
 </div>
-<p>Now we only need to merge the spatial data with our estimates and map the results.</p>
+<p>Agora só precisamos unir os dados espaciais com nossas estimativas e mapear os resultados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>esg_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(muni_sf, esg, <span class="at">by =</span> <span class="st">'code_muni'</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -639,15 +644,14 @@ Geodetic CRS:  SIRGAS 2000
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="3_microdados_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="3_microdados_files/figure-html/merge-geobr-censobr-plot-map-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="spatial-distribution-of-rents" class="level4">
-<h4 data-anchor-id="spatial-distribution-of-rents">Spatial distribution of rents:</h4>
-<p>In this final example, we’re going to visualize how the amount of money people spend on rent varies spatially across the metropolitan area of São Paulo.</p>
-<p>First, let’s download the municipalities of the metro area of São Paulo.</p>
+<section id="distribuição-espacial-do-valor-do-aluguel" class="level4">
+<h4 data-anchor-id="distribuição-espacial-do-valor-do-aluguel">Distribuição espacial do valor do aluguel:</h4>
+<p>Neste exemplo final, vamos visualizar como a quantidade de dinheiro que as pessoas gastam com aluguel varia espacialmente pela região metropolitana de São Paulo. Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o <strong>{geobr}</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>metro_muni <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_metro_area</span>(<span class="at">year =</span> <span class="dv">2010</span>, </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">showProgress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
@@ -656,7 +660,7 @@ Geodetic CRS:  SIRGAS 2000
 <pre><code>Using year/date 2010</code></pre>
 </div>
 </div>
-<p>We also need the polygons of the weighting areas (áreas de ponderação). With the code below, we download all weighting areas in the state of São Paulo, and then keep only the ones in the metropolitan region of São Paulo.</p>
+<p>Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>wt_areas <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">read_weighting_area</span>(<span class="at">code_weighting =</span> <span class="st">"SP"</span>, </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">showProgress =</span> <span class="cn">FALSE</span>,</span>
@@ -688,7 +692,7 @@ Geodetic CRS:  SIRGAS 2000
 14     Sudeste MULTIPOLYGON (((-46.73454 -...</code></pre>
 </div>
 </div>
-<p>Now we need to calculate the average rent spent in each weighting area. Using the national household data set, we’re going to (a) filter only observations in our municipalities of interest, (b) group observations by weighting area, (c) calculate the average rent, and (d) collect the results.</p>
+<p>Agora precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Utilizando o conjunto de dados da pesquisa domiciliar nacional, vamos (a) filtrar apenas as observações nos nossos municípios de interesse, (b) agrupar as observações por área de ponderação, (c) calcular o valor médio do aluguel e (d) coletar os resultados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rent <span class="ot">&lt;-</span> hs <span class="sc">|&gt;</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(code_muni <span class="sc">%in%</span> metro_muni<span class="sc">$</span>code_muni) <span class="sc">|&gt;</span>                     <span class="co"># (a)</span></span>
@@ -710,7 +714,7 @@ Geodetic CRS:  SIRGAS 2000
 6 3505708005003     327.</code></pre>
 </div>
 </div>
-<p>Finally, we can merge the spatial data with our rent estimates and map the results.</p>
+<p>Por fim, podemos unir os dados espaciais com nossas estimativas de aluguel pela variável chave <code>code_weighting</code>, e mapear os resultados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>rent_sf <span class="ot">&lt;-</span> <span class="fu">left_join</span>(wt_areas, rent, <span class="at">by =</span> <span class="st">'code_weighting'</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,9 +736,9 @@ Geodetic CRS:  SIRGAS 2000
 </section>
 <section id="data-cache" class="level1">
 <h1>Data cache</h1>
-<p>The first time the user runs a function, <strong>{censobr}</strong> will download the file and store it locally. This way, the data only needs to be downloaded once. When the <code>cache</code> parameter is set to <code>TRUE</code> (Default), the function will read the cached data, which is much faster.</p>
-<p>Users can manage the cached data sets using the <code>censobr_cache()</code> function. For example, users can:</p>
-<p>List cached files:</p>
+<p>Na primeira vez que o usuário executa uma função, o <strong>{censobr}</strong> fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro <code>cache</code> está configurado como <code>TRUE</code> (Padrão), a função lerá os dados em cache, o que é muito mais rápido.</p>
+<p>Os usuários podem gerenciar os conjuntos de dados em cache usando a função <code>censobr_cache()</code>. Por exemplo, os usuários podem:</p>
+<p>Listar arquivos em cache:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">list_files =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -742,10 +746,11 @@ Geodetic CRS:  SIRGAS 2000
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_mortality_v0.3.0.parquet
 C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
 </div>
 </div>
-<p>Delete a particular file:</p>
+<p>Deletar um arquivo específico:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -756,10 +761,11 @@ C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_populatio
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
+C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_mortality_v0.3.0.parquet
 C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
 </div>
 </div>
-<p>Delete all files:</p>
+<p>Deletar todos arquivos do cache:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -772,7 +778,7 @@ C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_populatio
 <pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
 </div>
 </div>
-<p>By default, <strong>{censobr}</strong> files are saved in the ‘User’ directory. However, users can run the function <code>set_censobr_cache_dir()</code> to set custom cache directory.</p>
+<p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code>set_censobr_cache_dir()</code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>

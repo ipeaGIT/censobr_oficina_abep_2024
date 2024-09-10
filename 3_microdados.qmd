@@ -6,7 +6,7 @@ code-annotations: hover
 
 # Dados disponíveis no {censobr}
 
-O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970, e em breve também incluirá os dados de 1960 e 2022. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você conseguie acessar com o **{censobr}**.
+O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o **{censobr}**.
 
 **Tabela 1. Funções de dados disponíveis no {censobr}**
 
@@ -113,8 +113,9 @@ O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições
       <td></td>
       <td></td>
       <td></td>
-      <td>X</td>
       <td></td>
+      <td></td>
+      <td>X</td>
       <td><i>em breve</i></td>
     </tr>
     <tr>
@@ -123,12 +124,12 @@ O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições
       <td>Setor Censitário</td>
       <td>Lê os dados do Universo agregados por setores censitários.</td>
       <td></td>
-      <td>X</td>
-      <td>X</td>
-      <td>X</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
       <td>X</td>
-      <td>X</td>
+      <td>em breve</td>
     </tr>
   </tbody>
 </table>
@@ -137,7 +138,7 @@ O pacote **{censobr}** disponibiliza microdados da amostra de todas as edições
 </html>
 ```
 
-Todas as funções de leitura de microdados possuem a mesma esturutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:
+Todas as funções de leitura de microdados possuem a mesma estrutra (sintaxe), o que permite o usuário baixar os dados de maneira fácil e intuitiva com um único comando. As funções possuem os seguintes parâmetros:
 
 ```{r, eval = FALSE}
 read_households(
@@ -161,11 +162,12 @@ A primeira vez que o usuário executa uma função, o **{censobr}** fará o down
 
 # Trabalhando com dados maior do que a RAM
 
-![](images/arrow_plus_dplyr.png){width=350 fig-align="right"}
-É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM dos usuários. Para resolver esse problema, o **{censobr}** foi construído sobre a plataforma [Arrow](https://arrow.apache.org/docs/r/) e arquivos em formato `.parquet`, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote [{dplyr}](https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr).
+![](images/arrow_plus_dplyr.png){width=200 fig-align="right"}
+
+É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o **{censobr}** foi construído sobre a plataforma [Arrow](https://arrow.apache.org/docs/r/) e arquivos em formato `.parquet`, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote [{dplyr}](https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr).
 
 
-Vamos então carregas as bibliotecas que vamos precisar e partir para exemplos na prática.
+Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.
 
 
 ```{r, message = FALSE}
@@ -180,29 +182,29 @@ library(ggplot2)
 
 # Dados de população
 
-Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. Primeiro, precisamos usar a função `read_population()` para carregar os microdados de população.
+Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função `read_population()` para carregar os microdados de população.
 
-
-O comportamento padrão das as funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de região, peso amostral, sexo e idade).
+O comportamento padrão das as funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).
 
 ```{r}
 #| label: read-population-data
 pop <- read_population(
   year = 2010,
-  columns = c('name_region', 'V0010', 'V0601', 'V6036'),
-  add_labels = 'pt',    # <1>
+  columns = c('V0010', 'V0601', 'V6036'),  # <1>
+  add_labels = 'pt',                       # <2>
   showProgress = TRUE
   )
 
 class(pop)
 
 ```
-1. Adicionando os 'labels' em Português das variáveis categóricas.
+1. Aumentando eficiência ao ler apenas as colunas que vamos usar
+2. Adicionando os 'labels' em Português das variáveis categóricas.
 
 
-Por padrão, a saída da função é um `"arrow_dplyr_query"` ou `"ArrowObject"`. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Ao definir o parâmetro `as_data_frame = TRUE`, a função carregará os dados como um `data.frame` na memória RAM. ***Atenção***: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.
+Por padrão, a saída da função é um `"arrow_dplyr_query"` ou `"ArrowObject"`. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro `as_data_frame = TRUE`, a função carregará os dados como um `data.frame` na memória RAM. ***Atenção***: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.
 
-Esses outputs podem ser analisados como de maneira similar a como se analisaria um `data.frame` utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função `dplyr::collect()` 
+Esse output em arrow pode ser analisado como de maneira similar a como se analisaria um `data.frame` utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função `dplyr::collect()` 
 
 Aqui, por exemplo, nós visualizamos as primeiras linhas da tabela de dados:
 
@@ -239,9 +241,7 @@ pop <- pop |>
 head(pop) |> collect()
 ```
 
-E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral `V0010` em cada um desses grupos.
-
-Repare que ao chamarmos a função `collect()`, o código é executado e retorna um `data.frame`.
+E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral `V0010` em cada grupo. Repare que ao chamarmos a função `collect()`, o código é executado e retorna um `data.frame`.
 
 ```{r}
 #| label: summarize-pop-table
@@ -252,7 +252,7 @@ piramide_df <- pop |>
 
 head(piramide_df)
 ```
-Pronto, o último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.
+Pronto, no último passo é só fazer o gráfico de pirâmide populacional utilizando o pacote {ggplot2}.
 
 ```{r}
 #| label: pop-pyramid-ggplot
@@ -288,22 +288,22 @@ ggplot(data = piramide_df,
 
 # Dados de domicílios
 
+### Sewage coverage:
 
-### Using household data:
-
-#### Sewage coverage:
-
-In this example, we are going to map the proportion of households connected to a sewage network in Brazilian municipalities First, we can easily download the households data set with the `read_households()` function.
+Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados com rede de esgoto nos municípios brasileiros. O primeiro passo é baixar os dados utilizando a função `read_households()`.
 
 ```{r}
+#| label: read-household-data
 hs <- read_households(year = 2010, 
                       showProgress = FALSE)
 
 ```
 
-Now we're going to (a) group observations by municipality, (b) get the number of households connected to a sewage network, (c) calculate the proportion of households connected, and (d) collect the results.
+Agora vamos (a) agrupar as observações por município, (b) obter o número de domicílios conectados à rede de esgoto, (c) calcular a proporção de domicílios conectados e (d) coletar os resultados.
 
 ```{r warning = FALSE}
+#| label: compute-sewage-connection
+
 esg <- hs |> 
         compute() |>
         group_by(code_muni) |>                                             # (a)
@@ -318,14 +318,16 @@ head(esg)
 
 # Análise espacial com {geobr}
 
-![](images/geobr_logo_y.png){width=150 fig-align="left"} ***Note:*** all data sets in **{censobr}** are enriched with geography columns following the name standards of the [{geobr} package](https://github.com/ipeaGIT/geobr/) to help data manipulation and integration with spatial data from {geobr}. The added columns are: `c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)`.
+![](images/geobr_logo_y.png){width=150 fig-align="left"} ***Nota:*** Todos os conjuntos de dados no **{censobr}** são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote [{geobr} package](https://github.com/ipeaGIT/geobr/) para facilitar a manipulação e a integração de dados espaciais com os dados do **{geobr}**. As colunas adicionadas são: `c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)`.
 
 
 
 
-In order to create a map with these values, we are going to use the [{geobr} package](https://ipeagit.github.io/geobr/) to download the geometries of Brazilian municipalities.
+Para criar um mapa com esses valores, vamos usar o pacote [{geobr} package](https://ipeagit.github.io/geobr/) para baixar as geometrias dos municípios brasileiros.
 
 ```{r warning = FALSE}
+#| label: geobr-read-municipality
+
 library(geobr)
 
 muni_sf <- geobr::read_municipality(year = 2010,
@@ -333,9 +335,10 @@ muni_sf <- geobr::read_municipality(year = 2010,
 head(muni_sf)
 ```
 
-Now we only need to merge the spatial data with our estimates and map the results.
+Agora só precisamos unir os dados espaciais com nossas estimativas e mapear os resultados.
 
 ```{r warning = FALSE}
+#| label: merge-geobr-censobr-plot-map
 esg_sf <- left_join(muni_sf, esg, by = 'code_muni')
 
 ggplot() +
@@ -348,17 +351,17 @@ ggplot() +
 
 ```
 
-#### Spatial distribution of rents:
+#### Distribuição espacial do valor do aluguel:
 
-In this final example, we're going to visualize how the amount of money people spend on rent varies spatially across the metropolitan area of São Paulo.
+Neste exemplo final, vamos visualizar como a quantidade de dinheiro que as pessoas gastam com aluguel varia espacialmente pela região metropolitana de São Paulo. Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o **{geobr}**.
 
-First, let's download the municipalities of the metro area of São Paulo.
 ```{r warning = FALSE}
 metro_muni <- geobr::read_metro_area(year = 2010, 
                                      showProgress = FALSE) |> 
               subset(name_metro == "RM São Paulo")
 ```
-We also need the polygons of the weighting areas (áreas de ponderação). With the code below, we download all weighting areas in the state of São Paulo, and then keep only the ones in the metropolitan region of São Paulo.
+
+Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.
 
 ```{r warning = FALSE}
 wt_areas <- geobr::read_weighting_area(code_weighting = "SP", 
@@ -370,7 +373,7 @@ head(wt_areas)
 ```
 
 
-Now we need to calculate the average rent spent in each weighting area. Using the national household data set, we're going to (a) filter only observations in our municipalities of interest, (b) group observations by weighting area, (c) calculate the average rent, and (d) collect the results.
+Agora precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Utilizando o conjunto de dados da pesquisa domiciliar nacional, vamos (a) filtrar apenas as observações nos nossos municípios de interesse, (b) agrupar as observações por área de ponderação, (c) calcular o valor médio do aluguel e (d) coletar os resultados.
 
 ```{r warning = FALSE}
 rent <- hs |>
@@ -382,7 +385,8 @@ rent <- hs |>
 
 head(rent)
 ```
-Finally, we can merge the spatial data with our rent estimates and map the results.
+
+Por fim, podemos unir os dados espaciais com nossas estimativas de aluguel pela variável chave `code_weighting`, e mapear os resultados.
 
 ```{r warning = FALSE}
 rent_sf <- left_join(wt_areas, rent, by = 'code_weighting')
@@ -400,28 +404,29 @@ ggplot() +
 
 # Data cache
 
-The first time the user runs a function, **{censobr}** will download the file and store it locally. This way, the data only needs to be downloaded once. When the `cache` parameter is set to `TRUE` (Default), the function will read the cached data, which is much faster. 
+Na primeira vez que o usuário executa uma função, o **{censobr}** fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro `cache` está configurado como `TRUE` (Padrão), a função lerá os dados em cache, o que é muito mais rápido.
 
-Users can manage the cached data sets using the `censobr_cache()` function. For example, users can:
+Os usuários podem gerenciar os conjuntos de dados em cache usando a função `censobr_cache()`. Por exemplo, os usuários podem:
 
-List cached files:
+Listar arquivos em cache:
+
 ```{r warning=FALSE}
 censobr_cache(list_files = TRUE)
 ```
 
-Delete a particular file:
+Deletar um arquivo específico:
 ```{r warning=FALSE}
 censobr_cache(delete_file = "2010_emigration")
 
 ```
 
-Delete all files:
+Deletar todos arquivos do cache:
 ```{r warning=FALSE}
 censobr_cache(delete_file = "all")
 
 ```
 
-By default, **{censobr}** files are saved in the 'User' directory. However, users can run the function `set_censobr_cache_dir()` to set custom cache directory.
+Por padrão, os arquivos do **{censobr}** são salvos no diretório 'User'. No entanto, os usuários podem executar a função `set_censobr_cache_dir()` para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.
 
 ```{r, eval=FALSE, warning=FALSE}
 tempf <- tempdir()
