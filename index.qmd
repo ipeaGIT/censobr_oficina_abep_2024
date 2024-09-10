@@ -41,7 +41,7 @@ A oficina também vai demonstrar como o {censobr} permite trabalhar com grandes 
 </div>
 
 
-Aqui você encontra alguns slides explicando o que a gente cobre o que a gente *não cobre* com nesta oficina: 
+Aqui você encontra alguns slides explicando o que a gente cobre o que a gente *não cobre* com nesta oficina:
 
 <p><embed src="slides/1_intro.pdf" style="width:100.0%;height:100vh;" /></p>
 

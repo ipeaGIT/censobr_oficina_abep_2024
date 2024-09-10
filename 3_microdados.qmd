@@ -336,12 +336,30 @@ O **{geobr}** é um pacote para baixar dados espaciais oficiais do Brasil [@pere
 ::: {.callout-information appearance="default"}
 ## Integração entre {censobr} e {geobr}
 
-<!-- package logos side by side  -->
-<div style="text-align: center">
+teste
 
-<table><tr><td><img src='/images/censobr_logo.png' width="180"></td><td><img src='/images/geobr_logo_y.png' width="180"></td></tr></table>
 
+<div style="display: flex; justify-content: space-around;">
+  <img src="/images/censobr_logo.png" style="max-width: 20%; height: auto;">
+  <img src="/images/geobr_logo_y.png" style="max-width: 20%; height: auto;">
 </div>
+
+
+
+test markown
+
+<div style="display: flex; justify-content: space-around;">
+  ![Image 1](images/censobr_logo.png){style="max-width: 25%;"}
+  ![Image 2](images/geobr_logo_y.png){style="max-width: 25%;"}
+</div>
+
+teste markdown2
+
+<div style="display: flex; justify-content: space-around;">
+  ![Image 1](images/censobr_logo.png){width=250 fig-align="center"}
+  ![Image 2](images/geobr_logo_y.png){width=250 fig-align="center"}
+</div>
+
 
 Todos os dados do **{censobr}** são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote **{geobr}** para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: `c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')`.
 
