@@ -186,7 +186,7 @@ Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil 
 
 O comportamento padrão das as funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).
 
-```{r}
+```{r, message=FALSE}
 #| label: read-population-data
 pop <- read_population(
   year = 2010,
@@ -288,100 +288,125 @@ ggplot(data = piramide_df,
 
 # Dados de domicílios
 
-### Sewage coverage:
+### Saneamento:
 
-Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados com rede de esgoto nos municípios brasileiros. O primeiro passo é baixar os dados utilizando a função `read_households()`.
+Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função `read_households()`.
 
-```{r}
+```{r, message=FALSE}
 #| label: read-household-data
-hs <- read_households(year = 2010, 
+dom <- read_households(year = 2010, 
                       showProgress = FALSE)
 
 ```
 
-Agora vamos (a) agrupar as observações por município, (b) obter o número de domicílios conectados à rede de esgoto, (c) calcular a proporção de domicílios conectados e (d) coletar os resultados.
+Agora vamos (a) agrupar as observações por região e município, (b) obter o número de domicílios conectados à rede de esgoto, (c) obter o número total de domicílios, (d) calcular a proporção de domicílios conectados e (e) coletar os resultados.
 
 ```{r warning = FALSE}
 #| label: compute-sewage-connection
-
-esg <- hs |> 
+esg <- dom |> 
         compute() |>
-        group_by(code_muni) |>                                             # (a)
-        summarize(rede = sum(V0010[which(V0207=='1')]),                    # (b)
-                  total = sum(V0010)) |>                                   # (b)
-        mutate(cobertura = rede / total) |>                                # (c)
-        collect()                                                          # (d)
+        group_by(name_region, code_muni) |>                  # (a)
+        summarize(rede = sum(V0010[which(V0207=='1')]),      # (b)
+                  total = sum(V0010)) |>                     # (c)
+        mutate(cobertura = rede / total) |>                  # (d)
+        collect()                                            # (e)
 
 head(esg)
+```
+Uma rápida análise da dispersão dos valores com o *box-plot* abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuiem espacialmente.
+
+```{r}
+#| label: plot-sewage-regions
+ggplot(esg) +
+  geom_boxplot(aes(x=reorder(name_region, -cobertura), y=cobertura, 
+                   weight  = rede, color=name_region), 
+               show.legend = F, outlier.alpha = 0.1) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x="Região", y="Quantidade de domicílios\nconectados à rede de esgoto") +
+  theme_classic()
+
 ```
 
 
 # Análise espacial com {geobr}
 
-![](images/geobr_logo_y.png){width=150 fig-align="left"} ***Nota:*** Todos os conjuntos de dados no **{censobr}** são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote [{geobr} package](https://github.com/ipeaGIT/geobr/) para facilitar a manipulação e a integração de dados espaciais com os dados do **{geobr}**. As colunas adicionadas são: `c(‘code_muni’, ‘code_state’, ‘abbrev_state’, ‘name_state’, ‘code_region’, ‘name_region’, ‘code_weighting’)`.
+O **{geobr}** é um pacote para baixar dados espaciais oficiais do Brasil. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a [lista completa no site do pacote](https://ipeagit.github.io/geobr/)).
 
+::: {.callout-information appearance="default"}
+## Integração entre {censobr} e {geobr}
 
+![](images/geobr_logo_y.png){width=150 fig-align="left"}
 
+Todos os dados do **{censobr}** são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote [{geobr} package](https://github.com/ipeaGIT/geobr/) para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: `c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')`.
 
-Para criar um mapa com esses valores, vamos usar o pacote [{geobr} package](https://ipeagit.github.io/geobr/) para baixar as geometrias dos municípios brasileiros.
+:::
 
-```{r warning = FALSE}
+Para criarmos uma mapa com a distribuição espacial da cobertura de esgotamento no Brasil, nós vamos primeiro usar o pacote **{geobr}** para baixar as geometrias dos municípios brasileiros no anos de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.
+
+```{r warning = FALSE, message=FALSE}
 #| label: geobr-read-municipality
-
 library(geobr)
 
-muni_sf <- geobr::read_municipality(year = 2010,
-                                    showProgress = FALSE)
+regioes_df <- read_region(year = 2010)
+muni_sf <- read_municipality(year = 2010)
+
 head(muni_sf)
 ```
 
-Agora só precisamos unir os dados espaciais com nossas estimativas e mapear os resultados.
+Agora nós só precisamos unir os dados espaciais com nossas estimativas utilizando a variável chave `code_muni` e mapear os resultados.
 
 ```{r warning = FALSE}
 #| label: merge-geobr-censobr-plot-map
+# merge data
 esg_sf <- left_join(muni_sf, esg, by = 'code_muni')
 
+# plot map
 ggplot() +
   geom_sf(data = esg_sf, aes(fill = cobertura), color=NA) +
-  labs(title = "Share of households connected to a sewage network") +
+  geom_sf(data = regioes_df, color = 'gray20', fill=NA) +
+  labs(title = "Quantidade de domicílios conectados à rede de esgoto") +
   scale_fill_distiller(palette = "Greens", direction = 1, 
-                       name='Share of\nhouseholds', 
+                       name='Proporção de\ndomicílios', 
                        labels = scales::percent) +
-  theme_void()
+  theme_void() +
+  theme(legend.position = 'bottom')
 
 ```
 
-#### Distribuição espacial do valor do aluguel:
+### Distribuição espacial do valor do aluguel:
 
-Neste exemplo final, vamos visualizar como a quantidade de dinheiro que as pessoas gastam com aluguel varia espacialmente pela região metropolitana de São Paulo. Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o **{geobr}**.
+No exemplo anterio, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemlo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo. 
 
-```{r warning = FALSE}
-metro_muni <- geobr::read_metro_area(year = 2010, 
-                                     showProgress = FALSE) |> 
-              subset(name_metro == "RM São Paulo")
+Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o **{geobr}**.
+
+```{r warning = FALSE, message=FALSE}
+#| label: geobr-read-metro-sp
+metro_muni <- geobr::read_metro_area(year = 2010) |> 
+              filter(name_metro == "RM São Paulo")
 ```
 
 Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.
 
 ```{r warning = FALSE}
-wt_areas <- geobr::read_weighting_area(code_weighting = "SP", 
-                                       showProgress = FALSE,
-                                       year = 2010)
+#| label: geobr-read-areas-area
+wt_areas <- geobr::read_weighting_area(code_weighting = "SP",
+                                       year = 2010,
+                                       simplified = FALSE)
 
-wt_areas <- subset(wt_areas, code_muni %in% metro_muni$code_muni)
+wt_areas <- filter(wt_areas, code_muni %in% metro_muni$code_muni)
 head(wt_areas)
 ```
 
-
-Agora precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Utilizando o conjunto de dados da pesquisa domiciliar nacional, vamos (a) filtrar apenas as observações nos nossos municípios de interesse, (b) agrupar as observações por área de ponderação, (c) calcular o valor médio do aluguel e (d) coletar os resultados.
+Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel `V2011` ponderada pela variável do peso do domicílio `V0010`. Para encontrar esses valores,  o código abaixo (a) filtra apenas as observações nos nossos municípios de interesse, (b) computa temporariamente o resultado, (c) agrupa as observações por área de ponderação, (d) calcula o valor médio do aluguel e (e) coleta os resultados.
 
 ```{r warning = FALSE}
-rent <- hs |>
+#| label: censobr-calcula-alugel-areapond
+rent <- dom |>
         filter(code_muni %in% metro_muni$code_muni) |>                     # (a)
-        compute() |>
-        group_by(code_weighting) |>                                        # (b)
-        summarize(avgrent=weighted.mean(x=V2011, w=V0010, na.rm=TRUE)) |>  # (c)
-        collect()                                                          # (d)
+        compute() |>                                                       # (b)
+        group_by(code_weighting) |>                                        # (c)
+        summarize(avgrent=weighted.mean(x=V2011, w=V0010, na.rm=TRUE)) |>  # (d)
+        collect()                                                          # (e)
 
 head(rent)
 ```
@@ -389,13 +414,17 @@ head(rent)
 Por fim, podemos unir os dados espaciais com nossas estimativas de aluguel pela variável chave `code_weighting`, e mapear os resultados.
 
 ```{r warning = FALSE}
+#| label: plot-alugel-areapond
 rent_sf <- left_join(wt_areas, rent, by = 'code_weighting')
 
 ggplot() +
   geom_sf(data = rent_sf, aes(fill = avgrent), color=NA) +
   geom_sf(data = metro_muni, color='gray', fill=NA) +
-  scale_fill_distiller(palette = "Greens", direction = 1, 
-                       name='Avgerage\nRent in R$') +
+  labs(title = "Valor médio do aluguel por área de ponderação",
+       subtitle = "Região Metropolitana de São Paulo, 2010") +
+  scale_fill_distiller(palette = "Purples", direction = 1, 
+                       name='Valores\nem R$',
+                       labels = scales::number_format(big.mark = ".")) +
   theme_void()
 
 ```
