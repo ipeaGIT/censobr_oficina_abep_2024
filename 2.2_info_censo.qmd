@@ -8,7 +8,7 @@ Nesta seção, nós revisamos alguns conceitos básicos sobre a organização do
 
 ::: {.callout-note}
 # Nota
-Os primeiro censos nacionais foram realizados ainda em 1872 e 1890, seguidos dos censos de 1900 e 1920 [ver @ibge1987estatisticas]. Desde 1940, os censos vem sendo realizados a cada 10 anos, com exceção dos censos de 1991 e 2022.
+Os primeiro censos nacionais foram realizados ainda em 1872 e 1890, seguidos dos censos de 1900 e 1920 [ver @ibge1990estatisticas]. Desde 1940, os censos vem sendo realizados a cada 10 anos, com exceção dos censos de 1991 e 2022.
 
 O conteúo desta oficina se refere basicamente aos censos 'modernos' de 1960 em diante.
 :::
@@ -120,7 +120,7 @@ temp1
 #        width = 12, height = 8, units = 'cm', dpi = 300)
 ```
 
-![](images/fig_spatial_layers.png){width=550 fig-align="right"}
+![](images/fig_spatial_layers.png){width=550 fig-align="center"}
 
 
 

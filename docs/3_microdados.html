@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -236,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="dados-disponíveis-no-censobr" class="level1">
 <h1>3.1 Dados disponíveis no {censobr}</h1>
-<p>O pacote <strong>{censobr}</strong> disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
+<p>O <strong>{censobr}</strong> é um pacote de R para acessar os dados e documentação dos censos demográficos do Brasil <span class="citation" data-cites="pereira2023censobr">(<a href="#ref-pereira2023censobr" role="doc-biblioref">Pereira and Barbosa 2023</a>)</span>. O pacote disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o <strong>{censobr}</strong>.</p>
 <p><strong>Tabela 1. Funções de dados disponíveis no {censobr}</strong></p>
   <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -383,7 +403,7 @@ Cache local dos dados
 <h1>3.2 Trabalhando com dados maior do que a RAM</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="250"></p>
+<p><img src="images/arrow_plus_dplyr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
 </figure>
 </div>
 <p>É muito comum que os microdados do censo brasileiro sejam grandes demais para serem carregados na memória RAM do usuário. Para resolver esse problema, o <strong>{censobr}</strong> foi construído sobre a plataforma <a href="https://arrow.apache.org/docs/r/">Arrow</a> e arquivos em formato <code>.parquet</code>, o que permite que o usuário trabalhe de maneira eficiente até mesmo com bases de dados muito grandes utilizando funções já bem conhecidas do pacote <a href="https://arrow.apache.org/docs/r/articles/arrow.html#analyzing-arrow-data-with-dplyr">{dplyr}</a>.</p>
@@ -612,15 +632,23 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 </section>
 <section id="análise-espacial-com-geobr" class="level1">
 <h1>3.5 Análise espacial com {geobr}</h1>
-<p>O <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
+<p>O <strong>{geobr}</strong> é um pacote para baixar dados espaciais oficiais do Brasil <span class="citation" data-cites="pereira2019geobr">(<a href="#ref-pereira2019geobr" role="doc-biblioref">Pereira and Gonçalves 2019</a>)</span>. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a <a href="https://ipeagit.github.io/geobr/">lista completa no site do pacote</a>).</p>
 <section id="integração-entre-censobr-e-geobr" class="level2 callout-information" data-appearance="default">
 <h2 data-anchor-id="integração-entre-censobr-e-geobr">Integração entre {censobr} e {geobr}</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/geobr_logo_y.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="150"></p>
-</figure>
+<!-- package logos side by side  -->
+<div style="text-align: center">
+<table>
+<tbody><tr>
+<td>
+<img src="./images/censobr_logo.png" width="180">
+</td>
+<td>
+<img src="./images/geobr_logo_y.png" width="180">
+</td>
+</tr>
+</tbody></table>
 </div>
-<p>Todos os dados do <strong>{censobr}</strong> são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote <a href="https://github.com/ipeaGIT/geobr/">{geobr} package</a> para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: <code>c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')</code>.</p>
+<p>Todos os dados do <strong>{censobr}</strong> são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote <strong>{geobr}</strong> para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: <code>c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')</code>.</p>
 </section>
 <p>Para criarmos uma mapa com a distribuição espacial da cobertura de esgotamento no Brasil, nós vamos primeiro usar o pacote <strong>{geobr}</strong> para baixar as geometrias dos municípios brasileiros no anos de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.</p>
 <div class="cell">
@@ -810,8 +838,16 @@ C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_populatio
 </div>
 
 
+
 </section>
-</main></div>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-pereira2023censobr" class="csl-entry" role="listitem">
+Pereira, Rafael H. M., and Rogério J. Barbosa. 2023. <em>Censobr: Download Data from Brazil’s Population Census</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.censobr">https://doi.org/10.32614/CRAN.package.censobr</a>.
+</div>
+<div id="ref-pereira2019geobr" class="csl-entry" role="listitem">
+Pereira, Rafael H. M., and Caio N. Gonçalves. 2019. <em>Geobr: Download Official Spatial Data Sets of Brazil</em>. CRAN. <a href="https://doi.org/10.32614/CRAN.package.geobr">https://doi.org/10.32614/CRAN.package.geobr</a>.
+</div>
+</div></section></div></main></div>
     </div>
   </div>
 </div>
