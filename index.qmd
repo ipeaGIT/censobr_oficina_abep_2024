@@ -30,7 +30,13 @@ A oficina também vai demonstrar como o {censobr} permite trabalhar com grandes 
 <!-- package logos side by side  -->
 <div style="text-align: center">
 
-<table><tr><td><img src='/images/censobr_logo.png' width="180"></td><td><img src='/images/geobr_logo_y.png' width="180"></td></tr></table>
+  <table>
+    <tr>
+      <td style="border:none">
+      <img src='/images/censobr_logo.png' width="180"></td><td><img src='/images/geobr_logo_y.png' width="180">
+      </td style="border:none">
+    </tr>
+  </table>
 
 </div>
 
