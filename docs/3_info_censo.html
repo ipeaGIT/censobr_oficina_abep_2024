@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.43">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{censobr}: Explorando o Censo Demográfico em R – 2.2 Conceitos iniciais</title>
+<title>{censobr}: Explorando o Censo Demográfico em R – 3&nbsp; Conceitos iniciais</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./3_microdados.html" rel="next">
-<link href="./2.1_instalacao.html" rel="prev">
+<link href="./4_microdados.html" rel="next">
+<link href="./2_instalacao.html" rel="prev">
 <link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -111,22 +111,28 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 
 
 <link rel="stylesheet" href="styles.css">
+<meta name="citation_title" content="[3]{.chapter-number}&nbsp; [Conceitos iniciais]{.chapter-title}">
+<meta name="citation_fulltext_html_url" content="https://ipeagit.github.io/censobr_oficina_abep_2024//3_info_censo.html">
+<meta name="citation_language" content="pt">
+<meta name="citation_reference" content="citation_title=Estatisticas historicas do brasil : Series economicas demograficas e sociais de 1550 a 1988;,citation_author=undefined IBGE;,citation_publication_date=1990;,citation_cover_date=1990;,citation_year=1990;,citation_fulltext_html_url=https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;amp;amp;id=221431;,citation_isbn=8524003332;">
+<meta name="citation_reference" content="citation_title=Geobr: Download official spatial data sets of brazil;,citation_author=Rafael H. M. Pereira;,citation_author=Caio N. Gonçalves;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://cran.r-project.org/package=geobr;,citation_doi=10.32614/CRAN.package.geobr;">
+<meta name="citation_reference" content="citation_title=Censobr: Download data from brazil’s population census;,citation_author=Rafael H. M. Pereira;,citation_author=Rogério J. Barbosa;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://CRAN.R-project.org/package=censobr;,citation_doi=10.32614/CRAN.package.censobr;">
 </head>
 
 <body class="nav-sidebar docked">
@@ -135,13 +141,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">2.2 Conceitos iniciais</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3_info_censo.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conceitos iniciais</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -158,13 +164,14 @@ div.csl-indent {
     <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://x.com/UrbanDemog" title="twitter" class="quarto-navigation-tool px-1" aria-label="twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://www.linkedin.com/in/rafael-h-m-pereira/" title="linkedin" class="quarto-navigation-tool px-1" aria-label="linkedin"><i class="bi bi-linkedin"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Procurar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -172,48 +179,37 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Introdução à oficina</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">2. Informações gerais</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2.1_instalacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.1 Instalação</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2.2_info_censo.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2.2 Conceitos iniciais</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3_microdados.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Microdados</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdudução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./4_agregados_setores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Agregados dos Setores Censitários</span></a>
+  <a href="./2_instalacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5_documentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Documentação</span></a>
+  <a href="./3_info_censo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conceitos iniciais</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Microdados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Agregados dos Setores Censitários</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Documentação</span></span></a>
   </div>
 </li>
     </ul>
@@ -223,17 +219,13 @@ div.csl-indent {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Índice</h2>
   <ul>
-  <li><a href="#pesquisa-da-amostra-e-do-universo" id="toc-pesquisa-da-amostra-e-do-universo" class="nav-link active" data-scroll-target="#pesquisa-da-amostra-e-do-universo">Pesquisa da amostra e do universo</a></li>
-  <li><a href="#microdados-da-amostra-e-dados-agregados-do-universo" id="toc-microdados-da-amostra-e-dados-agregados-do-universo" class="nav-link" data-scroll-target="#microdados-da-amostra-e-dados-agregados-do-universo">Microdados da Amostra e Dados Agregados do Universo</a></li>
-  <li><a href="#setores-censitários-e-áreas-de-ponderação" id="toc-setores-censitários-e-áreas-de-ponderação" class="nav-link" data-scroll-target="#setores-censitários-e-áreas-de-ponderação">Setores Censitários e Áreas de Ponderação</a>
-  <ul class="collapse">
-  <li><a href="#setores-censitários" id="toc-setores-censitários" class="nav-link" data-scroll-target="#setores-censitários">Setores censitários</a>
-  <ul class="collapse">
-  <li><a href="#áreas-de-ponderação" id="toc-áreas-de-ponderação" class="nav-link" data-scroll-target="#áreas-de-ponderação">Áreas de ponderação</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#pesquisa-da-amostra-e-do-universo" id="toc-pesquisa-da-amostra-e-do-universo" class="nav-link active" data-scroll-target="#pesquisa-da-amostra-e-do-universo"><span class="header-section-number">3.1</span> Pesquisa da amostra e do universo</a></li>
+  <li><a href="#microdados-da-amostra-e-dados-agregados-do-universo" id="toc-microdados-da-amostra-e-dados-agregados-do-universo" class="nav-link" data-scroll-target="#microdados-da-amostra-e-dados-agregados-do-universo"><span class="header-section-number">3.2</span> Microdados da Amostra e Dados Agregados do Universo</a></li>
+  <li><a href="#setores-censitários-e-áreas-de-ponderação" id="toc-setores-censitários-e-áreas-de-ponderação" class="nav-link" data-scroll-target="#setores-censitários-e-áreas-de-ponderação"><span class="header-section-number">3.3</span> Setores Censitários e Áreas de Ponderação</a></li>
+  <li><a href="#setores-censitários" id="toc-setores-censitários" class="nav-link" data-scroll-target="#setores-censitários"><span class="header-section-number">3.4</span> Setores censitários</a></li>
+  <li><a href="#áreas-de-ponderação" id="toc-áreas-de-ponderação" class="nav-link" data-scroll-target="#áreas-de-ponderação"><span class="header-section-number">3.5</span> Áreas de ponderação</a></li>
   </ul>
 </nav>
     </div>
@@ -241,9 +233,9 @@ div.csl-indent {
 <div class="quarto-about-solana column-body">
   <div class="about-entity">
     <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2.1_instalacao.html">2. Informações gerais</a></li><li class="breadcrumb-item"><a href="./2.2_info_censo.html">2.2 Conceitos iniciais</a></li></ol></nav>
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2.2 Conceitos iniciais</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conceitos iniciais</span></h1>
 </div>
 <div class="quarto-title-meta">
   </div>
@@ -266,16 +258,16 @@ Nota
 <p>O conteúo desta oficina se refere basicamente aos censos ‘modernos’ de 1960 em diante.</p>
 </div>
 </div>
-<section id="pesquisa-da-amostra-e-do-universo" class="level1">
-<h1>Pesquisa da amostra e do universo</h1>
+<section id="pesquisa-da-amostra-e-do-universo" class="level2" data-number="3.1">
+<h2 data-number="3.1" data-anchor-id="pesquisa-da-amostra-e-do-universo"><span class="header-section-number">3.1</span> Pesquisa da amostra e do universo</h2>
 <p>Desde 1960, o Censo Demográfico passou a consistir de duas pesquisas realizadas simultaneamente.</p>
 <ul>
 <li><strong>Universo</strong>: uma pesquisa aplicada a todos os domicílios (ou universo). Esta pesquisa é feita com um questionário <em>básico</em> que costuma ser curto, contendo entre 9 e 30 questões, dependendo da edição do censo.</li>
 <li><strong>Amostra</strong>: uma pesquisa amostral aplicada a apenas uma parcela dos domicílios. A fração amostral era de 25% nos anos de 1960, 1970 e 1980 e passou para cerca de 10% em 1991 em diante. Esta pesquisa é feita com um questionário mais extenso.</li>
 </ul>
 </section>
-<section id="microdados-da-amostra-e-dados-agregados-do-universo" class="level1">
-<h1>Microdados da Amostra e Dados Agregados do Universo</h1>
+<section id="microdados-da-amostra-e-dados-agregados-do-universo" class="level2" data-number="3.2">
+<h2 data-number="3.2" data-anchor-id="microdados-da-amostra-e-dados-agregados-do-universo"><span class="header-section-number">3.2</span> Microdados da Amostra e Dados Agregados do Universo</h2>
 <p>Microdados são bancos de dados em que cada observação representa uma unidade de coleta de informação. Nos censos, os microdados se referem aos arquivos em que cada observação ou linha são domicílios ou pessoas. A noção de microdados se contrapõe à de dados agregados, nos quais os casos são “agregaçções” das informações obtidas a partir por exemplo da soma ou das médias das informações dos microdados. Tais agregações podem ser, por exemplo, no nível de bairros, distritos, municípios etc.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -292,22 +284,24 @@ Importante
 </div>
 </div>
 </section>
-<section id="setores-censitários-e-áreas-de-ponderação" class="level1">
-<h1>Setores Censitários e Áreas de Ponderação</h1>
+<section id="setores-censitários-e-áreas-de-ponderação" class="level2" data-number="3.3">
+<h2 data-number="3.3" data-anchor-id="setores-censitários-e-áreas-de-ponderação"><span class="header-section-number">3.3</span> Setores Censitários e Áreas de Ponderação</h2>
 <p>Com os Microdados da Amostra é possível fazer análises por indivíduos, famílias e domicílios. Mas análises espaciais, que levam em conta vizinhanças e distâncias geográficas, por exemplo, também podem ser de interesse. Nesse caso, é importante ter ciência da granularidade dos dados – i.e.&nbsp;de qual a menor unidade espacial que permite inferência estatística. Para isso, cabe destacar as duas principais unidades espaciais na construção dos censos demográficos:</p>
-<section id="setores-censitários" class="level2">
-<h2 data-anchor-id="setores-censitários">Setores censitários</h2>
+</section>
+<section id="setores-censitários" class="level2" data-number="3.4">
+<h2 data-number="3.4" data-anchor-id="setores-censitários"><span class="header-section-number">3.4</span> Setores censitários</h2>
 <ul>
 <li>Os <strong>cetores censitários</strong> são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.</li>
 </ul>
-<section id="áreas-de-ponderação" class="level3">
-<h3 data-anchor-id="áreas-de-ponderação">Áreas de ponderação</h3>
+</section>
+<section id="áreas-de-ponderação" class="level2" data-number="3.5">
+<h2 data-number="3.5" data-anchor-id="áreas-de-ponderação"><span class="header-section-number">3.5</span> Áreas de ponderação</h2>
 <ul>
 <li>As <strong>áreas de ponderação</strong> são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.</li>
 </ul>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geobr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -372,7 +366,7 @@ Importante
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>temp1</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave(temp1, filename = 'fig_spatial_layers.png', </span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">#        width = 12, height = 8, units = 'cm', dpi = 300)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -382,15 +376,13 @@ Importante
 </div>
 
 
-
-</section>
-</section>
-</section>
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-ibge1990estatisticas" class="csl-entry" role="listitem">
-IBGE. 1990. <em>Estatisticas Historicas Do Brasil : Series Economicas Demograficas e Sociais de 1550 a 1988</em>. IBGE. <a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431">https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431</a>.
+IBGE. 1990. <em>Estatisticas historicas do Brasil : series economicas demograficas e sociais de 1550 a 1988</em>. IBGE. <a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431">https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=221431</a>.
 </div>
-</div></section></div></main></div>
+</div>
+</section>
+</main></div>
     </div>
   </div>
 </div>
@@ -575,12 +567,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -954,17 +946,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./2.1_instalacao.html" class="pagination-link" aria-label="2.1 Instalação">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.1 Instalação</span>
+      <a href="./2_instalacao.html" class="pagination-link" aria-label="Instalação">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./3_microdados.html" class="pagination-link" aria-label="3. Microdados">
-        <span class="nav-page-text">3. Microdados</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./4_microdados.html" class="pagination-link" aria-label="Microdados">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Microdados</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Rafael H. M. Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

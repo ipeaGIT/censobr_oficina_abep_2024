@@ -1,18 +1,4 @@
----
-title: "1. Introdução à oficina"
-
-author:
-  - name: Rafael H. M. Pereira
-    orcid: "0000-0003-2125-7465"
-#    affiliations:
-#      - name: "Ipea - Instituto de Pesquisa Econômica Aplicada"
-#    url: "https://www.urbandemographics.org/about/"
-  - name: Rogerio Barbosa
-    orcid: "0000-0002-6796-4547"
-#    affiliations:
-#      - name: "Instituto de Estudos Sociais e Políticos (IESP/UERJ)"
-#    url: "https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa/"
----
+# Introdudução
 
 Este site apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.
 
@@ -74,7 +60,7 @@ Leitura adicional relevante, mas não essencial para a oficina.
 | [Twitter](https://x.com/antrologos) | [Linkedin](https://www.linkedin.com/in/rog%C3%A9rio-barbosa-ab8531117/) | 
 
 
-### Bio dos instrutors:
+## Bio dos instrutors:
 
 **Rafael H. M. Pereira** é pesquisador sênior nas áreas de planejamento urbano, ciência de dados espaciais e mobilidade urbana no Instituto de Pesquisa Econômica Aplicada (Ipea). Sua pesquisa investiga como as políticas urbanas e tecnologias moldam a organização espacial das cidades, a mobilidade humana, bem como seus impactos nas desigualdades sociais e de saúde. Algumas de suas contribuições nos campos de urban analytics e planejamento envolvem o desenvolvimento de novos métodos e ferramentas computacionais de código aberto para o estudo de sistemas urbanos e redes de transporte. Essas contribuições partem de interesses substantivos sobre questões de equidade no planejamento urbano, desigualdades de acesso a oportunidades, e dos impactos ambientais do ambiente construído e de padrões de mobilidade. Com graduação em sociologia pela UnB e mestrado em demografia pela Unicamp, Rafael Pereira obteve seu PhD em geografia pela Universidade de Oxford.
 

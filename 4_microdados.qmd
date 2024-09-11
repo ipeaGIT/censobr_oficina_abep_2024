@@ -1,10 +1,11 @@
 ---
-title: "3. Microdados"
 from: markdown+emoji
 code-annotations: hover
 ---
 
-# 3.1 Dados disponíveis no {censobr}
+# Microdados
+
+## Dados disponíveis no {censobr}
 
 
 O **{censobr}** é um pacote de R para acessar os dados e documentação dos censos demográficos do Brasil [@pereira2023censobr]. O pacote disponibiliza microdados da amostra de todas as edições do censo demográfico desde 1970. A Tabela 1 apresenta abaixo todas as bases de dados do censo que você consegue acessar com o **{censobr}**.
@@ -161,7 +162,7 @@ A primeira vez que o usuário executa uma função, o **{censobr}** fará o down
 :::
 
 
-# 3.2 Trabalhando com dados maior do que a RAM
+## Trabalhando com dados maior do que a RAM
 
 ![](images/arrow_plus_dplyr.png){width=350 fig-align="center"}
 
@@ -181,7 +182,7 @@ library(ggplot2)
 ```
 
 
-# 3.3 Dados de população
+## Dados de população
 
 Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função `read_population()` para carregar os microdados de população.
 
@@ -287,7 +288,7 @@ ggplot(data = piramide_df,
 ```
 
 
-# 3.4 Dados de domicílios
+## Dados de domicílios
 
 ### Saneamento:
 
@@ -329,37 +330,19 @@ ggplot(esg) +
 ```
 
 
-# 3.5 Análise espacial com {geobr}
+## Análise espacial com {geobr}
 
 O **{geobr}** é um pacote para baixar dados espaciais oficiais do Brasil [@pereira2019geobr]. Ele inclui uma ampla variedade de dados geoespaciais disponíveis em várias escalas geográficas e para diversos anos, como municípios, regiões metropolitanas, biomas, estabelecimentos de saúde, etc (veja a [lista completa no site do pacote](https://ipeagit.github.io/geobr/)).
 
-::: {.callout-information appearance="default"}
+
 ## Integração entre {censobr} e {geobr}
 
-teste
-
-
 <div style="display: flex; justify-content: space-around;">
-  <img src="/images/censobr_logo.png" style="max-width: 20%; height: auto;">
-  <img src="/images/geobr_logo_y.png" style="max-width: 20%; height: auto;">
+  ![Image 1](images/censobr_logo.png){width=160 fig-align="center"}
+  ![Image 2](images/geobr_logo_y.png){width=160 fig-align="center"}
 </div>
 
-
-
-test markown
-
-<div style="display: flex; justify-content: space-around;">
-  ![Image 1](images/censobr_logo.png){style="max-width: 25%;"}
-  ![Image 2](images/geobr_logo_y.png){style="max-width: 25%;"}
-</div>
-
-teste markdown2
-
-<div style="display: flex; justify-content: space-around;">
-  ![Image 1](images/censobr_logo.png){width=250 fig-align="center"}
-  ![Image 2](images/geobr_logo_y.png){width=250 fig-align="center"}
-</div>
-
+::: {.callout-information appearance="default"}
 
 Todos os dados do **{censobr}** são enriquecidos com colunas de geografia, seguindo os padrões de nomenclatura do pacote **{geobr}** para facilitar a manipulação e a integração de dados espaciais dos censos demográficos do Brasil. As colunas adicionadas são: `c('code_muni', 'code_state', 'abbrev_state', 'name_state', 'code_region', 'name_region', 'code_weighting', 'code_tract')`.
 
@@ -455,7 +438,7 @@ ggplot() +
 
 
 
-# 3.5 Data cache
+## Data cache
 
 Na primeira vez que o usuário executa uma função, o **{censobr}** fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro `cache` está configurado como `TRUE` (Padrão), a função lerá os dados em cache, o que é muito mais rápido.
 

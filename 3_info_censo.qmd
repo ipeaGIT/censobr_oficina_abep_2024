@@ -1,6 +1,8 @@
 ---
-title: "2.2 Conceitos iniciais"
+from: markdown+emoji
 ---
+
+# Conceitos iniciais
 
 O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.
 
@@ -15,14 +17,14 @@ O conteúo desta oficina se refere basicamente aos censos 'modernos' de 1960 em 
 
 
 
-# Pesquisa da amostra e do universo
+## Pesquisa da amostra e do universo
 
 Desde 1960, o Censo Demográfico passou a consistir de duas pesquisas realizadas simultaneamente.
 
 - **Universo**: uma pesquisa aplicada a todos os domicílios (ou universo). Esta pesquisa é feita com um questionário *básico* que costuma ser curto, contendo entre 9 e 30 questões, dependendo da edição do censo.
 - **Amostra**: uma pesquisa amostral aplicada a apenas uma parcela dos domicílios. A fração amostral era de 25% nos anos de 1960, 1970 e 1980 e passou para cerca de 10% em 1991 em diante. Esta pesquisa é feita com um questionário mais extenso.
 
-# Microdados da Amostra e Dados Agregados do Universo
+## Microdados da Amostra e Dados Agregados do Universo
 
 Microdados são bancos de dados em que cada observação representa uma unidade de coleta de informação. Nos censos, os microdados se referem aos arquivos em que cada observação ou linha são domicílios ou pessoas. A noção de microdados se contrapõe à de dados agregados, nos quais os casos são “agregaçções” das informações obtidas a partir por exemplo da soma ou das médias das informações dos microdados. Tais agregações podem ser, por exemplo, no nível de bairros, distritos, municípios etc.
 
@@ -34,7 +36,7 @@ Obs. O IBGE não disponibiliza os microdados do universo porque a sua divulgaç�
 :::
 
 
-# Setores Censitários e Áreas de Ponderação
+## Setores Censitários e Áreas de Ponderação
 
 Com os Microdados da Amostra é possível fazer análises por indivíduos, famílias e domicílios. Mas análises espaciais, que levam em conta vizinhanças e distâncias geográficas, por exemplo, também podem ser de interesse. Nesse caso, é importante ter ciência da granularidade dos dados – i.e. de qual a menor unidade espacial que permite inferência estatística. Para isso, cabe destacar as duas principais unidades espaciais na construção dos censos demográficos:
 
@@ -42,7 +44,7 @@ Com os Microdados da Amostra é possível fazer análises por indivíduos, famí
 
 - Os **cetores censitários** são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.
 
-### Áreas de ponderação
+## Áreas de ponderação
 
 - As **áreas de ponderação** são a menor unidade espacial para a qual os dados da pesquisa amostral possuem representatividade estatística. Essas áras são constituídas por agrupamentos de setores censitários contíguos, mas que também variam de acordo com a densidade demográfica de cada região. Para o Censo de 2010, o IBGE estabeleceu que uma área de ponderação deveria ter, no mínimo, 400 domicílios ocupados na amostra. Em regiões menos densamente povoadas, essas áreas acabam ocupando uma larga extensão territorial.
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.43">
@@ -9,7 +9,7 @@
 <meta name="author" content="Rafael H. M. Pereira">
 <meta name="author" content="Rogerio Barbosa">
 
-<title>{censobr}: Explorando o Censo Demográfico em R – 1. Introdução à oficina</title>
+<title>{censobr}: Explorando o Censo Demográfico em R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2.1_instalacao.html" rel="next">
+<link href="./2_instalacao.html" rel="next">
 <link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -58,22 +58,30 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 
 
 <link rel="stylesheet" href="styles.css">
+<meta name="citation_title" content="{censobr}: Explorando o Censo Demográfico em R">
+<meta name="citation_author" content="Rafael H. M. Pereira">
+<meta name="citation_author" content="Rogerio Barbosa">
+<meta name="citation_fulltext_html_url" content="https://ipeagit.github.io/censobr_oficina_abep_2024//">
+<meta name="citation_language" content="pt">
+<meta name="citation_reference" content="citation_title=Estatisticas historicas do brasil : Series economicas demograficas e sociais de 1550 a 1988;,citation_author=undefined IBGE;,citation_publication_date=1990;,citation_cover_date=1990;,citation_year=1990;,citation_fulltext_html_url=https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;amp;amp;id=221431;,citation_isbn=8524003332;">
+<meta name="citation_reference" content="citation_title=Geobr: Download official spatial data sets of brazil;,citation_author=Rafael H. M. Pereira;,citation_author=Caio N. Gonçalves;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://cran.r-project.org/package=geobr;,citation_doi=10.32614/CRAN.package.geobr;">
+<meta name="citation_reference" content="citation_title=Censobr: Download data from brazil’s population census;,citation_author=Rafael H. M. Pereira;,citation_author=Rogério J. Barbosa;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://CRAN.R-project.org/package=censobr;,citation_doi=10.32614/CRAN.package.censobr;">
 </head>
 
 <body class="nav-sidebar docked">
@@ -82,13 +90,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">1. Introdução à oficina</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdudução</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -105,13 +113,14 @@ ul.task-list li input[type="checkbox"] {
     <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" title="Github" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://x.com/UrbanDemog" title="twitter" class="quarto-navigation-tool px-1" aria-label="twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://www.linkedin.com/in/rafael-h-m-pereira/" title="linkedin" class="quarto-navigation-tool px-1" aria-label="linkedin"><i class="bi bi-linkedin"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Procurar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -119,48 +128,37 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">1. Introdução à oficina</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">2. Informações gerais</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2.1_instalacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.1 Instalação</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2.2_info_censo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.2 Conceitos iniciais</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3_microdados.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Microdados</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdudução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./4_agregados_setores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Agregados dos Setores Censitários</span></a>
+  <a href="./2_instalacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5_documentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Documentação</span></a>
+  <a href="./3_info_censo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conceitos iniciais</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_microdados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Microdados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_agregados_setores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Agregados dos Setores Censitários</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_documentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Documentação</span></span></a>
   </div>
 </li>
     </ul>
@@ -170,13 +168,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Índice</h2>
   <ul>
-  <li><a href="#resumo-da-oficina" id="toc-resumo-da-oficina" class="nav-link active" data-scroll-target="#resumo-da-oficina">Resumo da oficina:</a></li>
-  <li><a href="#sugestões-de-leitura" id="toc-sugestões-de-leitura" class="nav-link" data-scroll-target="#sugestões-de-leitura">Sugestões de leitura:</a></li>
-  <li><a href="#sobre-os-instrutores" id="toc-sobre-os-instrutores" class="nav-link" data-scroll-target="#sobre-os-instrutores">Sobre os instrutores:</a>
+  <li><a href="#introdudução" id="toc-introdudução" class="nav-link active" data-scroll-target="#introdudução"><span class="header-section-number">1</span> Introdudução</a></li>
+  <li><a href="#resumo-da-oficina" id="toc-resumo-da-oficina" class="nav-link" data-scroll-target="#resumo-da-oficina"><span class="header-section-number">2</span> Resumo da oficina:</a></li>
+  <li><a href="#sugestões-de-leitura" id="toc-sugestões-de-leitura" class="nav-link" data-scroll-target="#sugestões-de-leitura"><span class="header-section-number">3</span> Sugestões de leitura:</a></li>
+  <li><a href="#sobre-os-instrutores" id="toc-sobre-os-instrutores" class="nav-link" data-scroll-target="#sobre-os-instrutores"><span class="header-section-number">4</span> Sobre os instrutores:</a>
   <ul class="collapse">
-  <li><a href="#bio-dos-instrutors" id="toc-bio-dos-instrutors" class="nav-link" data-scroll-target="#bio-dos-instrutors">Bio dos instrutors:</a></li>
+  <li><a href="#bio-dos-instrutors" id="toc-bio-dos-instrutors" class="nav-link" data-scroll-target="#bio-dos-instrutors"><span class="header-section-number">4.1</span> Bio dos instrutors:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -187,20 +186,35 @@ ul.task-list li input[type="checkbox"] {
     <div class="entity-contents">
       <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">1. Introdução à oficina</h1>
+<h1 class="title">{censobr}: Explorando o Censo Demográfico em R</h1>
 </div>
-<div class="quarto-title-meta">
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autores</div>
+  <div class="quarto-title-meta-heading">Afiliações</div>
     <div class="quarto-title-meta-contents">
-             <p>Rafael H. M. Pereira <a href="https://orcid.org/0000-0003-2125-7465" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-             <p>Rogerio Barbosa <a href="https://orcid.org/0000-0002-6796-4547" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
+    <p class="author"><a href="https://www.urbandemographics.org">Rafael H. M. Pereira</a> <a href="mailto:rafael.pereira@ipea.gov.br" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-2125-7465" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Instituto de Pesquisa Econômica Aplicada (Ipea)
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa">Rogerio Barbosa</a> <a href="https://orcid.org/0000-0003-2125-7465" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Instituto de Estudos Sociais e Políticos (IESP/UERJ)
+          </p>
+      </div>
+  </div>
+<div class="quarto-title-meta">
   </div>
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
 
+<section id="introdudução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdudução</h1>
 <p>Este site apresenta o material de apoio para a oficina <strong>“{censobr}: Explorando o Censo Demográfico em R”</strong>. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.</p>
 <!-- <img src="/images/abep_2024_logo.png" width="600" align="center"> -->
 <div class="quarto-figure quarto-figure-center">
@@ -208,8 +222,9 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/abep_2024_logo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></p>
 </figure>
 </div>
-<section id="resumo-da-oficina" class="level1">
-<h1>Resumo da oficina:</h1>
+</section>
+<section id="resumo-da-oficina" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Resumo da oficina:</h1>
 <p>O Censo Demográfico é uma das mais importantes fontes de dados sobre as características e condições de vida da população brasileira. Nessa oficina, você vai aprender como baixar e manipular os dados das diversas edições do censo demográfico do Brasil de 1970 a 2022 usando o pacote <a href="https://ipeagit.github.io/censobr/">{censobr}</a> na linguagem de programação R.</p>
 <p>A oficina também vai demonstrar como o {censobr} permite trabalhar com grandes bases de dados (<em>larger-than-memory data</em>) e ser integrado com o pacote <a href="https://ipeagit.github.io/geobr/">{geobr}</a> para visualização espacial de dados em diferentes escalas geográficas.</p>
 <!-- package logos side by side  -->
@@ -248,20 +263,20 @@ Importante
 </div>
 </div>
 </section>
-<section id="sugestões-de-leitura" class="level1">
-<h1>Sugestões de leitura:</h1>
+<section id="sugestões-de-leitura" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Sugestões de leitura:</h1>
 <p>Leitura adicional relevante, mas não essencial para a oficina.</p>
 <ul>
 <li>O <a href="https://ipeagit.github.io/censobr/">site e documentação</a> do pacote <code>{censobr}</code>.</li>
 <li>O <a href="https://ipeagit.github.io/geobr/">site e documentação</a> do pacote <code>{geobr}</code>.</li>
 </ul>
 </section>
-<section id="sobre-os-instrutores" class="level1">
-<h1>Sobre os instrutores:</h1>
+<section id="sobre-os-instrutores" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Sobre os instrutores:</h1>
 <p><strong>Rafael H. M. Pereira</strong> <br> <em>Coordenador de Ciência de Dados</em> <br> Instituto de Pesquisa Econômica Aplicada (Ipea) <br> <a href="https://www.urbandemographics.org/about/">Website</a> | <a href="https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&amp;hl">Google Scholar</a> | <a href="https://x.com/UrbanDemog">Twitter</a> | <a href="https://www.linkedin.com/in/rafael-h-m-pereira/">Linkedin</a> |</p>
 <p><strong>Rogério Barbosa</strong> <br> <em>Professor de Sociologia</em> <br> Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ) <br> <a href="https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa/">Website</a> | <a href="https://scholar.google.com.br/citations?user=_GGcZ8PnOA0C&amp;hl=en">Google Scholar</a> | <a href="https://x.com/antrologos">Twitter</a> | <a href="https://www.linkedin.com/in/rog%C3%A9rio-barbosa-ab8531117/">Linkedin</a> |</p>
-<section id="bio-dos-instrutors" class="level3">
-<h3 data-anchor-id="bio-dos-instrutors">Bio dos instrutors:</h3>
+<section id="bio-dos-instrutors" class="level2" data-number="4.1">
+<h2 data-number="4.1" data-anchor-id="bio-dos-instrutors"><span class="header-section-number">4.1</span> Bio dos instrutors:</h2>
 <p><strong>Rafael H. M. Pereira</strong> é pesquisador sênior nas áreas de planejamento urbano, ciência de dados espaciais e mobilidade urbana no Instituto de Pesquisa Econômica Aplicada (Ipea). Sua pesquisa investiga como as políticas urbanas e tecnologias moldam a organização espacial das cidades, a mobilidade humana, bem como seus impactos nas desigualdades sociais e de saúde. Algumas de suas contribuições nos campos de urban analytics e planejamento envolvem o desenvolvimento de novos métodos e ferramentas computacionais de código aberto para o estudo de sistemas urbanos e redes de transporte. Essas contribuições partem de interesses substantivos sobre questões de equidade no planejamento urbano, desigualdades de acesso a oportunidades, e dos impactos ambientais do ambiente construído e de padrões de mobilidade. Com graduação em sociologia pela UnB e mestrado em demografia pela Unicamp, Rafael Pereira obteve seu PhD em geografia pela Universidade de Oxford.</p>
 <p><strong>Rogério Barbosa</strong> é Professor de Sociologia do Instituto de Estudos Sociais e Políticos (IESP) da Universidade do Estado do Rio de Janeiro (UERJ), atuando nas áreas de Métodos Quantitativos e Estratificação Social. Formou-se bacharel em Ciências Sociais pela UFMG, mestre e doutor em Sociologia pela Universidade de São Paulo (2017). Realizou estágio pos-doutoral em Ciência Política pela USP e foi visiting scholar no Departamento de Sociologia da Columbia University. É pesquisador associado do Centro de Estudos da Metrópole (CEM-USP), affiliated scholar no Brazil Lad da Princeton University e membro da Rede de Pesquisa Solidária Políticas Públicas e Sociedade. Trabalhou como consultor metodológico de diversos grupos de pesquisa e também ministrou diversos cursos de programação e métodos estatísticos para instituições e universidades no Brasil. Atualmente pesquisa as tendências de longo prazo da desigualdade de renda no Brasil, usando levantamentos históricos e dados administrativos, bem como microdados contemporâneos. Desenvolve também pacotes R (código aberto) para pesquisa social e ferramentas para facilitar o acesso aos dados brasileiros para um público mais amplo.</p>
 
@@ -453,12 +468,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -834,12 +849,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./2.1_instalacao.html" class="pagination-link" aria-label="2.1 Instalação">
-        <span class="nav-page-text">2.1 Instalação</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2_instalacao.html" class="pagination-link" aria-label="Instalação">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Rafael H. M. Pereira</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/ipeaGIT/censobr_oficina_abep_2024" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

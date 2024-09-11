@@ -1,10 +1,11 @@
 ---
-title: "5. Documentação"
-code-annotations: hover
 from: markdown+emoji
+code-annotations: hover
 ---
 
-# 5.1 Documentação do censo disponível no {censobr}
+# Documentação
+
+## Documentação do censo disponível no {censobr}
 
 Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conjunto de funções que permitem rápido acesso à documentação dos censos demográficos, incluindo os dicionários de variáveis, questionários e manual do entrevistador para envistas.
 
@@ -109,7 +110,7 @@ Além de funções para leitura dos dados, o pacote {censobr} traz ainda um conj
 Todas funções de documentação baixam os arquivos em formato `.html` ou `.pdf`, e abrem o documento no navegador (*browser*). Assim como as funções de leitura de dados do {censobr}, essas funções de documentação também salval os arquivos num cache local na primeira vez que a função é rodada. Assim, quando o usuário roda a função novamente, o pacote simplesmente carrega o arquivo local de maneira quase instantânea.
 
 
-# 5.2 Dicionário de dados
+## Dicionário de dados
 
 The `data_dictionary()` indicate the definition of each variable, and the meaning of their categories in the case of categorical variables. The function currently covers the data dictionaries for all Brazilian censuses since 1970 (`1970`, `1980`, `1991`, `2000` and `2010`), and it includes dictionaries for the variables of both microdata (sample portion of the census) and for the variables available in census tract-level aggregate data.
 
@@ -135,7 +136,7 @@ data_dictionary(year = 2010,
                 dataset = 'tracts')
 ```
  
-# 5.3 Questionários
+## Questionários
 
 Com frequência, é importante se entender a estrutura e fluxo do questionário utilizado em pesquisas de coleta de dados. A função `questionnaire()` inclui os questionários utilizados na coleta de dados de todos os censos brasileiros desde 1960.
 

@@ -1,7 +1,8 @@
 ---
-title: "2.1 Instalação"
 from: markdown+emoji
 ---
+
+# Instalação
 
 ::: {.callout-important appearance="simple"}
 Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina *antes* do dia do workshop
@@ -12,13 +13,13 @@ Para acompanhar a oficina, você deve ter os seguintes programas instalados em s
 Instruções abaixo:
 :::
 
-# Instalando R e RStudio
+## Instalando R e RStudio
 
 Nesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, [siga estras instruções](https://posit.co/download/rstudio-desktop/#download).
 
 
 
-# Instalando pacotes de R
+## Instalando pacotes de R
 
 A oficina utiliza alguns pacotes do R que precisam ser instalados em sua máquina. A maneira mais simples de fazer isso é executando o código abaixo. Isso pode levar alguns minutos, caso seja a primeira vez que você instala esses pacotes.
 

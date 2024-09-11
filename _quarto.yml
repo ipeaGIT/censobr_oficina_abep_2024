@@ -1,5 +1,5 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
 about:
@@ -15,12 +15,31 @@ about:
 execute:
   freeze: auto
 #  cache: true
-lang: en
-website:
+lang: pt
+book:
   title: "{censobr}: Explorando o Censo Demográfico em R"
-  favicon: /images/favicon.png
+  author: 
+  - name: "Rafael H. M. Pereira"
+    email: rafael.pereira@ipea.gov.br
+    url: https://www.urbandemographics.org
+    orcid: 0000-0003-2125-7465
+    affiliation: "Instituto de Pesquisa Econômica Aplicada (Ipea)"
+  - name: "Rogerio Barbosa"
+    url: https://iesp.uerj.br/pesquisador/rogerio-jeronimo-barbosa
+    orcid: 0000-0003-2125-7465
+    affiliation: "Instituto de Estudos Sociais e Políticos (IESP/UERJ)"
+  chapters:
+    - index.qmd
+    - 2_instalacao.qmd
+    - 3_info_censo.qmd
+    - 4_microdados.qmd
+    - 5_agregados_setores.qmd
+    - 6_documentacao.qmd
+
+
   site-url: https://ipeagit.github.io/censobr_oficina_abep_2024/
   repo-url: https://github.com/ipeaGIT/censobr_oficina_abep_2024
+  favicon: /images/favicon.png
   sidebar:
     style: "docked"
     search: true
@@ -34,29 +53,18 @@ website:
       - icon: linkedin
         text: linkedin
         href: https://www.linkedin.com/in/rafael-h-m-pereira/
-    contents:
-      - index.qmd
-      - section: "2. Informações gerais"
-        contents:
-          - href: 2.1_instalacao.qmd
-          - href: 2.2_info_censo.qmd
-      - 3_microdados.qmd
-      - 4_agregados_setores.qmd
-      - 5_documentacao.qmd
-
-page-navigation: true
-page-footer: 
-  border: false
-  left: "Copyright 2024, Rafael H. M. Pereira" 
-  right: 
-    - icon: github
-      href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
-
+  page-navigation: true
+  page-footer: 
+    border: false
+    left: "Copyright 2024, Rafael H. M. Pereira" 
+    right: 
+      - icon: github
+        href: https://github.com/ipeaGIT/censobr_oficina_abep_2024
 
 format:
   html:
     theme:
-      light: zephyr
+      light: cosmo
       dark: slate
     css: styles.css
     toc: true
@@ -70,3 +78,4 @@ editor_options:
     wrap: 72
     canonical: true
 
+google-scholar: true

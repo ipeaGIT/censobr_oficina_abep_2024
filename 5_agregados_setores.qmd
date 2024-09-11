@@ -1,21 +1,13 @@
 ---
-title: "4. Agregados dos Setores Censitários"
 from: markdown+emoji
 ---
-t
-```{R, eval = TRUE}
-1+3
-```
+
+# Agregados dos Setores Censitários
+
+Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados ao nível de setores censitários. Neste capítulo, mostramos como usar o pacote **{censobr}** para acessar facilmente os dados em nível de setor censitário usando a função `read_tracts()`.
 
 
-
-
-Perhaps the most commonly used datasets from Brazilian censuses are the microdata of individuals and households. Nonetheless, IBGE also makes available some extremely data on population and environmental characteristics aggregated at the census tract level. In this vignette, we show how to use the **censobr** package to  easily access census tract-level data using the `read_tracts()` function.
-
-At the moment, this function only includes data from the 2010 census.
-
-
-# Data structure
+## Data structure
 
 Aggregated data at the census tract level are split into different datasets, and some of them are scattered across several files. For the sake of convenience, we have gathered all of the files into 8 different datasets:
 
@@ -54,7 +46,7 @@ data_dictionary(year = 2010, dataset = 'tracts')
 ```
 
 
-# Reproducible examples
+## Reproducible examples
 
 Now let's use a couple reproducible examples to illustrate how to work with census tract-level data. First, we need to load the libraries we'll be using in this vignette.
 
@@ -87,7 +79,7 @@ ggplot() +
 
 
 
-## Example 1: Spatial distribution of income
+### Example 1: Spatial distribution of income
 
 In this first example we'll be creating a map of the spatial distribution of average income per capita. We can find the information on the the total number of residents in each census tract in the `"Basico"` dataset, variable `"V002"`. Meanwhile, the information on income can be found in the `"DomicilioRenda"` dataset, variable `"V003"`.
 
@@ -134,7 +126,7 @@ ggplot() +
 
 ```
 
-## Example 2: 
+### Example 2: 
 
 In this second example, we are going to map the proportion of households with the presence of trees in their surroundings. To do this, we need to download the `"Entorno"` dataset and sum the variables `entorno01_V044 + entorno01_V046 + entorno01_V048`. 
 
