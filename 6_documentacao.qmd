@@ -3,7 +3,7 @@ from: markdown+emoji
 code-annotations: hover
 ---
 
-# Documentação
+# Documentação dos Censos
 
 ## Documentação do censo disponível no {censobr}
 

@@ -29,7 +29,8 @@ pkgs <- c(
   'geobr',
   'arrow',
   'dplyr',
-  'ggplot2'
+  'ggplot2',
+  'sf'
   )
 
 install.packages(pkgs)

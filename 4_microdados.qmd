@@ -398,11 +398,12 @@ Também precisamos dos polígonos das áreas de ponderação. Com o código abai
 #| label: geobr-read-areas-area
 wt_areas <- geobr::read_weighting_area(code_weighting = "SP",
                                        year = 2010,
-                                       simplified = FALSE)
+                                       simplified = FALSE) # <1>
 
 wt_areas <- filter(wt_areas, code_muni %in% metro_muni$code_muni)
 head(wt_areas)
 ```
+1. O comportamento padrão do {geobr} é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (`simplified = TRUE`) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.
 
 Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel `V2011` ponderada pela variável do peso do domicílio `V0010`. Para encontrar esses valores,  o código abaixo (a) filtra apenas as observações nos nossos municípios de interesse, (b) computa temporariamente o resultado, (c) agrupa as observações por área de ponderação, (d) calcula o valor médio do aluguel e (e) coleta os resultados.
 
