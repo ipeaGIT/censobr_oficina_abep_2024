@@ -129,7 +129,7 @@ O **{censobr}** é um pacote de R para acessar os dados e documentação dos cen
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td>em breve</td>
       <td>X</td>
       <td>em breve</td>
     </tr>
