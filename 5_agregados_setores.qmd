@@ -72,7 +72,7 @@ Nos dois exemplos abaixo, usaremos a cidade de Belo Horizonte para fins de demon
 
 ### Examplo 1: Distribuição espacial da renda em 2010
 
-Neste primeiro exemplo, criaremos um mapa da distribuição espacial da renda média per capita. A informação sobre o número total de residentes em cada setor censitário está disponível na tabela com cojunto de variáveis do bloco `"Basico"`, na variável `"V002"`. Já a informação sobre renda total do setor censiário pode ser encontradas na  tabela do bloco `"DomicilioRenda"`, na variável `"V003"`.
+Neste primeiro exemplo, criaremos um mapa da distribuição espacial da renda média per capita. A informação sobre o número total de residentes em cada setor censitário está disponível na tabela com conjunto de variáveis do bloco `"Basico"`, na variável `"V002"`. Já a informação sobre renda total do setor censiário pode ser encontradas na  tabela do bloco `"DomicilioRenda"`, na variável `"V003"`.
 
 Utilizando o código abaixo, podemos baixar os dados e calcular a renda per capita de todos os setores censitários no Brasil. Posteriormente nós vamos filtrar esses resultados para ficar apenas com os setores de BH.
 
@@ -158,7 +158,7 @@ ggplot() +
 
 ### Examplo 2: Distribuição espacial da popilação em 2022
 
-Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos agregados dos setores censtários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável `V0001` que informa a população total dos setores. Além disso,  como houve uma mudança na malha de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.
+Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável `V0001` que informa a população total dos setores. Além disso,  como houve uma mudança na malha de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: get-tracts-entorno

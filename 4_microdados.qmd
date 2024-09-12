@@ -315,7 +315,7 @@ esg <- dom |>
 
 head(esg)
 ```
-Uma rápida análise da dispersão dos valores com o *box-plot* abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuiem espacialmente.
+Uma rápida análise da dispersão dos valores com o *box-plot* abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuem espacialmente.
 
 ```{r}
 #| label: plot-sewage-regions
@@ -447,18 +447,18 @@ Os usuários podem gerenciar os conjuntos de dados em cache usando a função `c
 
 Listar arquivos em cache:
 
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 censobr_cache(list_files = TRUE)
 ```
 
 Deletar um arquivo específico:
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 censobr_cache(delete_file = "2010_emigration")
 
 ```
 
 Deletar todos arquivos do cache:
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 censobr_cache(delete_file = "all")
 
 ```

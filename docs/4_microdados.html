@@ -179,7 +179,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdudução</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -607,7 +607,7 @@ Potentially unsafe or invalid elements have been discarded from R metadata.
 6 Centro-oeste   5000856   12.4  3053.   0.00407</code></pre>
 </div>
 </div>
-<p>Uma rápida análise da dispersão dos valores com o <em>box-plot</em> abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuiem espacialmente.</p>
+<p>Uma rápida análise da dispersão dos valores com o <em>box-plot</em> abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuem espacialmente.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(esg) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(name_region, <span class="sc">-</span>cobertura), <span class="at">y=</span>cobertura, </span>
@@ -791,85 +791,20 @@ Geodetic CRS:  SIRGAS 2000
 <p>Listar arquivos em cache:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">list_files =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Files currently chached:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_dictionary_microdata_population.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_dictionary_tracts.pdf
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_dictionary_microdata_households.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_dictionary_microdata_households.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_dictionary_microdata_population.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2000_families_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2000_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_dictionary_tracts.pdf
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_emigration_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_mortality_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Basico_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Domicilio_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_DomicilioRenda_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Entorno_v0.3.0.parquet</code></pre>
-</div>
 </div>
 <p>Deletar um arquivo específico:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The file '2010_emigration' has been removed.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Files currently chached:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_dictionary_microdata_population.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_dictionary_tracts.pdf
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1970_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_dictionary_microdata_households.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1980_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_dictionary_microdata_households.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_dictionary_microdata_population.html
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/1991_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2000_families_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2000_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_dictionary_tracts.pdf
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_households_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_mortality_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Basico_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Domicilio_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_DomicilioRenda_v0.3.0.parquet
-C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_tracts_Entorno_v0.3.0.parquet</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"2010_emigration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Deletar todos arquivos do cache:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>All files have been removed.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Files currently chached:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\user\AppData\Local/R/cache/R/censobr/data_release_v0.3.0/2010_population_v0.3.0.parquet</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">censobr_cache</span>(<span class="at">delete_file =</span> <span class="st">"all"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Por padrão, os arquivos do <strong>{censobr}</strong> são salvos no diretório ‘User’. No entanto, os usuários podem executar a função <code>set_censobr_cache_dir()</code> para definir um diretório de cache personalizado. Note que essa definição personalizada precisa ser definida a cada nova sessão do R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_censobr_cache_dir</span>(<span class="at">path =</span> tempf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tempf <span class="ot">&lt;-</span> <span class="fu">tempdir</span>()</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_censobr_cache_dir</span>(<span class="at">path =</span> tempf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

@@ -1,0 +1,66 @@
+---
+from: markdown+emoji
+---
+
+
+
+
+# Instalação
+
+::: {.callout-important appearance="simple"}
+Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina *antes* do dia da oficina:
+
+- R e RStudio
+- Alguns pacotes de R
+
+Instruções abaixo:
+:::
+
+## Instalando R e RStudio
+
+Nesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, [siga estras instruções](https://posit.co/download/rstudio-desktop/#download).
+
+
+
+## Instalando pacotes de R
+
+A oficina utiliza alguns pacotes do R que precisam ser instalados em sua máquina. A maneira mais simples de fazer isso é executando o código abaixo. Isso pode levar alguns minutos, caso seja a primeira vez que você instala esses pacotes.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+pkgs <- c(
+  'censobr',
+  'geobr',
+  'arrow',
+  'dplyr',
+  'ggplot2',
+  'sf'
+  )
+
+install.packages(pkgs)
+```
+:::
+
+
+
+
+A maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu [repositório](https://github.com/ipeaGIT/censobr_oficina_abep_2024) localmente. Isso porque este repositório utiliza o pacote `{renv}`do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.
+
+Uma vez que você clonou o repositório e abriu o arquivo `censobr_oficina_abep_2024.Rproj`, basta você rodar `renv::restore()` para instalar todos os pacotes utilizados nesta oficina.
+
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Descomente a linha abaixo caso precise instalar o pacote {renv}
+# install.packages('renv')
+renv::restore()
+```
+:::
+
