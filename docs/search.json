@@ -234,7 +234,7 @@
     "href": "6_documentacao.html#documentação-do-censo-disponível-no-censobr",
     "title": "6  Documentação dos Censos",
     "section": "",
-    "text": "Função\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nem breve\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\n\nX\nX\nX\nX\nX\nX",
+    "text": "Função\nDocumentação\nTipo\nDisponibilidade\n\n\n1960\n70\n80\n91\n2000\n10\n22\n\n\n\n\ndata_dictionary()\nDicionário de variáveis\nMicrodados\nX\nX\nX\nX\nX\nX\nem breve\n\n\nAgregados de setores censitários\n\n\n\n\nX\nX\nem breve\n\n\nquestionnaire()\nQuestionários\nLongo e curto\nX\nX\nX\nX\nX\nX\nX\n\n\ninterview_manual()\nManual do entrevistador\n-\nX\nX\nX\nX\nX\nX\nX",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Documentação dos Censos</span>"
     ]
