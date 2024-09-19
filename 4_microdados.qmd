@@ -382,7 +382,7 @@ ggplot() +
 
 ### Distribuição espacial do valor do aluguel:
 
-No exemplo anterio, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemlo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo. 
+No exemplo anterior, nós agregamos os microdados do censo no nível de municípios. Neste próximo exemplo, faremos uma análise espacial no nível de áreas de ponderação. Aqui nós vamos visualizar como o valor do aluguel varia espacialmente na região metropolitana de São Paulo. 
 
 Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com o **{geobr}**.
 
