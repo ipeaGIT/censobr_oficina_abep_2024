@@ -37,7 +37,7 @@ Aqui você encontra alguns slides explicando o que a gente cobre o que a gente *
 Esta oficina assume que o participante tenha pelo menos um conhecimento básico da linguagem de programação R. Se você quiser se familiarizar com o R, recomendamos os livros abaixo:
 
 - [Ciência de Dados em R](https://livro.curso-r.com/)
-- [R for Data Science](https://r4ds.had.co.nz/)
+- [R for Data Science](https://r4ds.had.co.nz/) (em inglês) | [R para Ciência de Dados](https://cienciadedatos.github.io/pt-r4ds/) (em português)
 - [Geocomputation with R](https://geocompr.robinlovelace.net/)
 :::
 
