@@ -8,7 +8,7 @@ code-annotations: hover
 Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados ao nível de setores censitários. Neste capítulo, mostramos como usar o pacote **{censobr}** para acessar facilmente os dados em nível de setor censitário usando a função `read_tracts()`.
 
 
-## Data structure
+## Estrutura dos dados
 
 No seu formato original, os dados agregados no nível do setores censitários estão divididos em diferentes tipos de variáveis (e.g. variáveis de características de pessoas, de domicílios, etc). Em muitos casos, esses conjuntos de variáveis estão espalhadas por vários arquivos (em alguns casos com centenas variáveis). Para facilitar o entendimento desses dados, o **{censobr}** reúne todos os arquivos / variáveis em 8 tabelas:
 
@@ -68,7 +68,7 @@ library(ggplot2)
 Nos dois exemplos abaixo, usaremos a cidade de Belo Horizonte para fins de demonstração. No primeiro exemplo, nós vamos mapear a distribuição espacial da renda com dados de 2010. No segundo exemplo, nós vamos mapear a distribuição espacial da densidade populacional de BH com os dados preliminares do censo de 2022.
 
 
-### Examplo 1: Distribuição espacial da renda em 2010
+### Exemplo 1: Distribuição espacial da renda em 2010
 
 Neste primeiro exemplo, criaremos um mapa da distribuição espacial da renda média per capita. A informação sobre o número total de residentes em cada setor censitário está disponível na tabela com conjunto de variáveis do bloco `"Basico"`, na variável `"V002"`. Já a informação sobre renda total do setor censiário pode ser encontradas na  tabela do bloco `"DomicilioRenda"`, na variável `"V003"`.
 
@@ -76,22 +76,22 @@ Utilizando o código abaixo, podemos baixar os dados e calcular a renda per capi
 
 ```{r warning = FALSE, message=FALSE}
 #| label: read-tracts-Basico-renda
-# download data
+# baixa os dados
 tract_basico <- read_tracts(year = 2010,                    # <1>
                             dataset = "Basico",)
 
 tract_income <- read_tracts(year = 2010,                 
                             dataset = "DomicilioRenda")     # <2>
 
-# select columns
+# selecionar conlunas
 tract_basico <- tract_basico |> select('code_tract','V002') # <3>
 tract_income <- tract_income |> select('code_tract','V003') # <3>
 
-# merge
+# unir as tabelass
 tracts_df10 <- left_join(tract_basico, tract_income) |>       # <4>
                 collect()
 
-# calculate income per capita
+# calcular a renda per capita
 tracts_df10 <- tracts_df10 |> mutate(income_pc = V003 / V002)   # <5>
 
 head(tracts_df10)
@@ -102,7 +102,7 @@ head(tracts_df10)
 4. Junta as duas variáveis num único data.frame
 5. Cacula renda per capita de cada setor censitário
 
-O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função `read_census_tract`, do pacote **{geobr}**. Aqui, nós passamos o parâmetro `code_tract = "MG"` baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.
+O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função `read_census_tract`, do pacote **`{geobr}`**. Aqui, nós passamos o parâmetro `code_tract = "MG"` baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.
 
 
 ```{r warning = FALSE, message=FALSE}
@@ -124,12 +124,12 @@ tracts_2010 <- geobr::read_census_tract(code_tract = "MG",
 # filtra setores de BH
 tracts_2010 <- filter(tracts_2010, name_muni == 'Belo Horizonte')
 
-# map setores censitarios
+# mapa de setores censitarios
 ggplot() + 
   geom_sf(data=tracts_2010, fill = 'gray90', color='gray60') +
   theme_void()
 ```
-1. O comportamento padrão do {geobr} é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (`simplified = TRUE`) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.
+1. O comportamento padrão do `{geobr}` é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (`simplified = TRUE`) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.
 
 
 Por fim, a gente pode fazer um *merge* dos dados espaciais e de renda dos setores censitários usando a variável chave `code_tract` e criar o mapa da distribuição espacial de renda.
@@ -154,7 +154,7 @@ ggplot() +
 
 ```
 
-### Examplo 2: Distribuição espacial da popilação em 2022
+### Examplo 2: Distribuição espacial da população em 2022
 
 Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável `V0001` que informa a população total dos setores. Além disso,  como houve uma mudança na malha de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.
 
@@ -177,7 +177,7 @@ tracts_2022 <- filter(tracts_2022, name_muni == 'Belo Horizonte')
 
 ```
 
-Agora a gente pode fazer um merge da tablea de população com os dados espaciais, calcular a área em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.
+Agora a gente pode fazer um merge da tabela de população com os dados espaciais, calcular a área em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: map-tracts-arborizacao
