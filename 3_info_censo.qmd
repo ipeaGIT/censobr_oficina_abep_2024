@@ -4,7 +4,7 @@ from: markdown+emoji
 
 # Conceitos iniciais
 
-O censo demográfico brasileiro é a principal pesquisa populacional realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.
+O censo demográfico brasileiro é a principal pesquisa populacional domiciliar realizada no Brasil, conduzida pelo Instituto Brasileiro de Geografia e Estatística (IBGE). Trata-se da pesquisa de maior cobertura territorial do país, e que levanta informações sobre as características e condições de vida da população brasileira nos mais diversos temas, como perfil demográfico, educação, trabalho, fecundidade, migração, condições de moradia, etc.
 
 Nesta seção, nós revisamos alguns conceitos básicos sobre a organização dos censos demográficos no Brasil.
 
@@ -30,7 +30,7 @@ Microdados são bancos de dados em que cada observação representa uma unidade 
 
 ::: {.callout-warning}
 # Importante
-Os dados disponibilizados pelo IBGE, e que estão disponíveis no pacote {censobr} são os microdados da pesquisa amostral e os dados do universo agregados por setor censitário.
+Os dados disponibilizados pelo IBGE, e que estão disponíveis no pacote {censobr} incluem tnato  os microdados da pesquisa amostral quanto os dados do universo agregados por setor censitário.
 
 Obs. O IBGE não disponibiliza os microdados do universo porque a sua divulgação poderia violar o sigilo dos respondentes.
 :::
@@ -42,7 +42,7 @@ Com os Microdados da Amostra é possível fazer análises por indivíduos, famí
 
 ### Setores censitários
 
-- Os **setores censitários** são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como a o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.
+- Os **setores censitários** são a menor unidade de análise espacial nas pesquisas domiciliares do IBGE. Um setor é uma unidade territorial demarcada para fins operacionais de organizar a coleta de dados. Cada setor é coberto por um único recenseador e possui em média, cerca de 200 domicílios. No entanto, este número, assim como o tamanho do setor podem variar a depender da densidade demográfica de cada região. Os dados do universo são disponibilizados apenas no formato agregado por setores censitários.
 
 ### Áreas de ponderação
 
