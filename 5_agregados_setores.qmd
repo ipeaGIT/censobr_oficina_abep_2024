@@ -33,7 +33,8 @@ library(censobr)
 # baixa dados agregados de setores: variáveis de domicilios
 dom <- read_tracts(year = 2010, 
                    dataset = 'Domicilio',
-                   as_data_frame = FALSE)
+                   as_data_frame = FALSE,
+                   showProgress = FALSE)
 
 names(dom)[c(1:20,301:320)]
 ```
@@ -78,10 +79,12 @@ Utilizando o código abaixo, podemos baixar os dados e calcular a renda per capi
 #| label: read-tracts-Basico-renda
 # baixa os dados
 tract_basico <- read_tracts(year = 2010,                    # <1>
-                            dataset = "Basico",)
+                            dataset = "Basico",
+                            showProgress = FALSE)
 
 tract_income <- read_tracts(year = 2010,                 
-                            dataset = "DomicilioRenda")     # <2>
+                            dataset = "DomicilioRenda",
+                            showProgress = FALSE)     # <2>
 
 # selecionar conlunas
 tract_basico <- tract_basico |> select('code_tract','V002') # <3>
@@ -113,13 +116,15 @@ bh_info <- geobr::lookup_muni(name_muni = 'Belo Horizonte')
 
 # baixa municipio de BH
 muni_bh <- geobr::read_municipality(code_muni = 'MG', 
-                                    year = 2010) |>
+                                    year = 2010,
+                                    showProgress = FALSE) |>
            filter(name_muni == "Belo Horizonte")
 
 # baixa todos setores de Minas Gerais
 tracts_2010 <- geobr::read_census_tract(code_tract = "MG",
                                         year = 2010,
-                                        simplified = FALSE) # <1>
+                                        simplified = FALSE,
+                                        showProgress = FALSE) # <1>
 
 # filtra setores de BH
 tracts_2010 <- filter(tracts_2010, name_muni == 'Belo Horizonte')
@@ -163,14 +168,16 @@ Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos ag
 
 # download dados preliminares dos setores de 2022
 tracts_df22 <- read_tracts(year = 2022,
-                          dataset = "Preliminares") |>
+                          dataset = "Preliminares",
+                          showProgress = FALSE) |>
                filter(name_muni == 'Belo Horizonte') |>
                collect()
 
 # baixa todos setores de Minas Gerais
 tracts_2022 <- geobr::read_census_tract(code_tract = "MG",
                                         year = 2022,
-                                        simplified = FALSE)
+                                        simplified = FALSE,
+                                        showProgress = FALSE)
 
 # filtra setores de BH
 tracts_2022 <- filter(tracts_2022, name_muni == 'Belo Horizonte')

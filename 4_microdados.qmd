@@ -194,7 +194,7 @@ pop <- read_population(
   year = 2010,
   columns = c('V0010', 'V0601', 'V6036'),  # <1>
   add_labels = 'pt',                       # <2>
-  showProgress = TRUE
+  showProgress = FALSE
   )
 
 class(pop)
@@ -354,8 +354,11 @@ Para criarmos uma mapa com a distribuição espacial da cobertura de esgotamento
 #| label: geobr-read-municipality
 library(geobr)
 
-regioes_df <- read_region(year = 2010)
-muni_sf <- read_municipality(year = 2010)
+regioes_df <- read_region(year = 2010,
+                          showProgress = FALSE)
+
+muni_sf <- read_municipality(year = 2010,
+                             showProgress = FALSE)
 
 head(muni_sf)
 ```
@@ -388,7 +391,8 @@ Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com
 
 ```{r warning = FALSE, message=FALSE}
 #| label: geobr-read-metro-sp
-metro_muni <- geobr::read_metro_area(year = 2010) |> 
+metro_muni <- geobr::read_metro_area(year = 2010,
+                                     showProgress = FALSE) |> 
               filter(name_metro == "RM São Paulo")
 ```
 
@@ -398,7 +402,8 @@ Também precisamos dos polígonos das áreas de ponderação. Com o código abai
 #| label: geobr-read-areas-area
 wt_areas <- geobr::read_weighting_area(code_weighting = "SP",
                                        year = 2010,
-                                       simplified = FALSE) # <1>
+                                       simplified = FALSE,
+                                       showProgress = FALSE) # <1>
 
 wt_areas <- filter(wt_areas, code_muni %in% metro_muni$code_muni)
 head(wt_areas)
