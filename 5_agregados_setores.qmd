@@ -5,12 +5,12 @@ code-annotations: hover
 
 # Agregados dos Setores Censitários
 
-Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados ao nível de setores censitários. Neste capítulo, mostramos como usar o pacote **{censobr}** para acessar facilmente os dados em nível de setor censitário usando a função `read_tracts()`.
+Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados no nível de setores censitários. Neste capítulo, mostramos como usar o pacote **{censobr}** para acessar facilmente esses dados usando a função `read_tracts()`.
 
 
 ## Estrutura dos dados
 
-No seu formato original, os dados agregados no nível do setores censitários estão divididos em diferentes tipos de variáveis (e.g. variáveis de características de pessoas, de domicílios, etc). Em muitos casos, esses conjuntos de variáveis estão espalhadas por vários arquivos (em alguns casos com centenas variáveis). Para facilitar o entendimento desses dados, o **{censobr}** reúne todos os arquivos / variáveis em 8 tabelas:
+No seu formato original, os dados agregados no nível de setores censitários estão divididos em diferentes tipos de variáveis (e.g. variáveis de características de pessoas, de domicílios, etc). Em muitos casos, esses conjuntos de variáveis estão espalhadas por vários arquivos (em alguns casos com centenas variáveis). Para facilitar o entendimento desses dados, o **{censobr}** reúne todos os arquivos / variáveis em 8 tabelas:
 
 - `"Basico"`
 - `"Entorno"`
@@ -22,7 +22,7 @@ No seu formato original, os dados agregados no nível do setores censitários es
 - `"ResponsavelRenda"`
 
 
-Todos estas tabelas estão organizados seguindo a mesma lógica. Nos casos em que as variáveis de uma tabela provêm de arquivos diferentes, o nome da variável recebe um prefixo indicando a sua tabela de origem. Isso é feito para facilitar a consulta do significado de cada coluna no arquivo de dicionário variáveis.
+Todas estas tabelas estão organizadas seguindo a mesma lógica. Nos casos em que as variáveis de uma tabela provêm de arquivos diferentes, o nome da variável recebe um prefixo indicando a sua tabela de origem. Isso é feito para facilitar a consulta do significado de cada coluna no arquivo de dicionário variáveis (no próximo capítulo a gente vai ver como baixar os dicionários variáveis dos censos).
 
 Para ilustrar isso, vejamos a tabela com variáveis de `"Domicilio"`. Essa tabela provêm de dois arquivos separados: *Domicilio01* e *Domicilio02*. Assim, os nomes das colunas nessa tabela são organizados da seguinte maneira:
 
@@ -36,7 +36,7 @@ dom <- read_tracts(year = 2010,
                    as_data_frame = FALSE,
                    showProgress = FALSE)
 
-names(dom)[c(1:20,301:320)]
+names(dom)[c(1:12,301:306)]
 ```
 
 ## Dicionário de variáveis
@@ -82,20 +82,22 @@ tract_basico <- read_tracts(year = 2010,                    # <1>
                             dataset = "Basico",
                             showProgress = FALSE)
 
-tract_income <- read_tracts(year = 2010,                 
+tract_income <- read_tracts(year = 2010,                    # <2>   
                             dataset = "DomicilioRenda",
-                            showProgress = FALSE)     # <2>
+                            showProgress = FALSE)     
 
 # selecionar conlunas
 tract_basico <- tract_basico |> select('code_tract','V002') # <3>
 tract_income <- tract_income |> select('code_tract','V003') # <3>
 
 # unir as tabelass
-tracts_df10 <- left_join(tract_basico, tract_income) |>       # <4>
-                collect()
+tracts_df10 <- left_join(tract_basico, tract_income)        # <4>
+                
 
 # calcular a renda per capita
-tracts_df10 <- tracts_df10 |> mutate(income_pc = V003 / V002)   # <5>
+tracts_df10 <- tracts_df10 |> 
+                mutate(income_pc = V003 / V002) |>          # <5>
+                collect()                                   # <6>
 
 head(tracts_df10)
 ```
@@ -104,8 +106,9 @@ head(tracts_df10)
 3. Seleciona apenas as variáveis que vamos utilizar
 4. Junta as duas variáveis num único data.frame
 5. Cacula renda per capita de cada setor censitário
+6. Extração dos resultados
 
-O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função `read_census_tract`, do pacote **`{geobr}`**. Aqui, nós passamos o parâmetro `code_tract = "MG"` baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.
+O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função `read_census_tract`, do pacote **{geobr}**. Aqui, nós passamos o parâmetro `code_tract = "MG"` baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.
 
 
 ```{r warning = FALSE, message=FALSE}
@@ -137,7 +140,7 @@ ggplot() +
 1. O comportamento padrão do `{geobr}` é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (`simplified = TRUE`) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.
 
 
-Por fim, a gente pode fazer um *merge* dos dados espaciais e de renda dos setores censitários usando a variável chave `code_tract` e criar o mapa da distribuição espacial de renda.
+Por fim, a gente pode fazer um *merge* dos dados espaciais e de renda dos setores censitários usando como variável chave o código do setor censitário (`code_tract`) e criar o mapa da distribuição espacial da renda per capita do município.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: map-renda-setores
@@ -161,7 +164,7 @@ ggplot() +
 
 ### Examplo 2: Distribuição espacial da população em 2022
 
-Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável `V0001` que informa a população total dos setores. Além disso,  como houve uma mudança na malha de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.
+Neste segundo exemplo, nós vamos utilizar os resultados `"Preliminares"` dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável `V0001` que informa a população total dos setores. Além disso, como houve uma mudança na malha espacial de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: get-tracts-entorno
@@ -184,7 +187,7 @@ tracts_2022 <- filter(tracts_2022, name_muni == 'Belo Horizonte')
 
 ```
 
-Agora a gente pode fazer um merge da tabela de população com os dados espaciais, calcular a área em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.
+Agora a gente pode fazer um *merge* da tabela de população com os dados espaciais, calcular a área dos setores em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: map-tracts-arborizacao

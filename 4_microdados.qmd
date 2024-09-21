@@ -186,7 +186,8 @@ library(ggplot2)
 
 Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função `read_population()` para carregar os microdados de população.
 
-O comportamento padrão das funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).
+O comportamento padrão das funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar. Neste caso, usaremos somente as variáveis de peso amostral, sexo e idade (códigos `"V0010"`, `"V0601"` e `"V6036"`, respectivamente). No último capítulo do curso a gente vai ver como baixar os dicionários variáveis dos censos.
+
 
 ```{r, message=FALSE}
 #| label: read-population-data
@@ -204,21 +205,23 @@ class(pop)
 2. Adicionando os 'labels' em Português das variáveis categóricas.
 
 
-Por padrão, a saída da função é um `"arrow_dplyr_query"` ou `"ArrowObject"`. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro `as_data_frame = TRUE`, a função carregará os dados como um `data.frame` na memória RAM. ***Atenção***: isso pode fazer com que a sessão do R trave em ambientes com restrições computacionais.
+Ao rodar o comando `nrow(pop)`, você verá que a tabela de microdados de população do Censo de 2010 tinha mais de vinte milhões de observações (`20.635.472`), mas essas observações não estão carregadas na sua memória RAM. Isso porque, por padrão, a saída da função é um `"arrow_dplyr_query"` ou `"ArrowObject"`. Isso permite que você trabalhe com os dados do censo de maneira super rápida e eficiente, mesmo que a tabela de dados seja grande demais para a memória do seu computador. Note que se você passar o parâmetro `as_data_frame = TRUE`, a função carregará os dados como um `data.frame` na memória RAM. ***Atenção***: isso pode fazer com que a sessão do R trave em ambientes com pouca memória.
 
-Esse output em arrow pode ser analisado como de maneira similar a como se analisaria um `data.frame` utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas quando o usuário roda a função `dplyr::collect()` 
+Esse output em arrow pode ser analisado de maneira similar a como se analisaria um `data.frame` utilizando-se funções do pacote {dplyr}. Uma diferença, no entanto, é que as operações somente são executadas e resultados extraídos quando o usuário roda a função `dplyr::collect()`.
 
-Aqui, por exemplo, nós visualizamos as primeiras linhas da tabela de dados:
+Neste exemplo, abaixo, nós visualizamos as primeiras linhas 6 da tabela de dados com `head(pop)`, e somente essas poucas observações são carregas para memória com o commando `collect()`:
 
-```{r}
+
+```{r, warning=FALSE}
 #| label: head-population-data
-head(pop) |> collect()
+head(pop) |> 
+  collect()
 
 ```
 
-O próximo passo é criar um variável categória com grupos de idade a cada 5 anos.
+O próximo passo para criamos nossa pirâmide populacional é criar um variável categória com grupos de idade. No exemplo abaix, nós utilizadmos grupos de 5 anos.
 
-```{r}
+```{r, warning=FALSE}
 #| label: create-age-variable
 pop <- pop |>
   mutate(
@@ -240,13 +243,15 @@ pop <- pop |>
       V6036 >= 70              ~ "75+"
       ))
 
-head(pop) |> collect()
+head(pop) |> 
+  collect()
 ```
 
-E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral `V0010` em cada grupo. Repare que ao chamarmos a função `collect()`, o código é executado e retorna um `data.frame`.
+E em seguida, nós só precisamos somar o número de homens e mulheres em cada grupo de idade. Para isso, nós somamos os valores da variável de peso amostral `V0010` em cada grupo. Repare que ao chamarmos a função `collect()`, o código é executado e retorna um `data.frame` com a contagem de pessoas por sexo e faixa de idade. Repare que nós processamos todos os mais de 20 milhões de registro do censo, mas só precisamos carregar na memória essa tabela com 30 observações.
 
-```{r}
+```{r, warning=FALSE}
 #| label: summarize-pop-table
+# cacula tabela de contagem de pessoas por idade
 piramide_df <- pop |>
                group_by(V0601, age_group) |>
                summarise(pop_count = sum(V0010)) |>
@@ -292,7 +297,7 @@ ggplot(data = piramide_df,
 
 ### Saneamento:
 
-Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual proporção de domicílios conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função `read_households()`.
+Neste exemplo, nós vamos usar os dados de domicílios do censo de 2010 para calcular qual a proporção de domicílios que estavam conectados à rede de esgoto nos municípios de cada região do Brasil. O primeiro passo é baixar os dados utilizando a função `read_households()`.
 
 ```{r, message=FALSE}
 #| label: read-household-data
@@ -301,21 +306,28 @@ dom <- read_households(year = 2010,
 
 ```
 
-Agora vamos (a) agrupar as observações por região e município, (b) obter o número de domicílios conectados à rede de esgoto, (c) obter o número total de domicílios, (d) calcular a proporção de domicílios conectados e (e) coletar os resultados.
+Agora vamos (1) agrupar as observações por região e município, (2) obter o número de domicílios conectados à rede de esgoto, (3) obter o número total de domicílios, (4) calcular a proporção de domicílios conectados e (5) coletar os resultados.
 
 ```{r warning = FALSE}
 #| label: compute-sewage-connection
 esg <- dom |> 
         compute() |>
-        group_by(name_region, code_muni) |>                  # (a)
-        summarize(rede = sum(V0010[which(V0207=='1')]),      # (b)
-                  total = sum(V0010)) |>                     # (c)
-        mutate(cobertura = rede / total) |>                  # (d)
-        collect()                                            # (e)
+        group_by(name_region, code_muni) |>                  # <1>
+        summarize(rede = sum(V0010[which(V0207=='1')]),      # <2>
+                  total = sum(V0010)) |>                     # <3>
+        mutate(cobertura = rede / total) |>                  # <4>
+        collect()                                            # <5>
 
 head(esg)
 ```
-Uma rápida análise da dispersão dos valores com o *box-plot* abaixo já revela um dos retratos da desigualdade regional brasileira. Menos de 50% dos domicílios estão conectados à rede de esgoto em todos municípios da região Norte e quase metade dos municípios da região Nordeste. No próximo bloco, nós vamos visualizar essas diferenças se distribuem espacialmente.
+1. Agrupar as observações por região e município
+2. Obter o número de domicílios conectados à rede de esgoto
+3. Obter o número total de domicílios
+4. Calcular a proporção de domicílios conectados
+5. Coletar os resultados.
+
+
+Uma rápida análise da dispersão dos valores com o *box-plot* abaixo já revela um dos retratos da desigualdade regional brasileira. Em todos municípios da região Norte e quase metade dos municípios da região Nordeste, a gente encontra que menos de 50% dos domicílios estavam conectados à rede de esgoto em 2010. No próximo bloco, nós vamos visualizar como essas diferenças se distribuem espacialmente.
 
 ```{r}
 #| label: plot-sewage-regions
@@ -348,7 +360,7 @@ Todos os dados do **{censobr}** são enriquecidos com colunas de geografia, segu
 
 :::
 
-Para criarmos uma mapa com a distribuição espacial da cobertura de esgotamento no Brasil, nós vamos primeiro usar o pacote **{geobr}** para baixar as geometrias dos municípios brasileiros no anos de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.
+Para criarmos uma mapa com a distribuição espacial da cobertura da rede de esgoto no Brasil, nós vamos primeiro usar o pacote **{geobr}** para baixar as geometrias dos municípios brasileiros no ano de 2010. Vamos também sobrepor os limites das grandes regiões do país para dar um pouco mais de contexto à figura.
 
 ```{r warning = FALSE, message=FALSE}
 #| label: geobr-read-municipality
@@ -368,7 +380,7 @@ Agora nós só precisamos unir os dados espaciais com nossas estimativas utiliza
 ```{r warning = FALSE}
 #| label: merge-geobr-censobr-plot-map
 # merge data
-esg_sf <- left_join(muni_sf, esg, by = 'code_muni')
+esg_sf <- dplyr::left_join(muni_sf, esg, by = 'code_muni')
 
 # plot map
 ggplot() +
@@ -391,40 +403,46 @@ Primeiro, vamos baixar os municípios da região metropolitana de São Paulo com
 
 ```{r warning = FALSE, message=FALSE}
 #| label: geobr-read-metro-sp
-metro_muni <- geobr::read_metro_area(year = 2010,
+metro_sp <- geobr::read_metro_area(year = 2010,
                                      showProgress = FALSE) |> 
               filter(name_metro == "RM São Paulo")
 ```
 
 Também precisamos dos polígonos das áreas de ponderação. Com o código abaixo, baixamos todas as áreas de ponderação do estado de São Paulo e, em seguida, mantemos apenas aquelas na região metropolitana de São Paulo.
 
-```{r warning = FALSE}
+```{r warning = FALSE, message=FALSE}
 #| label: geobr-read-areas-area
 wt_areas <- geobr::read_weighting_area(code_weighting = "SP",
                                        year = 2010,
                                        simplified = FALSE,
                                        showProgress = FALSE) # <1>
 
-wt_areas <- filter(wt_areas, code_muni %in% metro_muni$code_muni)
+wt_areas <- filter(wt_areas, code_muni %in% metro_sp$code_muni)
 head(wt_areas)
 ```
 1. O comportamento padrão do {geobr} é baixar uma versão da malha espacial com geometrias ligeiramente simplificadas (`simplified = TRUE`) para agilizar o processamento e visualização de dados. Aqui, nós baixamos os dados com geometrias originais devido à escala espacial da visualização dos resultados.
 
-Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel `V2011` ponderada pela variável do peso do domicílio `V0010`. Para encontrar esses valores,  o código abaixo (a) filtra apenas as observações nos nossos municípios de interesse, (b) computa temporariamente o resultado, (c) agrupa as observações por área de ponderação, (d) calcula o valor médio do aluguel e (e) coleta os resultados.
+Agora voltamos para a base de dados de domicílios do censo de 2010. Com essa base, nós precisamos calcular o valor médio do aluguel gasto em cada área de ponderação. Note que para isso nós usamos a média do aluguel (variável `V2011`) ponderada pelo peso do domicílio (variável `V0010`). Para encontrar esses valores,  o código abaixo (1) filtra apenas as observações nos nossos municípios de interesse, (2) computa temporariamente o resultado, (3) agrupa as observações por área de ponderação, (4) calcula o valor médio do aluguel e (5) coleta os resultados.
 
 ```{r warning = FALSE}
 #| label: censobr-calcula-alugel-areapond
 rent <- dom |>
-        filter(code_muni %in% metro_muni$code_muni) |>                     # (a)
-        compute() |>                                                       # (b)
-        group_by(code_weighting) |>                                        # (c)
-        summarize(avgrent=weighted.mean(x=V2011, w=V0010, na.rm=TRUE)) |>  # (d)
-        collect()                                                          # (e)
+        filter(code_muni %in% metro_sp$code_muni) |>                       # <1>
+        compute() |>                                                       # <2>
+        group_by(code_weighting) |>                                        # <3>
+        summarize(avgrent=weighted.mean(x=V2011, w=V0010, na.rm=TRUE)) |>  # <4>
+        collect()                                                          # <5>
 
 head(rent)
 ```
+1. Filtra apenas as observações nos nossos municípios de interesse
+2. Computa temporariamente o resultado
+3. Agrupa as observações por área de ponderação
+4. Calcula o valor médio do aluguel
+5. Coleta os resultados.
 
-Por fim, podemos unir os dados espaciais com nossas estimativas de aluguel pela variável chave `code_weighting`, e mapear os resultados.
+
+Por fim, basta unirmos os dados espaciais com nossas estimativas de aluguel pela variável chave de código da área de ponderação (`code_weighting`), e mapear os resultados.
 
 ```{r warning = FALSE}
 #| label: plot-alugel-areapond
@@ -432,7 +450,7 @@ rent_sf <- left_join(wt_areas, rent, by = 'code_weighting')
 
 ggplot() +
   geom_sf(data = rent_sf, aes(fill = avgrent), color=NA) +
-  geom_sf(data = metro_muni, color='gray', fill=NA) +
+  geom_sf(data = metro_sp, color='gray', fill=NA) +
   labs(title = "Valor médio do aluguel por área de ponderação",
        subtitle = "Região Metropolitana de São Paulo, 2010") +
   scale_fill_distiller(palette = "Purples", direction = 1, 
@@ -446,7 +464,7 @@ ggplot() +
 
 ## Data cache
 
-Na primeira vez que o usuário executa uma função, o **{censobr}** fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro `cache` está configurado como `TRUE` (Padrão), a função lerá os dados em cache, o que é muito mais rápido.
+Na primeira vez que o usuário executa uma função, o **{censobr}** fará o download do arquivo e o armazenará localmente. Dessa forma, os dados só precisam ser baixados uma vez. Quando o parâmetro `cache` está configurado como `TRUE` (que é o comportamento padrão do pacote), a função lerá os dados que já estão armanezados em cache, o que é praticamente instantâneo.
 
 Os usuários podem gerenciar os conjuntos de dados em cache usando a função `censobr_cache()`. Por exemplo, os usuários podem:
 
@@ -476,20 +494,4 @@ tempf <- tempdir()
 set_censobr_cache_dir(path = tempf)
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

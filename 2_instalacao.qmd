@@ -30,6 +30,7 @@ pkgs <- c(
   'arrow',
   'dplyr',
   'ggplot2',
+  'quantreg',
   'sf'
   )
 
