@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina <em>antes</em> do dia da oficina:</p>
+<p>Para acompanhar a oficina, você deve ter os seguintes programas instalados em sua máquina <strong><em>antes</em></strong> do dia da oficina:</p>
 <ul>
 <li>R e RStudio</li>
 <li>Alguns pacotes de R</li>
@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="instalando-r-e-rstudio" class="level2" data-number="2.1">
 <h2 data-number="2.1" data-anchor-id="instalando-r-e-rstudio"><span class="header-section-number">2.1</span> Instalando R e RStudio</h2>
-<p>Nesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, <a href="https://posit.co/download/rstudio-desktop/#download">siga estras instruções</a>.</p>
+<p>Nesta oficina, a gente pressupõe que você já tenha o R e o RStudio instalados em sua máquina. Caso ainda precise instalar esses programas, <a href="https://posit.co/download/rstudio-desktop/#download">siga estas instruções</a>.</p>
 </section>
 <section id="instalando-pacotes-de-r" class="level2" data-number="2.2">
 <h2 data-number="2.2" data-anchor-id="instalando-pacotes-de-r"><span class="header-section-number">2.2</span> Instalando pacotes de R</h2>
@@ -248,12 +248,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'arrow'</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'dplyr'</span>,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ggplot2'</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'sf'</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'quantreg'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'sf'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024">repositório</a> localmente. Isso porque este repositório utiliza o pacote <code>{renv}</code>do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.</p>
+<p>A maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024">repositório do GitHub</a> localmente. Isso porque este repositório utiliza o pacote <code>{renv}</code>do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.</p>
 <p>Uma vez que você clonou o repositório e abriu o arquivo <code>censobr_oficina_abep_2024.Rproj</code>, basta você rodar <code>renv::restore()</code> para instalar todos os pacotes utilizados nesta oficina.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomente a linha abaixo caso precise instalar o pacote {renv}</span></span>

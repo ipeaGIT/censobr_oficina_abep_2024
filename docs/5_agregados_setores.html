@@ -224,10 +224,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header> 
       <div class="about-contents"><main class="content" id="quarto-document-content">
 
-<p>Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados ao nível de setores censitários. Neste capítulo, mostramos como usar o pacote <strong>{censobr}</strong> para acessar facilmente os dados em nível de setor censitário usando a função <code>read_tracts()</code>.</p>
+<p>Talvez os conjuntos de dados mais comumente usados dos censos brasileiros sejam os microdados de pessoas e domicílios. No entanto, o IBGE também disponibiliza dados muito ricos sobre as características populacionais e ambientais agregados no nível de setores censitários. Neste capítulo, mostramos como usar o pacote <strong>{censobr}</strong> para acessar facilmente esses dados usando a função <code>read_tracts()</code>.</p>
 <section id="estrutura-dos-dados" class="level2" data-number="5.1">
 <h2 data-number="5.1" data-anchor-id="estrutura-dos-dados"><span class="header-section-number">5.1</span> Estrutura dos dados</h2>
-<p>No seu formato original, os dados agregados no nível do setores censitários estão divididos em diferentes tipos de variáveis (e.g.&nbsp;variáveis de características de pessoas, de domicílios, etc). Em muitos casos, esses conjuntos de variáveis estão espalhadas por vários arquivos (em alguns casos com centenas variáveis). Para facilitar o entendimento desses dados, o <strong>{censobr}</strong> reúne todos os arquivos / variáveis em 8 tabelas:</p>
+<p>No seu formato original, os dados agregados no nível de setores censitários estão divididos em diferentes tipos de variáveis (e.g.&nbsp;variáveis de características de pessoas, de domicílios, etc). Em muitos casos, esses conjuntos de variáveis estão espalhadas por vários arquivos (em alguns casos com centenas variáveis). Para facilitar o entendimento desses dados, o <strong>{censobr}</strong> reúne todos os arquivos / variáveis em 8 tabelas:</p>
 <ul>
 <li><code>"Basico"</code></li>
 <li><code>"Entorno"</code></li>
@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>"DomicilioRenda"</code></li>
 <li><code>"ResponsavelRenda"</code></li>
 </ul>
-<p>Todos estas tabelas estão organizados seguindo a mesma lógica. Nos casos em que as variáveis de uma tabela provêm de arquivos diferentes, o nome da variável recebe um prefixo indicando a sua tabela de origem. Isso é feito para facilitar a consulta do significado de cada coluna no arquivo de dicionário variáveis.</p>
+<p>Todas estas tabelas estão organizadas seguindo a mesma lógica. Nos casos em que as variáveis de uma tabela provêm de arquivos diferentes, o nome da variável recebe um prefixo indicando a sua tabela de origem. Isso é feito para facilitar a consulta do significado de cada coluna no arquivo de dicionário variáveis (no próximo capítulo a gente vai ver como baixar os dicionários variáveis dos censos).</p>
 <p>Para ilustrar isso, vejamos a tabela com variáveis de <code>"Domicilio"</code>. Essa tabela provêm de dois arquivos separados: <em>Domicilio01</em> e <em>Domicilio02</em>. Assim, os nomes das colunas nessa tabela são organizados da seguinte maneira:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censobr)</span>
@@ -249,22 +249,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">as_data_frame =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dom)[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">301</span><span class="sc">:</span><span class="dv">320</span>)]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dom)[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="dv">301</span><span class="sc">:</span><span class="dv">306</span>)]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "code_tract"        "code_weighting"    "code_muni"        
  [4] "code_state"        "abbrev_state"      "name_state"       
  [7] "code_region"       "name_region"       "domicilio01_V1005"
 [10] "domicilio01_V001"  "domicilio01_V002"  "domicilio01_V003" 
-[13] "domicilio01_V004"  "domicilio01_V005"  "domicilio01_V006" 
-[16] "domicilio01_V007"  "domicilio01_V008"  "domicilio01_V009" 
-[19] "domicilio01_V010"  "domicilio01_V011"  "domicilio02_V050" 
-[22] "domicilio02_V051"  "domicilio02_V052"  "domicilio02_V053" 
-[25] "domicilio02_V054"  "domicilio02_V055"  "domicilio02_V056" 
-[28] "domicilio02_V057"  "domicilio02_V058"  "domicilio02_V059" 
-[31] "domicilio02_V060"  "domicilio02_V061"  "domicilio02_V062" 
-[34] "domicilio02_V063"  "domicilio02_V064"  "domicilio02_V065" 
-[37] "domicilio02_V066"  "domicilio02_V067"  "domicilio02_V068" 
-[40] "domicilio02_V069" </code></pre>
+[13] "domicilio02_V050"  "domicilio02_V051"  "domicilio02_V052" 
+[16] "domicilio02_V053"  "domicilio02_V054"  "domicilio02_V055" </code></pre>
 </div>
 </div>
 </section>
@@ -298,22 +290,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataset =</span> <span class="st">"Basico"</span>,</span>
 <span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
 <span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>tract_income <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>,                 </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>tract_income <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2010</span>,</span>
 <span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataset =</span> <span class="st">"DomicilioRenda"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-8" class="code-annotation-target"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">showProgress =</span> <span class="cn">FALSE</span>)</span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">showProgress =</span> <span class="cn">FALSE</span>)     </span>
 <span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># selecionar conlunas</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-11" class="code-annotation-target"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>tract_basico <span class="ot">&lt;-</span> tract_basico <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">'code_tract'</span>,<span class="st">'V002'</span>)</span>
 <span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>tract_income <span class="ot">&lt;-</span> tract_income <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">'code_tract'</span>,<span class="st">'V003'</span>)</span>
 <span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># unir as tabelass</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>tracts_df10 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tract_basico, tract_income) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>                <span class="fu">collect</span>()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>tracts_df10 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tract_basico, tract_income)</span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>                </span>
 <span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular a renda per capita</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-19" class="code-annotation-target"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>tracts_df10 <span class="ot">&lt;-</span> tracts_df10 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">income_pc =</span> V003 <span class="sc">/</span> V002)</span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tracts_df10)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>tracts_df10 <span class="ot">&lt;-</span> tracts_df10 <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-20" class="code-annotation-target"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">income_pc =</span> V003 <span class="sc">/</span> V002) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6">6</button><span id="annotated-cell-4-21" class="code-annotation-target"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a>                <span class="fu">collect</span>()</span>
+<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tracts_df10)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
@@ -322,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="2">Download de dados do bloco DomicilioRenda</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="2">Download de dados do bloco DomicilioRenda</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
@@ -334,7 +328,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="19" data-code-annotation="5">Cacula renda per capita de cada setor censitário</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="20" data-code-annotation="5">Cacula renda per capita de cada setor censitário</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="21" data-code-annotation="6">Extração dos resultados</span>
 </dd>
 </dl>
 </div>
@@ -349,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6: 120001305000006   483 263538  545.6273</code></pre>
 </div>
 </div>
-<p>O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função <code>read_census_tract</code>, do pacote <strong><code>{geobr}</code></strong>. Aqui, nós passamos o parâmetro <code>code_tract = "MG"</code> baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.</p>
+<p>O próximo passo é baixar as geometrias dos setores censitários de BH em 2010 com a função <code>read_census_tract</code>, do pacote <strong>{geobr}</strong>. Aqui, nós passamos o parâmetro <code>code_tract = "MG"</code> baixar os todos os setores do estado de Minas Gerais e depois filtramos apenas o município de Belo Horizonte.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># busca qual o código do municipio de Belo Horizonte</span></span>
 <span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>bh_info <span class="ot">&lt;-</span> geobr<span class="sc">::</span><span class="fu">lookup_muni</span>(<span class="at">name_muni =</span> <span class="st">'Belo Horizonte'</span>)</span>
@@ -390,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Por fim, a gente pode fazer um <em>merge</em> dos dados espaciais e de renda dos setores censitários usando a variável chave <code>code_tract</code> e criar o mapa da distribuição espacial de renda.</p>
+<p>Por fim, a gente pode fazer um <em>merge</em> dos dados espaciais e de renda dos setores censitários usando como variável chave o código do setor censitário (<code>code_tract</code>) e criar o mapa da distribuição espacial da renda per capita do município.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bh_tracts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tracts_2010, tracts_df10, <span class="at">by =</span> <span class="st">'code_tract'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -418,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examplo-2-distribuição-espacial-da-população-em-2022" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" data-anchor-id="examplo-2-distribuição-espacial-da-população-em-2022"><span class="header-section-number">5.3.2</span> Examplo 2: Distribuição espacial da população em 2022</h3>
-<p>Neste segundo exemplo, nós vamos utilizar os resultados <code>"Preliminares"</code> dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável <code>V0001</code> que informa a população total dos setores. Além disso, como houve uma mudança na malha de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.</p>
+<p>Neste segundo exemplo, nós vamos utilizar os resultados <code>"Preliminares"</code> dos agregados dos setores censitários do censo de 2022, que foram divulgados pelo IBGE em março de 2024. Em particular, vamos utilizar a variável <code>V0001</code> que informa a população total dos setores. Além disso, como houve uma mudança na malha espacial de setores censitários entre 2010 e 2022, nós precisamos baixar a malha do ano correspondente.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download dados preliminares dos setores de 2022</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tracts_df22 <span class="ot">&lt;-</span> <span class="fu">read_tracts</span>(<span class="at">year =</span> <span class="dv">2022</span>,</span>
@@ -436,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># filtra setores de BH</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>tracts_2022 <span class="ot">&lt;-</span> <span class="fu">filter</span>(tracts_2022, name_muni <span class="sc">==</span> <span class="st">'Belo Horizonte'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Agora a gente pode fazer um merge da tabela de população com os dados espaciais, calcular a área em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.</p>
+<p>Agora a gente pode fazer um <em>merge</em> da tabela de população com os dados espaciais, calcular a área dos setores em Km<sup>2</sup> e a densidade demográfica de cada setor, e criar o mapa.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge tables</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tracts_df22<span class="sc">$</span>code_tract <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(tracts_df22<span class="sc">$</span>code_tract)</span>
