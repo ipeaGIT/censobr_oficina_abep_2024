@@ -144,11 +144,11 @@ Todas as funções de leitura de microdados possuem a mesma estrutra (sintaxe), 
 
 ```{r, eval = FALSE}
 read_households(
-  year,          # ano de referência
+  year,          # ano de referência do censo
   columns,       # seleciona colunas que devem ser lidas
   add_labels,    # adiciona os 'labels' das variáveis categóricas
   as_data_frame, # retorna resultado como um `Arrow DataSet` ou `data.frame`
-  showProgress,  # mostra contagem de download
+  showProgress,  # mostra barra de progresso do download
   cache          # salva arquivo em cache para rapida leitura posteriormente
   )
 ```
@@ -172,7 +172,7 @@ A primeira vez que o usuário executa uma função, o **{censobr}** fará o down
 Vamos então partir para exemplos na prática, e começar carregando as bibliotecas que usamos.
 
 
-```{r, message = FALSE}
+```{r, message = FALSE, warning=FALSE}
 #| label: load-libraries
 # carrega bibliotecas
 library(censobr)
@@ -186,7 +186,7 @@ library(ggplot2)
 
 Neste exemplo, nós vamos criar um gráfico da pirâmica populacional do Brasil no ano de 2010. O primeiro passo é usar a função `read_population()` para carregar os microdados de população.
 
-O comportamento padrão das as funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).
+O comportamento padrão das funções do **{censobr}** é retornar *todas* as variáveis das bases de dados. No entanto, como vamos fazer uma análise simples, o mais eficiente é passarmos um vetor com os nomes das colunas que vamos utilizar (neste caso, as variáveis de peso amostral, sexo e idade).
 
 ```{r, message=FALSE}
 #| label: read-population-data
