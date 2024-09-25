@@ -1,6 +1,6 @@
 # Introdução
 
-Este site apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> Encontro da ABEP, em Brasília, entre os dias 23 e 26 de setembro de 2024.
+Este site apresenta o material de apoio para a oficina **"{censobr}: Explorando o Censo Demográfico em R"**. A oficina será realizada como parte da programação do 23<sup>o</sup> [Encontro da ABEP](https://eventos.galoa.com.br/abep-2024/page/3977-home), em Brasília, entre os dias 23 e 26 de setembro de 2024.
 
 
 
