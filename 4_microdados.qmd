@@ -64,7 +64,7 @@ O **{censobr}** é um pacote de R para acessar os dados e documentação dos cen
       <td>X</td>
       <td>X</td>
       <td>X</td>
-      <td></td>
+      <td>X</td>
       <td>X</td>
       <td><i>em breve</i></td>
     </tr>
@@ -103,8 +103,8 @@ O **{censobr}** é um pacote de R para acessar os dados e documentação dos cen
       <td></td>
       <td></td>
       <td></td>
-      <td>X</td>
       <td></td>
+      <td>X</td>
       <td><i>em breve</i></td>
     </tr>
     <tr>
