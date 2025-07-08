@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{censobr}: Explorando o Censo Demográfico em R – 2&nbsp; Instalação</title>
+<title>2&nbsp; Instalação – {censobr}: Explorando o Censo Demográfico em R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-b343bb23504f009ddf7b24643a6af19a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-93979c3dcdd8127e23eebb5e274d8c39.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="styles.css">
 <meta name="citation_title" content="[2]{.chapter-number}&nbsp; [Instalação]{.chapter-title}">
-<meta name="citation_fulltext_html_url" content="https://ipeagit.github.io/censobr_oficina_abep_2024//2_instalacao.html">
+<meta name="citation_fulltext_html_url" content="https://ipeagit.github.io/censobr_oficina_abep_2024/2_instalacao.html">
 <meta name="citation_language" content="pt">
 <meta name="citation_reference" content="citation_title=Estatisticas historicas do brasil : Series economicas demograficas e sociais de 1550 a 1988;,citation_author=undefined IBGE;,citation_publication_date=1990;,citation_cover_date=1990;,citation_year=1990;,citation_fulltext_html_url=https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;amp;amp;id=221431;,citation_isbn=8524003332;">
 <meta name="citation_reference" content="citation_title=Geobr: Download official spatial data sets of brazil;,citation_author=Rafael H. M. Pereira;,citation_author=Caio N. Gonçalves;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://cran.r-project.org/package=geobr;,citation_doi=10.32614/CRAN.package.geobr;">
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024">repositório do GitHub</a> localmente. Isso porque este repositório utiliza o pacote <code>{renv}</code>do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.</p>
+<p><strong>Para usuários avançados</strong>, a maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu <a href="https://github.com/ipeaGIT/censobr_oficina_abep_2024">repositório do GitHub</a> localmente. Isso porque este repositório utiliza o pacote <code>{renv}</code>do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.</p>
 <p>Uma vez que você clonou o repositório e abriu o arquivo <code>censobr_oficina_abep_2024.Rproj</code>, basta você rodar <code>renv::restore()</code> para instalar todos os pacotes utilizados nesta oficina.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomente a linha abaixo caso precise instalar o pacote {renv}</span></span>
@@ -488,8 +488,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -600,7 +598,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
