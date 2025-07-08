@@ -37,7 +37,7 @@ pkgs <- c(
 install.packages(pkgs)
 ```
 
-**Para usuários avançados**, a maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu [repositório do GitHub](https://github.com/ipeaGIT/censobr_oficina_abep_2024) localmente. Isso porque este repositório utiliza o pacote `{renv}`do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.
+A maneira mais segura de replicar o código desta oficina, no entanto, é clonando o seu [repositório do GitHub](https://github.com/ipeaGIT/censobr_oficina_abep_2024) localmente. Isso porque este repositório utiliza o pacote `{renv}`do R para gerenciar as dependências dos pacotes utilizados na oficina. Isso é importante para garantir que estamos utilizando as mesmas versões dos pacotes relevantes.
 
 Uma vez que você clonou o repositório e abriu o arquivo `censobr_oficina_abep_2024.Rproj`, basta você rodar `renv::restore()` para instalar todos os pacotes utilizados nesta oficina.
 
